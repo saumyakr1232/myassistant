@@ -21,11 +21,13 @@ SCOPES = (  # iterable or space-delimited string
 SOURCES = ('text', 'sheets')
 SOURCE = 'text'
 COLUMNS = ['question_1', 'answer_1', 'question_2', 'answer_2', 'question_3', 'answer_3', 'question_4', 'answer_4'
-           ,'question_5', 'answer_5']
+    , 'question_5', 'answer_5']
 
 TEXT_SOURCE_DATA = (
-    ('Www', 'The first e-mail was sent by Ray Tomlinson in 1971. Tomlinson sent the e-mail to himself as a test e-mail message, containing the text "something like QWERTYUIOP." However, despite sending the e-mail to himself, the e-mail message was still transmitted through ARPANET.\n',
-    'some question 2', 'some answer 2', 'some question 3', 'some answer 3', 'some question 4', 'some answer 4' 'some question 5', 'some answer 5'),
+    ('Www',
+     'The first e-mail was sent by Ray Tomlinson in 1971. Tomlinson sent the e-mail to himself as a test e-mail message, containing the text "something like QWERTYUIOP." However, despite sending the e-mail to himself, the e-mail message was still transmitted through ARPANET.\n',
+     'some question 2', 'some answer 2', 'some question 3', 'some answer 3', 'some question 4',
+     'some answer 4' 'some question 5', 'some answer 5'),
 )
 
 
@@ -46,7 +48,6 @@ HTTP = get_http_client()
 DRIVE = discovery.build('drive', 'v3', http=HTTP)
 DOCS = discovery.build('docs', 'v1', http=HTTP)
 SHEETS = discovery.build('sheets', 'v4', http=HTTP)
-
 
 
 def get_data(source):
@@ -70,7 +71,7 @@ def _get_sheets_data(service=SHEETS):
         (header) row. Use any desired data range (in standard A1 notation).
     """
     return service.spreadsheets().values().get(spreadsheetId=SHEETS_FILE_ID,
-            range='Sheet1').execute().get('values')[1:] # skip header row
+                                               range='Sheet1').execute().get('values')[1:]  # skip header row
 
 
 # data source dispatch table [better alternative vs. eval()]
@@ -83,7 +84,7 @@ def _copy_template(tmpl_id, source, service):
     """
     body = {'name': 'Merged form letter (%s)' % source}
     return service.files().copy(body=body, fileId=tmpl_id,
-            fields='id').execute().get('id')
+                                fields='id').execute().get('id')
 
 
 def merge_template(tmpl_id, source, service):
@@ -96,16 +97,16 @@ def merge_template(tmpl_id, source, service):
 
     # "search & replace" API requests for mail merge substitutions
     reqs = [{'replaceAllText': {
-                'containsText': {
-                    'text': '{{%s}}' % key.lower(), # {{VARS}} are uppercase
-                    'matchCase': True,
-                },
-                'replaceText': value,
-            }} for key, value in context]
+        'containsText': {
+            'text': '{{%s}}' % key.lower(),  # {{VARS}} are uppercase
+            'matchCase': True,
+        },
+        'replaceText': value,
+    }} for key, value in context]
 
     # send requests to Docs API to do actual merge
     DOCS.documents().batchUpdate(body={'requests': reqs},
-            documentId=copy_id, fields='').execute()
+                                 documentId=copy_id, fields='').execute()
     return copy_id
 
 
@@ -147,11 +148,10 @@ if __name__ == '__main__':
     }
 
     # get row data, then loop through & process each form letter
-    data = get_data(SOURCE) # get data from data source
+    data = get_data(SOURCE)  # get data from data source
     for i, row in enumerate(data):
         merge.update(dict(zip(COLUMNS, row)))
         file_id = merge_template(DOCS_FILE_ID, SOURCE, DRIVE)
         print('Merged letter %d: docs.google.com/document/d/%s/edit' % (
-                i+1, file_id))
+            i + 1, file_id))
     # download_assignment("1BR_GWifF_ps_VPeY3rEqriW6UP--IPZsdonqYuWpYJA")
-
