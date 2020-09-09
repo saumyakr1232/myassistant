@@ -1,0 +1,358 @@
+2020-09-09 17:37:54,452 - __main__ - INFO - Credentials are set
+2020-09-09 17:37:54,452 - __main__ - INFO - log in clicked
+2020-09-09 17:38:01,832 - __main__ - INFO - get_all_courses : called
+2020-09-09 17:38:06,736 - __main__ - INFO - get_all_courses : called
+2020-09-09 17:38:07,147 - __main__ - INFO - Looking for Block Chain Technology > Attempt :1
+2020-09-09 17:38:07,160 - __main__ - INFO - Looking for Block Chain Technology > Attempt :2
+2020-09-09 17:38:07,174 - __main__ - INFO - Looking for Block Chain Technology > Attempt :3
+2020-09-09 17:38:07,174 - __main__ - INFO - Element found
+2020-09-09 17:38:10,134 - __main__ - INFO - CAT-1
+Quiz
+2020-09-09 17:38:10,165 - __main__ - INFO - Looks complete
+2020-09-09 17:38:10,189 - __main__ - INFO - CAT- II
+Quiz
+2020-09-09 17:38:10,221 - __main__ - INFO - looks incomplete
+2020-09-09 17:38:10,231 - __main__ - INFO - get_incomplete_assignments : called
+2020-09-09 17:38:30,998 - __main__ - INFO - extract_quiz_info: called
+2020-09-09 17:38:32,180 - __main__ - INFO - information extracted :Attempts allowed: 1
+The quiz will not be available until Saturday, 19 September 2020, 2:00 PM
+This quiz will close on Saturday, 19 September 2020, 3:45 PM.
+Time limit: 1 hour 45 mins
+2020-09-09 17:38:37,737 - __main__ - INFO - Looking for Computer Graphics > Attempt :1
+2020-09-09 17:38:37,749 - __main__ - INFO - Looking for Computer Graphics > Attempt :2
+2020-09-09 17:38:37,762 - __main__ - INFO - Looking for Computer Graphics > Attempt :3
+2020-09-09 17:38:37,774 - __main__ - INFO - Looking for Computer Graphics > Attempt :4
+2020-09-09 17:38:37,774 - __main__ - INFO - Element found
+2020-09-09 17:38:39,711 - __main__ - INFO - CAT-2, SEC 2
+Quiz
+Restricted Not available unless: Your Surname is CSE-2
+2020-09-09 17:38:39,743 - __main__ - INFO - Looks complete
+2020-09-09 17:38:39,764 - __main__ - INFO - CAT-2, Section-5
+Quiz
+Restricted Not available unless: Your Surname contains CSE -5
+2020-09-09 17:38:39,798 - __main__ - INFO - Looks complete
+2020-09-09 17:38:39,820 - __main__ - INFO - CAT-2, Section-8
+Quiz
+Restricted Not available unless: Your Surname is CSE-8
+2020-09-09 17:38:39,852 - __main__ - INFO - Looks complete
+2020-09-09 17:38:39,874 - __main__ - INFO - CAT-2, SEC 9
+Quiz
+Restricted Not available unless: Your Surname is CSE-9
+2020-09-09 17:38:39,908 - __main__ - INFO - Looks complete
+2020-09-09 17:38:39,933 - __main__ - INFO - CAT-2 (sec-3& AIML)
+Quiz
+2020-09-09 17:38:39,970 - __main__ - INFO - looks incomplete
+2020-09-09 17:38:39,981 - __main__ - INFO - get_incomplete_assignments : called
+2020-09-09 17:39:00,751 - __main__ - INFO - extract_quiz_info: called
+2020-09-09 17:39:01,983 - __main__ - INFO - information extracted :Attempts allowed: 1
+The quiz will not be available until Wednesday, 16 September 2020, 2:00 PM
+This quiz will close on Wednesday, 16 September 2020, 3:45 PM.
+Time limit: 1 hour 30 mins
+2020-09-09 17:39:07,622 - __main__ - INFO - Looking for Design & Analysis of Algorithms > Attempt :1
+2020-09-09 17:39:07,637 - __main__ - INFO - Looking for Design & Analysis of Algorithms > Attempt :2
+2020-09-09 17:39:07,649 - __main__ - INFO - Looking for Design & Analysis of Algorithms > Attempt :3
+2020-09-09 17:39:07,662 - __main__ - INFO - Looking for Design & Analysis of Algorithms > Attempt :4
+2020-09-09 17:39:07,675 - __main__ - INFO - Looking for Design & Analysis of Algorithms > Attempt :5
+2020-09-09 17:39:07,675 - __main__ - INFO - Element found
+2020-09-09 17:39:08,845 - __main__ - INFO - CAT-1_BCSE3031_DAA
+Quiz
+2020-09-09 17:39:08,878 - __main__ - INFO - Looks complete
+2020-09-09 17:39:08,878 - __main__ - INFO - get_incomplete_assignments : called
+2020-09-09 17:39:08,957 - __main__ - INFO - DAA 1
+Assignment
+2020-09-09 17:39:08,997 - __main__ - INFO - Looks complete
+2020-09-09 17:39:09,018 - __main__ - INFO - assignment-1 (section-8)
+2020-09-09 17:39:09,054 - __main__ - INFO - looks incomplete
+2020-09-09 17:39:14,463 - __main__ - INFO - Looking for DSCPP > Attempt :1
+2020-09-09 17:39:14,477 - __main__ - INFO - Looking for DSCPP > Attempt :2
+2020-09-09 17:39:51,555 - __main__ - INFO - Looking for English Proficiency and Aptitude Building - 5 > Attempt :1
+2020-09-09 17:39:51,568 - __main__ - INFO - Looking for English Proficiency and Aptitude Building - 5 > Attempt :2
+2020-09-09 17:39:51,583 - __main__ - INFO - Looking for English Proficiency and Aptitude Building - 5 > Attempt :3
+2020-09-09 17:39:51,597 - __main__ - INFO - Looking for English Proficiency and Aptitude Building - 5 > Attempt :4
+2020-09-09 17:39:51,610 - __main__ - INFO - Looking for English Proficiency and Aptitude Building - 5 > Attempt :5
+2020-09-09 17:39:51,622 - __main__ - INFO - Looking for English Proficiency and Aptitude Building - 5 > Attempt :6
+2020-09-09 17:39:51,635 - __main__ - INFO - Looking for English Proficiency and Aptitude Building - 5 > Attempt :7
+2020-09-09 17:39:51,635 - __main__ - INFO - Element found
+2020-09-09 17:39:54,926 - __main__ - INFO - Mock -1 Sept 2020 English
+Quiz
+2020-09-09 17:39:54,958 - __main__ - INFO - looks incomplete
+2020-09-09 17:39:54,990 - __main__ - INFO - Mock -1 Sept 2020 Quant
+Quiz
+2020-09-09 17:39:55,022 - __main__ - INFO - looks incomplete
+2020-09-09 17:39:55,033 - __main__ - INFO - get_incomplete_assignments : called
+2020-09-09 17:40:16,247 - __main__ - INFO - extract_quiz_info: called
+2020-09-09 17:40:17,365 - __main__ - INFO - information extracted :Attempts allowed: 1
+This quiz closed on Monday, 7 September 2020, 9:00 AM
+Time limit: 25 mins
+2020-09-09 17:40:17,396 - __main__ - INFO - extract_quiz_info: called
+2020-09-09 17:40:17,532 - __main__ - INFO - information extracted :Attempts allowed: 1
+This quiz closed on Monday, 7 September 2020, 9:00 AM
+Time limit: 25 mins
+2020-09-09 17:40:23,110 - __main__ - INFO - Looking for Industrial/Summer Training -II > Attempt :1
+2020-09-09 17:40:23,123 - __main__ - INFO - Looking for Industrial/Summer Training -II > Attempt :2
+2020-09-09 17:40:23,136 - __main__ - INFO - Looking for Industrial/Summer Training -II > Attempt :3
+2020-09-09 17:40:23,149 - __main__ - INFO - Looking for Industrial/Summer Training -II > Attempt :4
+2020-09-09 17:40:23,162 - __main__ - INFO - Looking for Industrial/Summer Training -II > Attempt :5
+2020-09-09 17:40:23,175 - __main__ - INFO - Looking for Industrial/Summer Training -II > Attempt :6
+2020-09-09 17:40:23,187 - __main__ - INFO - Looking for Industrial/Summer Training -II > Attempt :7
+2020-09-09 17:40:23,202 - __main__ - INFO - Looking for Industrial/Summer Training -II > Attempt :8
+2020-09-09 17:40:23,203 - __main__ - INFO - Element found
+2020-09-09 17:40:52,201 - __main__ - INFO - Looking for Industry Oriented Java-III > Attempt :1
+2020-09-09 17:40:52,213 - __main__ - INFO - Looking for Industry Oriented Java-III > Attempt :2
+2020-09-09 17:40:52,226 - __main__ - INFO - Looking for Industry Oriented Java-III > Attempt :3
+2020-09-09 17:40:52,239 - __main__ - INFO - Looking for Industry Oriented Java-III > Attempt :4
+2020-09-09 17:40:52,251 - __main__ - INFO - Looking for Industry Oriented Java-III > Attempt :5
+2020-09-09 17:40:52,263 - __main__ - INFO - Looking for Industry Oriented Java-III > Attempt :6
+2020-09-09 17:40:52,276 - __main__ - INFO - Looking for Industry Oriented Java-III > Attempt :7
+2020-09-09 17:40:52,289 - __main__ - INFO - Looking for Industry Oriented Java-III > Attempt :8
+2020-09-09 17:40:52,301 - __main__ - INFO - Looking for Industry Oriented Java-III > Attempt :9
+2020-09-09 17:40:52,301 - __main__ - INFO - Element found
+2020-09-09 17:40:54,854 - __main__ - INFO - Collection Quiz (all batches)_8AUG-2020@7Pm
+2020-09-09 17:40:54,881 - __main__ - INFO - Looks complete
+2020-09-09 17:40:54,897 - __main__ - INFO - Collection Quiz_All section_19.8.2020
+2020-09-09 17:40:54,923 - __main__ - INFO - Looks complete
+2020-09-09 17:40:54,938 - __main__ - INFO - JDBC_quiz (all batches)
+2020-09-09 17:40:54,966 - __main__ - INFO - Looks complete
+2020-09-09 17:40:54,967 - __main__ - INFO - get_incomplete_assignments : called
+2020-09-09 17:40:55,028 - __main__ - INFO - JDBC Project(All batches)
+Assignment
+2020-09-09 17:40:55,065 - __main__ - INFO - Looks complete
+2020-09-09 17:41:00,592 - __main__ - INFO - Looking for Industry Oriented Python-III > Attempt :1
+2020-09-09 17:41:00,605 - __main__ - INFO - Looking for Industry Oriented Python-III > Attempt :2
+2020-09-09 17:41:00,618 - __main__ - INFO - Looking for Industry Oriented Python-III > Attempt :3
+2020-09-09 17:41:00,631 - __main__ - INFO - Looking for Industry Oriented Python-III > Attempt :4
+2020-09-09 17:41:00,644 - __main__ - INFO - Looking for Industry Oriented Python-III > Attempt :5
+2020-09-09 17:41:00,657 - __main__ - INFO - Looking for Industry Oriented Python-III > Attempt :6
+2020-09-09 17:41:00,669 - __main__ - INFO - Looking for Industry Oriented Python-III > Attempt :7
+2020-09-09 17:41:00,682 - __main__ - INFO - Looking for Industry Oriented Python-III > Attempt :8
+2020-09-09 17:41:00,695 - __main__ - INFO - Looking for Industry Oriented Python-III > Attempt :9
+2020-09-09 17:41:00,708 - __main__ - INFO - Looking for Industry Oriented Python-III > Attempt :10
+2020-09-09 17:41:00,708 - __main__ - INFO - Element found
+2020-09-09 17:41:02,378 - __main__ - INFO - Quiz 1 for all -- 8:30-10:30 PM
+Quiz 1 For All
+Timing 8:30-10:30 PM
+2020-09-09 17:41:02,416 - __main__ - INFO - looks incomplete
+2020-09-09 17:41:02,455 - __main__ - INFO - QUIZ 2 BAtch 1-6-26-08-2020
+Batch 1-6 5:30-6:30
+2020-09-09 17:41:02,494 - __main__ - INFO - Looks complete
+2020-09-09 17:41:02,521 - __main__ - INFO - QUIZ 2 Batch 7 Onwards-26-08-2020
+Batch 7 Onwards
+2020-09-09 17:41:02,561 - __main__ - INFO - looks incomplete
+2020-09-09 17:41:02,600 - __main__ - INFO - Quiz 3 Batch 1-6
+05/Sep/2020
+Time -5:30 -6:30
+2020-09-09 17:41:02,639 - __main__ - INFO - looks incomplete
+2020-09-09 17:41:02,677 - __main__ - INFO - QUIZ 3 Batch 7 Onwards
+05-07-2020
+Time 6:30-7:30
+2020-09-09 17:41:02,714 - __main__ - INFO - looks incomplete
+2020-09-09 17:41:02,752 - __main__ - INFO - Quiz 4 Batch 1-6
+8-Sep-2020
+Time-5:30-6:30
+2020-09-09 17:41:02,790 - __main__ - INFO - looks incomplete
+2020-09-09 17:41:02,828 - __main__ - INFO - Quiz 4 Batch 7 Onward
+08-Sep-2020
+Time-6:30-7:30
+2020-09-09 17:41:02,866 - __main__ - INFO - looks incomplete
+2020-09-09 17:41:02,877 - __main__ - INFO - get_incomplete_assignments : called
+2020-09-09 17:41:02,951 - __main__ - INFO - Assignment 1
+INFYTQ MODULE
+Fundamental of Python Programming
+Due date 10-Sep-2020
+2020-09-09 17:41:02,988 - __main__ - INFO - looks incomplete
+2020-09-09 17:41:05,042 - __main__ - INFO - extract_quiz_info: called
+2020-09-09 17:41:06,432 - __main__ - INFO - information extracted :Attempts allowed: 1
+This quiz closed on Tuesday, 8 September 2020, 7:30 PM
+Time limit: 30 mins
+2020-09-09 17:41:06,462 - __main__ - INFO - extract_quiz_info: called
+2020-09-09 17:41:06,531 - __main__ - INFO - information extracted :Attempts allowed: 1
+This quiz closed on Tuesday, 8 September 2020, 6:30 PM
+Time limit: 30 mins
+2020-09-09 17:41:06,564 - __main__ - INFO - extract_quiz_info: called
+2020-09-09 17:41:06,629 - __main__ - INFO - information extracted :Attempts allowed: 1
+This quiz closed on Saturday, 5 September 2020, 7:30 PM
+Time limit: 30 mins
+2020-09-09 17:41:06,663 - __main__ - INFO - extract_quiz_info: called
+2020-09-09 17:41:06,711 - __main__ - INFO - information extracted :Attempts allowed: 1
+This quiz closed on Saturday, 5 September 2020, 6:30 PM
+Time limit: 30 mins
+2020-09-09 17:41:06,742 - __main__ - INFO - extract_quiz_info: called
+2020-09-09 17:41:06,796 - __main__ - INFO - information extracted :Attempts allowed: 1
+This quiz closed on Wednesday, 26 August 2020, 7:30 PM
+Time limit: 30 mins
+2020-09-09 17:41:06,830 - __main__ - INFO - extract_quiz_info: called
+2020-09-09 17:41:06,882 - __main__ - INFO - information extracted :Attempts allowed: 2
+This quiz closed on Tuesday, 11 August 2020, 10:30 PM
+Time limit: 30 mins
+Grading method: Highest grade
+2020-09-09 17:41:12,434 - __main__ - INFO - Looking for Machine Learning > Attempt :1
+2020-09-09 17:41:12,447 - __main__ - INFO - Looking for Machine Learning > Attempt :2
+2020-09-09 17:41:12,460 - __main__ - INFO - Looking for Machine Learning > Attempt :3
+2020-09-09 17:41:12,473 - __main__ - INFO - Looking for Machine Learning > Attempt :4
+2020-09-09 17:41:12,486 - __main__ - INFO - Looking for Machine Learning > Attempt :5
+2020-09-09 17:41:12,499 - __main__ - INFO - Looking for Machine Learning > Attempt :6
+2020-09-09 17:41:12,512 - __main__ - INFO - Looking for Machine Learning > Attempt :7
+2020-09-09 17:41:12,527 - __main__ - INFO - Looking for Machine Learning > Attempt :8
+2020-09-09 17:41:12,540 - __main__ - INFO - Looking for Machine Learning > Attempt :9
+2020-09-09 17:41:12,552 - __main__ - INFO - Looking for Machine Learning > Attempt :10
+2020-09-09 17:41:12,565 - __main__ - INFO - Looking for Machine Learning > Attempt :11
+2020-09-09 17:41:12,565 - __main__ - INFO - Element found
+2020-09-09 17:41:13,562 - __main__ - INFO - CAT-1
+Quiz
+2020-09-09 17:41:13,594 - __main__ - INFO - looks incomplete
+2020-09-09 17:41:13,606 - __main__ - INFO - get_incomplete_assignments : called
+2020-09-09 17:41:13,787 - __main__ - INFO - Assignment 1
+2020-09-09 17:41:13,823 - __main__ - INFO - looks incomplete
+2020-09-09 17:41:13,857 - __main__ - INFO - Assignment 1_Section_4
+2020-09-09 17:41:13,892 - __main__ - INFO - looks incomplete
+2020-09-09 17:41:13,923 - __main__ - INFO - Assignment 2
+2020-09-09 17:41:13,960 - __main__ - INFO - looks incomplete
+2020-09-09 17:41:13,993 - __main__ - INFO - Assignment 2_Section_4
+2020-09-09 17:41:14,031 - __main__ - INFO - looks incomplete
+2020-09-09 17:41:14,066 - __main__ - INFO - Assignment 3
+2020-09-09 17:41:14,103 - __main__ - INFO - looks incomplete
+2020-09-09 17:41:14,135 - __main__ - INFO - Assignment 3_Section_4
+2020-09-09 17:41:14,171 - __main__ - INFO - looks incomplete
+2020-09-09 17:41:14,639 - __main__ - INFO - extract_quiz_info: called
+2020-09-09 17:41:16,475 - __main__ - INFO - information extracted :Attempts allowed: 1
+This quiz closed on Tuesday, 18 August 2020, 1:45 PM
+Time limit: 1 hour 30 mins
+2020-09-09 17:41:21,999 - __main__ - INFO - Looking for Minor Project > Attempt :1
+2020-09-09 17:41:22,012 - __main__ - INFO - Looking for Minor Project > Attempt :2
+2020-09-09 17:41:22,025 - __main__ - INFO - Looking for Minor Project > Attempt :3
+2020-09-09 17:41:22,038 - __main__ - INFO - Looking for Minor Project > Attempt :4
+2020-09-09 17:41:22,051 - __main__ - INFO - Looking for Minor Project > Attempt :5
+2020-09-09 17:41:22,063 - __main__ - INFO - Looking for Minor Project > Attempt :6
+2020-09-09 17:41:22,076 - __main__ - INFO - Looking for Minor Project > Attempt :7
+2020-09-09 17:41:22,089 - __main__ - INFO - Looking for Minor Project > Attempt :8
+2020-09-09 17:41:22,101 - __main__ - INFO - Looking for Minor Project > Attempt :9
+2020-09-09 17:41:22,114 - __main__ - INFO - Looking for Minor Project > Attempt :10
+2020-09-09 17:41:22,126 - __main__ - INFO - Looking for Minor Project > Attempt :11
+2020-09-09 17:41:22,139 - __main__ - INFO - Looking for Minor Project > Attempt :12
+2020-09-09 17:41:22,139 - __main__ - INFO - Element found
+2020-09-09 17:41:49,164 - __main__ - INFO - Looking for Software Engineering & Testing Methodologies > Attempt :1
+2020-09-09 17:41:49,176 - __main__ - INFO - Looking for Software Engineering & Testing Methodologies > Attempt :2
+2020-09-09 17:41:49,190 - __main__ - INFO - Looking for Software Engineering & Testing Methodologies > Attempt :3
+2020-09-09 17:41:49,202 - __main__ - INFO - Looking for Software Engineering & Testing Methodologies > Attempt :4
+2020-09-09 17:41:49,215 - __main__ - INFO - Looking for Software Engineering & Testing Methodologies > Attempt :5
+2020-09-09 17:41:49,228 - __main__ - INFO - Looking for Software Engineering & Testing Methodologies > Attempt :6
+2020-09-09 17:41:49,241 - __main__ - INFO - Looking for Software Engineering & Testing Methodologies > Attempt :7
+2020-09-09 17:41:49,254 - __main__ - INFO - Looking for Software Engineering & Testing Methodologies > Attempt :8
+2020-09-09 17:41:49,267 - __main__ - INFO - Looking for Software Engineering & Testing Methodologies > Attempt :9
+2020-09-09 17:41:49,280 - __main__ - INFO - Looking for Software Engineering & Testing Methodologies > Attempt :10
+2020-09-09 17:41:49,293 - __main__ - INFO - Looking for Software Engineering & Testing Methodologies > Attempt :11
+2020-09-09 17:41:49,305 - __main__ - INFO - Looking for Software Engineering & Testing Methodologies > Attempt :12
+2020-09-09 17:41:49,318 - __main__ - INFO - Looking for Software Engineering & Testing Methodologies > Attempt :13
+2020-09-09 17:41:49,318 - __main__ - INFO - Element found
+2020-09-09 17:41:56,443 - __main__ - INFO - Quiz-2
+2020-09-09 17:41:56,473 - __main__ - INFO - looks incomplete
+2020-09-09 17:41:56,503 - __main__ - INFO - Quiz-3
+2020-09-09 17:41:56,533 - __main__ - INFO - looks incomplete
+2020-09-09 17:41:56,562 - __main__ - INFO - Quiz-4
+2020-09-09 17:41:56,592 - __main__ - INFO - looks incomplete
+2020-09-09 17:41:56,622 - __main__ - INFO - CAT-2, Section-1
+Quiz
+Restricted Not available unless: Your Surname is CSE -1
+2020-09-09 17:41:56,655 - __main__ - INFO - Looks complete
+2020-09-09 17:41:56,677 - __main__ - INFO - CAT-2,Section-2
+Quiz
+Restricted Not available unless: Your Surname is CSE -2
+2020-09-09 17:41:56,710 - __main__ - INFO - Looks complete
+2020-09-09 17:41:56,730 - __main__ - INFO - Cat-2, Section-3
+Quiz
+Restricted Not available unless: Your Surname is CSE -3
+2020-09-09 17:41:56,762 - __main__ - INFO - Looks complete
+2020-09-09 17:41:56,782 - __main__ - INFO - CAT 2 Section - 4
+Quiz
+Restricted Not available unless: Your Surname is CSE -4
+2020-09-09 17:41:56,813 - __main__ - INFO - Looks complete
+2020-09-09 17:41:56,836 - __main__ - INFO - CAT 2, Section-5
+Quiz
+Restricted Not available unless: Your Surname is CSE -5
+2020-09-09 17:41:56,869 - __main__ - INFO - Looks complete
+2020-09-09 17:41:56,890 - __main__ - INFO - CAT-2,Section-6
+Quiz
+Restricted Not available unless: Your Surname is CSE -6
+2020-09-09 17:41:56,924 - __main__ - INFO - Looks complete
+2020-09-09 17:41:56,944 - __main__ - INFO - CAT 2, Section-7
+Quiz
+Restricted Not available unless: Your Surname is CSE -7
+2020-09-09 17:41:56,977 - __main__ - INFO - Looks complete
+2020-09-09 17:41:56,997 - __main__ - INFO - CAT 2, Section-8
+Quiz
+Restricted Not available unless: Your Surname is CSE -8
+2020-09-09 17:41:57,028 - __main__ - INFO - Looks complete
+2020-09-09 17:41:57,050 - __main__ - INFO - Cat-2, Section-9
+Quiz
+2020-09-09 17:41:57,081 - __main__ - INFO - looks incomplete
+2020-09-09 17:41:57,113 - __main__ - INFO - CAT 2, Section: CSE-IOT-1, S. Rakesh kumar
+Quiz
+Restricted Not available unless: Your Surname is CSE-IOT-1
+2020-09-09 17:41:57,145 - __main__ - INFO - Looks complete
+2020-09-09 17:41:57,165 - __main__ - INFO - Cat-2, Cloud-1 Batch
+Quiz
+Restricted Not available unless: Your Surname is CSE-CLOUD-1
+2020-09-09 17:41:57,200 - __main__ - INFO - Looks complete
+2020-09-09 17:41:57,220 - __main__ - INFO - CAT 2, Section: CSE-BA-1, S. Rakesh kumar
+Quiz
+Restricted Not available unless: Your Surname is CSE-BA-1
+2020-09-09 17:41:57,251 - __main__ - INFO - Looks complete
+2020-09-09 17:41:57,272 - __main__ - INFO - CAT 2, Section-CSE-CNCS-1
+Quiz
+Restricted Not available unless: Your Surname is CSE -CNCS-1
+2020-09-09 17:41:57,305 - __main__ - INFO - Looks complete
+2020-09-09 17:41:57,325 - __main__ - INFO - CAT-2, Section-DA-1
+Quiz
+Restricted Not available unless: Your Surname is CSE-DA-1
+2020-09-09 17:41:57,366 - __main__ - INFO - Looks complete
+2020-09-09 17:41:57,393 - __main__ - INFO - CAT-2, AI&ML-1
+Quiz
+Restricted Not available unless: Your Surname is CSE-AI&ML-1
+2020-09-09 17:41:57,425 - __main__ - INFO - Looks complete
+2020-09-09 17:41:57,426 - __main__ - INFO - get_incomplete_assignments : called
+2020-09-09 17:41:57,575 - __main__ - INFO - Assignment - 1
+Total Marks=10 Marks
+1.Expalin the software crisis (5) [CO1]
+
+2.Discuss about the working of Iterative enhancement model (5) [CO2]
+2020-09-09 17:41:57,609 - __main__ - INFO - looks incomplete
+2020-09-09 17:41:57,652 - __main__ - INFO - Assignment-2
+Explain the various testing strategies like unit testing, system testing,acceptance testing, etc. with their use and give examples.(10 Marks) [CO3]
+2020-09-09 17:41:57,683 - __main__ - INFO - looks incomplete
+2020-09-09 17:41:57,716 - __main__ - INFO - Assignment - 3
+1. Discuss on Regression Testing (5) [CO4]
+2. Explain Why is it so important to integrate testing activities into the software life cycle?(5) [CO4]
+2020-09-09 17:41:57,758 - __main__ - INFO - looks incomplete
+2020-09-09 17:41:59,175 - __main__ - INFO - extract_quiz_info: called
+2020-09-09 17:42:00,271 - __main__ - INFO - information extracted :Attempts allowed: 1
+The quiz will not be available until Tuesday, 15 September 2020, 2:00 PM
+This quiz will close on Tuesday, 15 September 2020, 3:45 PM.
+Time limit: 1 hour 45 mins
+2020-09-09 17:42:00,303 - __main__ - INFO - extract_quiz_info: called
+2020-09-09 17:42:02,124 - __main__ - INFO - information extracted :Attempts allowed: 1
+This quiz opened at Monday, 7 September 2020, 9:55 PM
+This quiz will close on Thursday, 10 September 2020, 9:55 PM.
+Time limit: 20 mins
+2020-09-09 17:42:02,155 - __main__ - INFO - extract_quiz_info: called
+2020-09-09 17:42:02,200 - __main__ - INFO - information extracted :Attempts allowed: 1
+This quiz closed on Tuesday, 8 September 2020, 9:52 PM
+Time limit: 20 mins
+2020-09-09 17:42:02,232 - __main__ - INFO - extract_quiz_info: called
+2020-09-09 17:42:02,279 - __main__ - INFO - information extracted :Attempts allowed: 1
+This quiz closed on Tuesday, 8 September 2020, 9:47 PM
+Time limit: 20 mins
+2020-09-09 17:42:07,923 - __main__ - INFO - Looking for Student Center > Attempt :1
+2020-09-09 17:42:07,936 - __main__ - INFO - Looking for Student Center > Attempt :2
+2020-09-09 17:42:07,950 - __main__ - INFO - Looking for Student Center > Attempt :3
+2020-09-09 17:42:07,963 - __main__ - INFO - Looking for Student Center > Attempt :4
+2020-09-09 17:42:07,976 - __main__ - INFO - Looking for Student Center > Attempt :5
+2020-09-09 17:42:07,989 - __main__ - INFO - Looking for Student Center > Attempt :6
+2020-09-09 17:42:08,002 - __main__ - INFO - Looking for Student Center > Attempt :7
+2020-09-09 17:42:08,016 - __main__ - INFO - Looking for Student Center > Attempt :8
+2020-09-09 17:42:08,029 - __main__ - INFO - Looking for Student Center > Attempt :9
+2020-09-09 17:42:08,043 - __main__ - INFO - Looking for Student Center > Attempt :10
+2020-09-09 17:42:08,056 - __main__ - INFO - Looking for Student Center > Attempt :11
+2020-09-09 17:42:08,069 - __main__ - INFO - Looking for Student Center > Attempt :12
+2020-09-09 17:42:08,083 - __main__ - INFO - Looking for Student Center > Attempt :13
+2020-09-09 17:42:08,097 - __main__ - INFO - Looking for Student Center > Attempt :14
+2020-09-09 17:42:08,097 - __main__ - INFO - Element found

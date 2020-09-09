@@ -1,11 +1,12 @@
 import io
 from flashtext import KeywordProcessor
-
+from assist.utils.decorators import debug
 from assist.alert import NotifyMe
+from assist.utils import  helper
 
 
 def get_messages():
-	with io.open("../../data/messages.txt", 'r') as f:
+	with io.open(helper.getMessagesFilePath(), 'r') as f:
 		st = f.read()
 	return st
 
@@ -28,7 +29,7 @@ class KeywordSets:
 	KeyWordsSet0 = ['book', 'module', 'solution', 'answer', 'notes', 'pdf', 'video', 'result', 'list', 'notice', ]
 	keyWordsSet1 = ['theory', 'lecture', 'class', 'lab', 'session', 'practical', ]
 	keyWordsSet2 = ['quiz', 'assignment', ]
-	keyWordsSet3 = ['lms', 'rf', 'gulms', 'gurf', 'inpods']
+	keyWordsSet3 = ['lms', 'rf', 'gulms', 'gurf', 'inpods', 'icloud']
 	keyWordsSet4 = ['survey', 'feedback', ]
 	keyWordsSet5 = ['vc', 'vc mam', 'mam', 'sir', 'dean', 'dean sir', ]
 
@@ -37,7 +38,7 @@ class KeywordSets:
 					're-mte',
 					'debarred', 'detained', 'backpaper', 'test', 'paper', 'mid-term', 'mid term', 'end term',
 					'end-term', 'mandatory', ]
-	KeyWordsSet8 = ['workshop', 'webinar', 'event', 'competition', 'hakathon', ]
+	KeyWordsSet8 = ['workshop', 'webinar', 'event', 'competition', 'hackathon', ]
 
 	keyWords = ['date', 'time', 'asap', 'timing', 'today', 'before', 'after', 'soon', ]
 	actionsKeyWordsSet = ['fill', 'attempt', 'response', 'attend', 'join', 'watch', 'conduct', 'request', 'share',
@@ -75,13 +76,14 @@ class Action:
 				pass
 
 
+@debug
 def analyseMessageAndTakeAction(group, keyword_set_list, action):
-	print("called : anatakeaction")
 	previous_in_message = None
 	last_in_message = get_messages()
 	if last_in_message != previous_in_message:
 		print(last_in_message)
 		previous_in_message = last_in_message
+	print(look_for_imp_messages(last_in_message, keyword_set_list))
 
 
 if __name__ == '__main__':

@@ -1,8 +1,4 @@
-from selenium.common.exceptions import InvalidArgumentException
-from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException, TimeoutException, StaleElementReferenceException
-from selenium.webdriver.chrome.options import Options as OptionsChrome
-from selenium.webdriver.firefox.options import Options as OptionFirefox
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
@@ -11,57 +7,7 @@ import time
 from datetime import datetime
 import sys
 import io
-# from autoGui import bring_forward
-
-from assist.whatsapp import ChatAnalysis
-
-
-@debug
-def set_things_up(browser_name, web_driver_path, user_data_path):
-    """
-    set global variables
-    :param browser_name: Name of browser (ex: firefox)
-    :param web_driver_path: webDriver path
-    :param user_data_path: path of user-data directory for the browser
-    :return:
-    """
-    values = {
-        'browser_name': browser_name,
-        'web_driver_path': web_driver_path,
-        'user_data_path': user_data_path,
-    }
-    return values
-
-
-@debug
-def load_driver(values):
-    """
-    Load the Selenium driver based on driver
-    :param values: Dictionary returned by set_thing_up method
-    :return: driver
-    """
-
-    driver = None
-    if str(values['browser_name']).lower() == "firefox":
-        option = OptionFirefox()
-        option.add_argument('user-data-dir=' + str(values['user_data_path']))
-        try:
-            driver = webdriver.Firefox(str(values['web_driver_path']), options=option)
-        except InvalidArgumentException:
-            print(f"Another Window of {values['browser_name'].title()} is open Close it and try again:🤨")
-            sys.exit()
-
-    elif str(values['browser_name']).lower() == "chrome":
-        option = OptionsChrome()
-        option.add_argument('user-data-dir=' + str(values['user_data_path']))
-        try:
-            driver = webdriver.Chrome(str(values['web_driver_path']), options=option)
-        except InvalidArgumentException:
-            print(f"Another Window of {values['browser_name'].title()} is open Close it and try again:🤨")
-            sys.exit()
-    else:
-        print(str(values["browser_name"]) + "is not supported : try \"chrome\" or \"firefox\"")
-    return driver
+import assist.utils.helper as helper
 
 
 @debug
@@ -194,23 +140,15 @@ def writeMessagesToLocal(last_in_message, emojis, previous_in_message=None):
 
 @debug
 def main():
-    browserName = "chrome"
-    webDriverPath = "/home/storage/saumya/PycharmProjects/assistant/webDrivers/chrome/chromedriver_linux64/chromedriver"
-    userDataPath = "/home/saumyakr1232/.config/google-chrome/default."
 
-    value = set_things_up(browserName, webDriverPath, userDataPath)
-    driver = load_driver(value)
+    driver = helper.getWebDriver()
     driver.get("https://web.whatsapp.com/")
-    try:
-        # bring_forward("script.py")
-        print("hello world")
-    except Exception :
-        print("some error occurred")
     chats = []
     while len(chats) == 0:
         time.sleep(2)
         chats = get_every_chat(driver)
         chats = list(dict.fromkeys(chats))
+# TODO: Change this
     print("Select one from Recent chats ")
     x = 1
     for i in chats:
@@ -227,9 +165,10 @@ def main():
         previous_in_message = last_in_message
 
         time.sleep(2)
-        ChatAnalysis.analyseMessageAndTakeAction(choice, [ChatAnalysis.KeywordSets.keyWordsSet2],
-                                                 ChatAnalysis.Action.msg_box)
 
 
 if __name__ == '__main__':
-    main()
+    try:
+        main()
+    except KeyboardInterrupt:
+        sys.exit()
