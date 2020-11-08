@@ -402,7 +402,7 @@ def main():
     login()
 
     print(get_all_courses())
-    all_courses =get_all_courses()
+    all_courses = get_all_courses()
     all_courses.remove("Student Center")
     for course in all_courses:
         create_report(course)
@@ -437,6 +437,12 @@ def main():
     except KeyboardInterrupt:
         print("[*] Exiting...")
         driver.close()
+
+
+def login_to_lms():
+    driver.get("http://lms.galgotiasuniversity.edu.in/")
+
+    login()
 
 
 if __name__ == '__main__':

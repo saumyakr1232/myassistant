@@ -9,6 +9,8 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options as OptionsChrome
 from selenium.webdriver.firefox.options import Options as OptionFirefox
 import sys
+import datetime
+import time
 
 CurrentOs = platform.system()
 OsUserName = getpass.getuser()
@@ -104,3 +106,12 @@ def _load_driver():
 def getWebDriver():
     Driver = _load_driver()
     return Driver
+
+
+def is_day():
+    if 8 < time.localtime().tm_hour < 20:
+        return True
+    else:
+        return False
+
+

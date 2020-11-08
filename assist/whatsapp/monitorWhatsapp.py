@@ -1,3 +1,5 @@
+import threading
+
 from selenium.common.exceptions import NoSuchElementException, TimeoutException, StaleElementReferenceException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -8,10 +10,10 @@ from datetime import datetime
 import sys
 import io
 import assist.utils.helper as helper
-
+from assist.whatsapp import ChatAnalysis
 
 @debug
-def search_chat(driver, name):
+def get_chat(driver, name):
     """
     Function search for the user and open his chat
     :param driver: web_driver
@@ -140,7 +142,6 @@ def writeMessagesToLocal(last_in_message, emojis, previous_in_message=None):
 
 @debug
 def main():
-
     driver = helper.getWebDriver()
     driver.get("https://web.whatsapp.com/")
     chats = []
@@ -148,7 +149,7 @@ def main():
         time.sleep(2)
         chats = get_every_chat(driver)
         chats = list(dict.fromkeys(chats))
-# TODO: Change this
+    # TODO: Change this
     print("Select one from Recent chats ")
     x = 1
     for i in chats:
@@ -156,7 +157,42 @@ def main():
         x += 1
     choice = int(input("Enter your choice here :👉  "))
 
-    search_chat(driver, chats[choice - 1])
+    get_chat(driver, chats[choice - 1])
+    previous_in_message = None
+    while True:
+        last_in_message, emojis = read_unread_messages(driver, datetime.now().strftime("%H:%M:%S"))
+
+        writeMessagesToLocal(last_in_message, emojis, previous_in_message)
+        previous_in_message = last_in_message
+
+        time.sleep(2)
+
+
+def monitor_group(group, level):
+    driver = helper.getWebDriver()
+    driver.get("https://web.whatsapp.com/")
+    chats = []
+    while len(chats) == 0:
+        time.sleep(2)
+        chats = get_every_chat(driver)
+        chats = list(dict.fromkeys(chats))
+    x = 1
+    choice = ""
+    for chat in chats:
+        print(f"{x}. {chat}")
+        x += 1
+        if chat.lower() == group.lower():
+            choice = chat
+
+    get_chat(driver, choice)
+    #todo try catch
+
+
+    chat_analysis_thread = threading.Thread(target=ChatAnalysis.analyseMessageAndTakeAction,
+                                            args=(choice, level), daemon=True)
+    chat_analysis_thread.start()
+
+
     previous_in_message = None
     while True:
         last_in_message, emojis = read_unread_messages(driver, datetime.now().strftime("%H:%M:%S"))
@@ -168,7 +204,4 @@ def main():
 
 
 if __name__ == '__main__':
-    try:
-        main()
-    except KeyboardInterrupt:
-        sys.exit()
+    monitor_group("unofficial sec 4")
