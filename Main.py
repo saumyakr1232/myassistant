@@ -1,5 +1,4 @@
 import datetime
-
 import wikipedia
 import wolframalpha
 import smtplib
@@ -24,6 +23,8 @@ from assist.whatsapp import monitorWhatsapp
 from assist.lms import VisitLms
 from assist.iclouds import iclouds
 from assist.alert import NotifyMe
+
+import PySimpleGUI as sg
 
 CurrentOs = platform.system()
 name = "saumya"
@@ -57,6 +58,9 @@ def speak2(text):
 
 def speak(text):
     engine = pyttsx3.init()
+    engine.setProperty('rate', 150)  # Speed percent (can go over 100)
+    engine.setProperty('volume', 0.9)  # Volume 0-1
+    engine.setProperty("voice", 'Mandarin')
     engine.say(text)
     engine.runAndWait()
 
@@ -126,19 +130,32 @@ def get_date(text):
 
 
 def main():
-    client = wolframalpha.Client(app_id)
     print("Main.main() called")
+
+    client = wolframalpha.Client(app_id)
+
+
     while True:
+        sg.theme('DarkPurple')
+        layout = [[sg.Text('Enter a command'), sg.InputText()], [sg.Button('Ok'), sg.Button('Cancel')]]
+        window = sg.Window('Assistant', layout)
+        got_answer = False
         # text = get_audio()
-        text = "nobita temperature on 3 nov 2020 in new delhi"
+        event, values = window.read()
+        if event in (None, 'Cancel'):
+            break
+
+        window.close()
+        text = values[0] + " nobita"
+        print(text)
         for wake_word in WAKE:
-            if wake_word in text:
+            if wake_word == text.strip():
                 greetings = [f"hey, how can I help you {name}", f"hey, what's up? {name}",
                              f"I'm listening {name}", f"how can I help you? {name}",
                              f"hello {name}"]
                 greet = greetings[random.randint(0, len(greetings) - 1)]
                 speak(greet)
-
+            else:
                 for phrase in CALENDAR_STRS:
                     phrase.strip()
                     if phrase in text:
@@ -146,19 +163,31 @@ def main():
                         if date:
                             for event in g_calendar.get_events(date):
                                 speak(event)
+                                got_answer = True
                         else:
                             speak("I don't understand")
 
-                for phrase in NOTE_STRS:
+                for phrase in NOTE_STRS: # ["make a note", "write this down", "remember this"]
                     if phrase in text:
                         speak("what would you like me tho write down?")
+
+                        layout = [[sg.Text('Note text'), sg.InputText()], [sg.Button('Ok'), sg.Button('Cancel')]]
+                        window = sg.Window('Notes', layout)
+
+                        event, values = window.read()
+                        if event in (None, 'Cancel'):
+                            break
+
+                        window.close()
+                        note_text = values[0]
+
                         # note_text = get_audio()
-                        note_text = "i am the king of the universe"
                         note.note(note_text)
                         speak("I have made a note of that.")
+                        got_answer = True
 
                 # Time
-                for phrase in TIME_STRS:
+                for phrase in TIME_STRS: # ["what's the time", "tell me the time", "what time is it", "what is the time"]
                     if phrase in text:
                         time = ctime().split(" ")[4].split(":")[0:2]
                         if time[0] == "00":
@@ -168,6 +197,7 @@ def main():
                         minutes = time[1]
                         time = hours + " hours and " + minutes + "minutes"
                         speak(time)
+                        got_answer = True
 
                 # search google
                 for phrase in ["search for"]:
@@ -176,13 +206,8 @@ def main():
                         url = "https://google.com/search?q=" + search_term
                         webbrowser.get().open(url)
                         speak("Here is what I found for" + search_term + "on google")
+                        got_answer = True
 
-                for phrase in ["search"]:
-                    if phrase in text and 'youtube' not in text:
-                        search_term = text.replace("search", "")
-                        url = "https://google.com/search?q=" + search_term
-                        webbrowser.get().open(url)
-                        speak("Here is what I found for" + search_term + "on google")
 
                 # search Youtube
                 for phrase in ["youtube"]:
@@ -192,6 +217,7 @@ def main():
                         url = "https://www.youtube.com/results?search_query=" + search_term
                         webbrowser.get().open(url)
                         speak("Here is what I found for " + search_term + "on youtube")
+                        got_answer = True
 
                 # get stock price
                 for phrase in ["price of"]:
@@ -200,19 +226,21 @@ def main():
                         url = "https://google.com/search?q=" + search_term
                         webbrowser.get().open(url)
                         speak("Here is what I found for " + search_term + " on google")
+                        got_answer = True
 
                 # rock paper scissors
                 for phrase in ["play game", "rock paper", "start game"]:
                     if phrase in text:
                         speak("choose among rock paper or scissor")
-                        voice_data = get_audio()
+                        text = get_audio()
                         moves = ["rock", "paper", "scissor"]
 
                         cmove = random.choice(moves)
-                        pmove = voice_data
+                        pmove = text
 
                         speak("The computer chose " + cmove)
                         speak("You chose " + pmove)
+                        got_answer = True
 
                         if pmove == cmove:
                             speak("the match is draw")
@@ -230,8 +258,9 @@ def main():
                             speak("Computer wins")
 
                 # Toss a coin
-                for phrase in ["toss", "toss a coin", "flip", "flip a coin"]:
+                for phrase in ["toss a coin", "flip a coin"]:
                     if phrase in text:
+                        got_answer = True
                         moves = ["head", "tails"]
                         cmove = random.choice(moves)
                         speak("The computer chose " + cmove)
@@ -239,29 +268,32 @@ def main():
                 # calc
                 for phrase in ["plus", "minus", "multiply", "divide", "power", "+", "-", "*", "/"]:
                     if phrase in text:
-                        opr = voice_data.split()[1]
+                        got_answer = True
+                        opr = text.split()[1]
 
-                        if opr == '+':
-                            speak(int(voice_data.split()[0]) + int(voice_data.split()[2]))
-                        elif opr == '-':
-                            speak(int(voice_data.split()[0]) - int(voice_data.split()[2]))
+                        if opr == '+' or opr == 'plus':
+                            speak(int(text.split()[0]) + int(text.split()[2]))
+                        elif opr == '-' or opr == "minus":
+                            speak(int(text.split()[0]) - int(text.split()[2]))
                         elif opr == 'multiply' or 'x':
-                            speak(int(voice_data.split()[0]) * int(voice_data.split()[2]))
+                            speak(int(text.split()[0]) * int(text.split()[2]))
                         elif opr == 'divide':
-                            speak(int(voice_data.split()[0]) / int(voice_data.split()[2]))
+                            speak(int(text.split()[0]) / int(text.split()[2]))
                         elif opr == 'power':
-                            speak(int(voice_data.split()[0]) ** int(voice_data.split()[2]))
+                            speak(int(text.split()[0]) ** int(text.split()[2]))
                         else:
                             speak("Wrong Operator")
 
                 # screenshot
                 for phrase in ["capture", "my screen", "screenshot"]:
                     if phrase in text:
+                        got_answer = True
                         myScreenshot = pyautogui.screenshot()
-                        myScreenshot.save(f'home/pictures/{datetime.datetime.now()}-screen.png')  # todo
+                        myScreenshot.save(f'{datetime.datetime.now()}-screen.png')  # todo get proper directory
                 # wikipedia
                 for phrase in ["definition of"]:
                     if phrase in text:
+                        got_answer = True
                         speak("what do you need the definition of")
                         definition = get_audio()
                         url = urllib.request.urlopen('https://en.wikipedia.org/wiki/' + definition)
@@ -283,6 +315,7 @@ def main():
                 for phrase in ["where am i", "my location"]:
 
                     if phrase in text:
+                        got_answer = True
                         Ip_info = requests.get('https://api.ipdata.co?api-key=test').json()
                         loc = Ip_info['region']
                         speak(f"You must be somewhere in {loc}")
@@ -290,6 +323,7 @@ def main():
                 # send email
                 for phrase in ["send email", "send an email" "email to ", "mail to"]:
                     if phrase in text:
+                        got_answer = True
                         receiver = text.split("to")[1]
                         speak("Sir, what should i say? ")
                         message = get_audio()
@@ -307,17 +341,20 @@ def main():
                 # login to lms
                 for phrase in ['open lms', 'login to lms']:
                     if phrase in text:
+                        got_answer = True
                         VisitLms.login_to_lms()
                         speak("ready sir,")
                 # login ot iclouds
                 for phrase in ['open iclouds', 'login to iclouds']:
                     if phrase in text:
+                        got_answer = True
                         iclouds.login_to_iclouds()
                         speak("opening iclouds sir,")
 
                 # Attendance
                 for phrase in ['check attendance', 'open attendance', 'get attendance']:
                     if phrase in text:
+                        got_answer = True
                         month = text.split("for")
                         month2 = text.split("of")
                         if month in MONTHS:
@@ -330,11 +367,13 @@ def main():
                 # timetable
                 for phrase in ['timetable', 'classes timeing', 'class time', 'schedule', 'time table']:
                     if phrase in text:
+                        got_answer = True
                         iclouds.open_time_table()
 
                 # open, launch programs
                 for phrase in ['launch', 'run']:
                     if phrase in text:
+                        got_answer = True
                         app = text.split("open")[1].strip()
                         if CurrentOs == "Linux":
                             subprocess.Popen(app)
@@ -342,24 +381,24 @@ def main():
                             subprocess.Popen(f'{app}.exe')
 
                 # wolfram
-                try:
-                    text = text.replace(WAKE[0], "")
-                    wolfram_res = next(client.query(text).results).text
-                    wiki_res = wikipedia.summary(text, sentences=2)
-                    speak(wolfram_res)
-                    NotifyMe.msg_box(title="Wikipedia Result", text=wiki_res, style=0)
-                except wikipedia.exceptions.DisambiguationError:
-                    wolfram_res = next(client.query(text).results).text
-                    speak(wolfram_res)
-                    NotifyMe.msg_box(title="wolfram result", text=wolfram_res, style=0)
-                except wikipedia.exceptions.PageError:
-                    wolfram_res = next(client.query(text).results).text
-                    speak(wolfram_res)
-                    NotifyMe.msg_box(title="Wolfarm result", text=wolfram_res, style=0)
-                except:
-                    wiki_res = wikipedia.summary(text, sentences=2)
-                    speak(wiki_res)
-                    NotifyMe.msg_box(title="Wiki Result", text=wiki_res, style=0)
+                if not got_answer:
+                    try:
+                        text = text.replace(WAKE[0], "")
+                        wolfram_res = next(client.query(text).results).text
+                        wiki_res = wikipedia.summary(text, sentences=2)
+                        speak(wolfram_res)
+                        NotifyMe.msg_box(title="Wikipedia Result", text=wiki_res, style=0)
+                    except wikipedia.exceptions.DisambiguationError:
+                        wolfram_res = next(client.query(text).results).text
+                        speak(wolfram_res)
+                        NotifyMe.msg_box(title="wolfram result", text=wolfram_res, style=0)
+                    except wikipedia.exceptions.PageError:
+                        wolfram_res = next(client.query(text).results).text
+                        speak(wolfram_res)
+                        NotifyMe.msg_box(title="Wolfarm result", text=wolfram_res, style=0)
+                    except:
+                        print("some error occured")
+                        speak("Sorry, sir some error occured")
 
 
 if __name__ == '__main__':
@@ -385,4 +424,4 @@ if __name__ == '__main__':
                     speak("Sorry, don't understand")
                     break
 
-        main()
+    main()

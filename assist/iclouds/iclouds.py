@@ -64,7 +64,7 @@ def open_time_table():
 def open_attendance(month=None):
     driver = webdriver.Chrome(webDriverPath)
     driver.get("https://gu.icloudems.com/corecampus/index.php")
-    login()
+    login(driver)
     attendance = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH,
                                                                              "(//img[@src='https://corecampus.s3.ap-south-1.amazonaws.com/images/module_images/attendance.svg'])[2]")))
     attendance.click()

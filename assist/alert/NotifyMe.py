@@ -93,5 +93,3 @@ def main():
 
     result = msg_box("Test", "some info", 3)
     print(result)
-
-

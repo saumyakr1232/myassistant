@@ -1,5 +1,6 @@
 import datetime
 import subprocess
+import time
 
 
 def note(text):
@@ -10,6 +11,8 @@ def note(text):
 
     proc = subprocess.Popen(["gedit", file_name])
     # proc.wait() #to wait until you close the gedit
+    time.sleep(5)
+    proc.kill()
 
 
 if __name__ == '__main__':
