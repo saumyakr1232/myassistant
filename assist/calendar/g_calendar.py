@@ -9,7 +9,7 @@ import pytz
 
 # If modifying these scopes, delete the file token.pickle.
 SCOPES = ['https://www.googleapis.com/auth/calendar.readonly']
-
+os.chdir("/home/saumyakr1232/PycharmProjects/myassistant/assist/calendar")
 
 def authenticate_calendar():
     """Shows basic usage of the Google Calendar API.
@@ -19,8 +19,8 @@ def authenticate_calendar():
     # The file token.pickle stores the user's access and refresh tokens, and is
     # created automatically when the authorization flow completes for the first
     # time.
-    if os.path.exists('assist/calendar/token.pickle'):
-        with open('assist/calendar/token.pickle', 'rb') as token:
+    if os.path.exists('token.pickle'):
+        with open('token.pickle', 'rb') as token:
             creds = pickle.load(token)
     # If there are no (valid) credentials available, let the user log in.
     if not creds or not creds.valid:
@@ -28,7 +28,7 @@ def authenticate_calendar():
             creds.refresh(Request())
         else:
             flow = InstalledAppFlow.from_client_secrets_file(
-                'assist/calendar/credentials.json', SCOPES)
+                'credentials.json', SCOPES)
             creds = flow.run_local_server(port=0)
         # Save the credentials for the next run
         with open('token.pickle', 'wb') as token:
@@ -76,3 +76,5 @@ def get_events(day):
             print(event["summary"] + " at " + start_time)
             messages.append(event["summary"] + " at " + start_time)
         return messages
+if __name__ == '__main__':
+    get_events(datetime.datetime.today())

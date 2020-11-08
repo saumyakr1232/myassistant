@@ -178,6 +178,7 @@ def monitor_group(group, level):
         chats = list(dict.fromkeys(chats))
     x = 1
     choice = ""
+    group = group.strip()
     for chat in chats:
         print(f"{x}. {chat}")
         x += 1

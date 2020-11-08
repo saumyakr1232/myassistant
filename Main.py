@@ -31,7 +31,7 @@ MONTHS = ["january", "february", "march", "april", "may", "june", "july", "augus
 DAY_EXTENTIONS = ["rd", "th", "st", "nd"]
 
 CALENDAR_STRS = ["what do i have", "do i have plans", "am i busy", "am i free", "calendar"]
-WAKE = "hey tim"
+WAKE = ["nobita", 'chalo beta']
 TIME_STRS = ["what's the time", "tell me the time", "what time is it", "what is the time"]
 
 
@@ -60,7 +60,7 @@ def get_audio():
     print("Listening")
     r = sr.Recognizer()
     with sr.Microphone() as source:
-        audio = r.listen(source, phrase_time_limit=5)
+        audio = r.listen(source, phrase_time_limit=6)
         said = ""
 
         try:
@@ -120,229 +120,229 @@ def get_date(text):
 "what do i have planned on september 9th"
 
 
-def main():
+def main(text):
     print("Main.main() called")
     while True:
 
-        text = get_audio()
+        # # text = get_audio()
+        # text = "nobita what do i have "
+        for wake_word in WAKE:
+            if  wake_word in text:
+                greetings = [f"hey, how can I help you {name}", f"hey, what's up? {name}",
+                             f"I'm listening {name}", f"how can I help you? {name}",
+                             f"hello {name}"]
+                greet = greetings[random.randint(0, len(greetings) - 1)]
+                speak(greet)
 
-        if text.count(WAKE) > 0:
-            greetings = [f"hey, how can I help you {name}", f"hey, what's up? {name}",
-                         f"I'm listening {name}", f"how can I help you? {name}",
-                         f"hello {name}"]
-            greet = greetings[random.randint(0, len(greetings) - 1)]
-            speak(greet)
-
-            for phrase in CALENDAR_STRS:
-                if phrase in text:
-                    date = get_date(text)
-                    if date:
-                        for event in g_calendar.get_events(date):
-                            speak(event)
-                    else:
-                        speak("I don't understand")
-
-            for phrase in NOTE_STRS:
-                if phrase in text:
-                    speak("what would you like me tho write down?")
-                    # note_text = get_audio()
-                    note_text = "i am the king of the universe"
-                    note.note(note_text)
-                    speak("I have made a note of that.")
-
-            # Time
-            for phrase in TIME_STRS:
-                if phrase in text:
-                    time = ctime().split(" ")[3].split(":")[0:2]
-                    if time[0] == "00":
-                        hours = '12'
-                    else:
-                        hours = time[0]
-                    minutes = time[1]
-                    time = hours + " hours and " + minutes + "minutes"
-                    speak(time)
-
-            # search google
-            for phrase in ["search for"]:
-                if phrase in text and 'youtube' not in text:
-                    search_term = text.split("for")[-1]
-                    url = "https://google.com/search?q=" + search_term
-                    webbrowser.get().open(url)
-                    speak("Here is what I found for" + search_term + "on google")
-
-            for phrase in ["search"]:
-                if phrase in text and 'youtube' not in text:
-                    search_term = text.replace("search", "")
-                    url = "https://google.com/search?q=" + search_term
-                    webbrowser.get().open(url)
-                    speak("Here is what I found for" + search_term + "on google")
-
-            # search Youtube
-            for phrase in ["youtube"]:
-                if phrase in text:
-                    search_term = text.split("for")[-1]
-                    search_term = search_term.replace("on youtube", "").replace("search", "")
-                    url = "https://www.youtube.com/results?search_query=" + search_term
-                    webbrowser.get().open(url)
-                    speak("Here is what I found for " + search_term + "on youtube")
-
-            # get stock price
-            for phrase in ["price of"]:
-                if phrase in text:
-                    search_term = text.split("for")[-1]
-                    url = "https://google.com/search?q=" + search_term
-                    webbrowser.get().open(url)
-                    speak("Here is what I found for " + search_term + " on google")
-
-            # rock paper scissors
-            for phrase in ["play game", "rock paper", "start game"]:
-                if phrase in text:
-                    speak("choose among rock paper or scissor")
-                    voice_data = get_audio()
-                    moves = ["rock", "paper", "scissor"]
-
-                    cmove = random.choice(moves)
-                    pmove = voice_data
-
-                    speak("The computer chose " + cmove)
-                    speak("You chose " + pmove)
-
-                    if pmove == cmove:
-                        speak("the match is draw")
-                    elif pmove == "rock" and cmove == "scissor":
-                        speak("Player wins")
-                    elif pmove == "rock" and cmove == "paper":
-                        speak("Computer wins")
-                    elif pmove == "paper" and cmove == "rock":
-                        speak("Player wins")
-                    elif pmove == "paper" and cmove == "scissor":
-                        speak("Computer wins")
-                    elif pmove == "scissor" and cmove == "paper":
-                        speak("Player wins")
-                    elif pmove == "scissor" and cmove == "rock":
-                        speak("Computer wins")
-
-            # Toss a coin
-            for phrase in ["toss", "toss a coin", "flip", "flip a coin"]:
-                if phrase in text:
-                    moves = ["head", "tails"]
-                    cmove = random.choice(moves)
-                    speak("The computer chose " + cmove)
-
-            # calc
-            for phrase in ["plus", "minus", "multiply", "divide", "power", "+", "-", "*", "/"]:
-                if phrase in text:
-                    opr = voice_data.split()[1]
-
-                    if opr == '+':
-                        speak(int(voice_data.split()[0]) + int(voice_data.split()[2]))
-                    elif opr == '-':
-                        speak(int(voice_data.split()[0]) - int(voice_data.split()[2]))
-                    elif opr == 'multiply' or 'x':
-                        speak(int(voice_data.split()[0]) * int(voice_data.split()[2]))
-                    elif opr == 'divide':
-                        speak(int(voice_data.split()[0]) / int(voice_data.split()[2]))
-                    elif opr == 'power':
-                        speak(int(voice_data.split()[0]) ** int(voice_data.split()[2]))
-                    else:
-                        speak("Wrong Operator")
-
-            # screenshot
-            for phrase in ["capture", "my screen", "screenshot"]:
-                if phrase in text:
-                    myScreenshot = pyautogui.screenshot()
-                    myScreenshot.save(f'home/pictures/{datetime.datetime.now()}-screen.png')  # todo
-            # wikipedia
-            for phrase in ["definition of"]:
-                if phrase in text:
-                    speak("what do you need the definition of")
-                    definition = get_audio()
-                    url = urllib.request.urlopen('https://en.wikipedia.org/wiki/' + definition)
-                    soup = bs.BeautifulSoup(url, 'lxml')
-                    definitions = []
-                    for paragraph in soup.find_all('p'):
-                        definitions.append(str(paragraph.text))
-                    if definitions:
-                        if definitions[0]:
-                            speak('im sorry i could not find that definition, please try a web search')
-                        elif definitions[1]:
-                            speak('here is what i found ' + definitions[1])
+                for phrase in CALENDAR_STRS:
+                    phrase.strip()
+                    if phrase in text:
+                        date = get_date(text)
+                        if date:
+                            for event in g_calendar.get_events(date):
+                                speak(event)
                         else:
-                            speak('Here is what i found ' + definitions[2])
-                    else:
-                        speak("im sorry i could not find the definition for " + definition)
+                            speak("I don't understand")
 
-            # todo:search on wikipedia
+                for phrase in NOTE_STRS:
+                    if phrase in text:
+                        speak("what would you like me tho write down?")
+                        # note_text = get_audio()
+                        note_text = "i am the king of the universe"
+                        note.note(note_text)
+                        speak("I have made a note of that.")
 
-            # Current city or region
-            for phrase in ["where am i", "my location"]:
-                print("here")
-                if phrase in text:
-                    Ip_info = requests.get('https://api.ipdata.co?api-key=test').json()
-                    loc = Ip_info['region']
-                    speak(f"You must be somewhere in {loc}")
+                # Time
+                for phrase in TIME_STRS:
+                    if phrase in text:
+                        time = ctime().split(" ")[4].split(":")[0:2]
+                        if time[0] == "00":
+                            hours = '12'
+                        else:
+                            hours = time[0]
+                        minutes = time[1]
+                        time = hours + " hours and " + minutes + "minutes"
+                        speak(time)
 
-            # send email
-            for phrase in ["send email", "send an email" "email to ", "mail to"]:
-                if phrase in text:
-                    receiver = text.split("to")[1]
-                    speak("Sir, what should i say? ")
-                    message = get_audio()
-                    try:
-                        server = smtplib.SMTP('smtp.gmail.com', 587)
-                        server.ehlo()
-                        server.starttls()
-                        server.login('Saumyakr181999@gmail.com', 'Password')
-                        server.sendmail('Senderemail@gmail.com', receiver, message)
-                        server.close()
-                        speak("eamil has been sent")
-                    except Exception as e:
-                        print(str(e))
-                        speak("Sorry my friend . I am not able to send this email")
-            # login to lms
-            for phrase in ['open lms', 'login to lms']:
-                if phrase in text:
-                    VisitLms.login_to_lms()
-                    speak("ready sir,")
-            # login ot iclouds
-            for phrase in ['open iclouds', 'login to iclouds']:
-                if phrase in text:
-                    iclouds.login_to_iclouds()
-                    speak("opening iclouds sir,")
+                # search google
+                for phrase in ["search for"]:
+                    if phrase in text and 'youtube' not in text:
+                        search_term = text.split("for")[-1]
+                        url = "https://google.com/search?q=" + search_term
+                        webbrowser.get().open(url)
+                        speak("Here is what I found for" + search_term + "on google")
 
-            # Attendance
-            for phrase in ['check attendance', 'open attendance', 'get attendance']:
-                if phrase in text:
-                    month = text.split("for")
-                    month2 = text.split("of")
-                    if month in MONTHS:
-                        iclouds.open_attendance(month)
-                    elif month2 in MONTHS:
-                        iclouds.open_attendance(month2)
-                    else:
-                        iclouds.open_attendance()
+                for phrase in ["search"]:
+                    if phrase in text and 'youtube' not in text:
+                        search_term = text.replace("search", "")
+                        url = "https://google.com/search?q=" + search_term
+                        webbrowser.get().open(url)
+                        speak("Here is what I found for" + search_term + "on google")
 
-            # timetable
-            for phrase in ['timetable', 'classes timeing', 'class time', 'schedule', 'time table']:
-                if phrase in text:
-                    iclouds.open_time_table()
+                # search Youtube
+                for phrase in ["youtube"]:
+                    if phrase in text:
+                        search_term = text.split("for")[-1]
+                        search_term = search_term.replace("on youtube", "").replace("search", "")
+                        url = "https://www.youtube.com/results?search_query=" + search_term
+                        webbrowser.get().open(url)
+                        speak("Here is what I found for " + search_term + "on youtube")
 
-            # open, launch programs
-            for phrase in ['launch', 'run']:
-                if phrase in text:
-                    app = text.split("open")[1].strip()
-                    if CurrentOs == "Linux":
-                        subprocess.Popen(app)
-                    else:
-                        subprocess.Popen(f'{app}.exe')
-            else:
-                speak("Sir, didn't get that part")
+                # get stock price
+                for phrase in ["price of"]:
+                    if phrase in text:
+                        search_term = text.split("for")[-1]
+                        url = "https://google.com/search?q=" + search_term
+                        webbrowser.get().open(url)
+                        speak("Here is what I found for " + search_term + " on google")
+
+                # rock paper scissors
+                for phrase in ["play game", "rock paper", "start game"]:
+                    if phrase in text:
+                        speak("choose among rock paper or scissor")
+                        voice_data = get_audio()
+                        moves = ["rock", "paper", "scissor"]
+
+                        cmove = random.choice(moves)
+                        pmove = voice_data
+
+                        speak("The computer chose " + cmove)
+                        speak("You chose " + pmove)
+
+                        if pmove == cmove:
+                            speak("the match is draw")
+                        elif pmove == "rock" and cmove == "scissor":
+                            speak("Player wins")
+                        elif pmove == "rock" and cmove == "paper":
+                            speak("Computer wins")
+                        elif pmove == "paper" and cmove == "rock":
+                            speak("Player wins")
+                        elif pmove == "paper" and cmove == "scissor":
+                            speak("Computer wins")
+                        elif pmove == "scissor" and cmove == "paper":
+                            speak("Player wins")
+                        elif pmove == "scissor" and cmove == "rock":
+                            speak("Computer wins")
+
+                # Toss a coin
+                for phrase in ["toss", "toss a coin", "flip", "flip a coin"]:
+                    if phrase in text:
+                        moves = ["head", "tails"]
+                        cmove = random.choice(moves)
+                        speak("The computer chose " + cmove)
+
+                # calc
+                for phrase in ["plus", "minus", "multiply", "divide", "power", "+", "-", "*", "/"]:
+                    if phrase in text:
+                        opr = voice_data.split()[1]
+
+                        if opr == '+':
+                            speak(int(voice_data.split()[0]) + int(voice_data.split()[2]))
+                        elif opr == '-':
+                            speak(int(voice_data.split()[0]) - int(voice_data.split()[2]))
+                        elif opr == 'multiply' or 'x':
+                            speak(int(voice_data.split()[0]) * int(voice_data.split()[2]))
+                        elif opr == 'divide':
+                            speak(int(voice_data.split()[0]) / int(voice_data.split()[2]))
+                        elif opr == 'power':
+                            speak(int(voice_data.split()[0]) ** int(voice_data.split()[2]))
+                        else:
+                            speak("Wrong Operator")
+
+                # screenshot
+                for phrase in ["capture", "my screen", "screenshot"]:
+                    if phrase in text:
+                        myScreenshot = pyautogui.screenshot()
+                        myScreenshot.save(f'home/pictures/{datetime.datetime.now()}-screen.png')  # todo
+                # wikipedia
+                for phrase in ["definition of"]:
+                    if phrase in text:
+                        speak("what do you need the definition of")
+                        definition = get_audio()
+                        url = urllib.request.urlopen('https://en.wikipedia.org/wiki/' + definition)
+                        soup = bs.BeautifulSoup(url, 'lxml')
+                        definitions = []
+                        for paragraph in soup.find_all('p'):
+                            definitions.append(str(paragraph.text))
+                        if definitions:
+                            if definitions[0]:
+                                speak('im sorry i could not find that definition, please try a web search')
+                            elif definitions[1]:
+                                speak('here is what i found ' + definitions[1])
+                            else:
+                                speak('Here is what i found ' + definitions[2])
+                        else:
+                            speak("im sorry i could not find the definition for " + definition)
+
+                # todo:search on wikipedia
+
+                # Current city or region
+                for phrase in ["where am i", "my location"]:
+
+                    if phrase in text:
+                        Ip_info = requests.get('https://api.ipdata.co?api-key=test').json()
+                        loc = Ip_info['region']
+                        speak(f"You must be somewhere in {loc}")
+
+                # send email
+                for phrase in ["send email", "send an email" "email to ", "mail to"]:
+                    if phrase in text:
+                        receiver = text.split("to")[1]
+                        speak("Sir, what should i say? ")
+                        message = get_audio()
+                        try:
+                            server = smtplib.SMTP('smtp.gmail.com', 587)
+                            server.ehlo()
+                            server.starttls()
+                            server.login('Saumyakr181999@gmail.com', 'Password')
+                            server.sendmail('Senderemail@gmail.com', receiver, message)
+                            server.close()
+                            speak("eamil has been sent")
+                        except Exception as e:
+                            print(str(e))
+                            speak("Sorry my friend . I am not able to send this email")
+                # login to lms
+                for phrase in ['open lms', 'login to lms']:
+                    if phrase in text:
+                        VisitLms.login_to_lms()
+                        speak("ready sir,")
+                # login ot iclouds
+                for phrase in ['open iclouds', 'login to iclouds']:
+                    if phrase in text:
+                        iclouds.login_to_iclouds()
+                        speak("opening iclouds sir,")
+
+                # Attendance
+                for phrase in ['check attendance', 'open attendance', 'get attendance']:
+                    if phrase in text:
+                        month = text.split("for")
+                        month2 = text.split("of")
+                        if month in MONTHS:
+                            iclouds.open_attendance(month)
+                        elif month2 in MONTHS:
+                            iclouds.open_attendance(month2)
+                        else:
+                            iclouds.open_attendance()
+
+                # timetable
+                for phrase in ['timetable', 'classes timeing', 'class time', 'schedule', 'time table']:
+                    if phrase in text:
+                        iclouds.open_time_table()
+
+                # open, launch programs
+                for phrase in ['launch', 'run']:
+                    if phrase in text:
+                        app = text.split("open")[1].strip()
+                        if CurrentOs == "Linux":
+                            subprocess.Popen(app)
+                        else:
+                            subprocess.Popen(f'{app}.exe')
+
 
 
 if __name__ == '__main__':
     if helper.isNetworkConnectionAvail():
-        speak("Welcome back sir,")
-        speak("should i monitor your whatsapp?")
+        speak("Welcome back sir, should i monitor your whatsapp?")
         text = get_audio()
         # text = "hmm"
         for word in ["yes", "please", "yeah", "hmm"]:
@@ -353,6 +353,7 @@ if __name__ == '__main__':
                 try:
                     group_to_monitor = answer.split("at level")[0]
                     level = int(answer.split("at level")[1])
+                    print(f"group to monitor :{group_to_monitor}, level: {level}")
                     if group_to_monitor:
                         thread_monitor_whatsapp = threading.Thread(target=monitorWhatsapp.monitor_group,
                                                                    args=(group_to_monitor, 7), daemon=True)
@@ -360,6 +361,6 @@ if __name__ == '__main__':
                 except Exception as e:
                     print(str(e))
                     speak("Sorry, don't understand")
+                    break
 
-        print("here")
         main()
