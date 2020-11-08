@@ -15,7 +15,7 @@ import assist.utils.helper as helper
 browserName = "chrome"
 webDriverPath = helper.getDriverPath(driver=browserName)
 userDataPath = helper.getBrowserDataPath(browser=browserName)
-driver = webdriver.Chrome(webDriverPath)
+
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
@@ -36,7 +36,7 @@ logger.addHandler(c_handler)
 logger.addHandler(f_handler)
 
 
-def login():
+def login(driver):
     username = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID, "useriid")))
     password = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID, "actlpass")))
 
@@ -51,6 +51,7 @@ def login():
 
 
 def open_time_table():
+    driver = webdriver.Chrome(webDriverPath)
     driver.get("https://gu.icloudems.com/corecampus/index.php")
     login()
 
@@ -61,6 +62,7 @@ def open_time_table():
 
 
 def open_attendance(month=None):
+    driver = webdriver.Chrome(webDriverPath)
     driver.get("https://gu.icloudems.com/corecampus/index.php")
     login()
     attendance = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH,
@@ -89,12 +91,14 @@ def open_attendance(month=None):
 
 
 def login_to_iclouds():
+    driver = webdriver.Chrome(webDriverPath)
     driver.get("https://gu.icloudems.com/corecampus/index.php")
 
-    login()
+    login(driver)
 
 
 def main():
+    driver = webdriver.Chrome(webDriverPath)
     driver.get("https://gu.icloudems.com/corecampus/index.php")
 
     login()

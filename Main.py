@@ -17,8 +17,8 @@ from gtts import gTTS
 from assist.calendar import g_calendar
 import webbrowser
 import random
-from assist.whatsapp import monitorWhatsapp, ChatAnalysis
-from assist.lms import VisitLms, lms
+from assist.whatsapp import monitorWhatsapp
+from assist.lms import VisitLms
 from assist.iclouds import iclouds
 
 CurrentOs = platform.system()
@@ -340,26 +340,26 @@ def main():
 
 
 if __name__ == '__main__':
-    # if helper.isNetworkConnectionAvail():
-    #     speak("Welcome back sir,")
-    #     speak("should i monitor your whatsapp?")
-    #     text = get_audio()
-    #     # text = "hmm"
-    #     for word in ["yes", "please", "yeah", "hmm"]:
-    #         if word in text or word == text:
-    #             speak("Which group should i monitor")
-    #             answer = get_audio()
-    #             # answer = "unofficial sec 4 at level 7"
-    #             try:
-    #                 group_to_monitor = answer.split("at level")[0]
-    #                 level = int(answer.split("at level")[1])
-    #                 if group_to_monitor:
-    #                     thread_monitor_whatsapp = threading.Thread(target=monitorWhatsapp.monitor_group,
-    #                                                                args=(group_to_monitor, 7), daemon=True)
-    #                     thread_monitor_whatsapp.start()
-    #             except Exception as e:
-    #                 print(str(e))
-    #                 speak("Sorry, don't understand")
+    if helper.isNetworkConnectionAvail():
+        speak("Welcome back sir,")
+        speak("should i monitor your whatsapp?")
+        text = get_audio()
+        # text = "hmm"
+        for word in ["yes", "please", "yeah", "hmm"]:
+            if word in text or word == text:
+                speak("Which group should i monitor")
+                answer = get_audio()
+                # answer = "unofficial sec 4 at level 7"
+                try:
+                    group_to_monitor = answer.split("at level")[0]
+                    level = int(answer.split("at level")[1])
+                    if group_to_monitor:
+                        thread_monitor_whatsapp = threading.Thread(target=monitorWhatsapp.monitor_group,
+                                                                   args=(group_to_monitor, 7), daemon=True)
+                        thread_monitor_whatsapp.start()
+                except Exception as e:
+                    print(str(e))
+                    speak("Sorry, don't understand")
 
         print("here")
         main()

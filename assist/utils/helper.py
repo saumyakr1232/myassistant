@@ -104,6 +104,7 @@ def _load_driver():
 
 
 def getWebDriver():
+    print("webdriver called")
     Driver = _load_driver()
     return Driver
 

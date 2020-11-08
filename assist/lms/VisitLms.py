@@ -15,7 +15,7 @@ import assist.utils.helper as helper
 browserName = "chrome"
 webDriverPath = helper.getDriverPath(driver=browserName)
 userDataPath = helper.getBrowserDataPath(browser=browserName)
-driver = webdriver.Chrome(webDriverPath)
+
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
@@ -53,7 +53,7 @@ def copy_assignment_doc(file_name):
             time.sleep(2)
 
 
-def get_incomplete_quizzes():
+def get_incomplete_quizzes(driver):
     # /html/body/div[3]/div[3]/div/div/section/div/div/ul/li[2]/div[3]/ul/li//div/div/div[2]
     # /span/form/div/button/img[contains(@title,'Not completed')]
 
@@ -82,7 +82,7 @@ def get_incomplete_quizzes():
     return incomplete_quizzes
 
 
-def get_incomplete_assignments():
+def get_incomplete_assignments(driver):
     logger.info("get_incomplete_assignments : called")
     items = WebDriverWait(driver, 20).until(EC.presence_of_all_elements_located((By.XPATH,
                                                                                  "//li[contains(@class, 'assign')]")))
@@ -103,7 +103,7 @@ def get_incomplete_assignments():
     return incomplete_assignments
 
 
-def select_course(title):
+def select_course(title, driver):
     courses_list = WebDriverWait(driver, 20).until(EC.presence_of_all_elements_located((By.CLASS_NAME, "coursename")))
     print([x.text for x in courses_list])
     i = 1
@@ -118,7 +118,7 @@ def select_course(title):
     return courses_list
 
 
-def extract_quiz_info():
+def extract_quiz_info(driver):
     logger.info("extract_quiz_info: called")
     quiz_info_elements = WebDriverWait(driver, 20).until(
         EC.presence_of_all_elements_located((By.XPATH, "//div[contains(@class, 'box py-3 quizinfo')]")))
@@ -131,7 +131,7 @@ def extract_quiz_info():
     return {quiz_title_element.text: info}
 
 
-def extract_assign_info():
+def extract_assign_info(driver):
     logger.info("extract_assign_info: called")
     assign_info_table = WebDriverWait(driver, 10).until(
         EC.presence_of_element_located((By.XPATH, "//table[@class='generaltable']"))
@@ -154,7 +154,7 @@ def extract_assign_info():
             "document_name": assign_document_element.text}
 
 
-def login():
+def login(driver):
     login_btn = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.LINK_TEXT, "Log in")))
     login_btn.click()
 
@@ -170,7 +170,7 @@ def login():
     login_btn_final.click()
 
 
-def submit_assignment(assignment):
+def submit_assignment(assignment, driver):
     print(f"HERE {assignment}")
     tabs = driver.window_handles
     driver.switch_to.window(tabs[0])
@@ -215,7 +215,7 @@ def submit_assignment(assignment):
             time.sleep(2)
 
 
-def attempt_quiz():
+def attempt_quiz(driver):
     questionAnswers = [{
         "What happens if you call the method close() on a ResultSet object?": "the database and JDBC resources are released"},
         {
@@ -267,7 +267,7 @@ to be""": "Next method"},
     quiz_info = []
     for i in range(1, len(tabs)):
         driver.switch_to.window(tabs[i])
-        quiz_info.append(extract_quiz_info())
+        quiz_info.append(extract_quiz_info(driver))
     attemptButton = WebDriverWait(driver, 20).until(
         EC.presence_of_element_located((By.XPATH, "//button[@class='btn btn-secondary']")))
     attemptButton.click()
@@ -354,13 +354,13 @@ to be""": "Next method"},
     submit2.click()
 
 
-def create_report(course):
-    select_course(course)
+def create_report(course, driver):
+    select_course(course, driver)
 
     incomplete_quizzes = []
     incomplete_assignments = []
     try:
-        incomplete_quizzes = get_incomplete_quizzes()
+        incomplete_quizzes = get_incomplete_quizzes(driver)
         # incomplete_assignments = get_incomplete_assignments()
     except TimeoutException:
         pass
@@ -381,7 +381,7 @@ def create_report(course):
 
     for i in range(1, len(tabs)):
         driver.switch_to.window(tabs[i])
-        quiz_info.append(extract_quiz_info())
+        quiz_info.append(extract_quiz_info(driver))
         driver.close()
     driver.switch_to.window(tabs[0])
 
@@ -389,7 +389,7 @@ def create_report(course):
     driver.back()
 
 
-def get_all_courses():
+def get_all_courses(driver):
     logger.info("get_all_courses : called")
     items = WebDriverWait(driver, 20).until(EC.presence_of_all_elements_located((By.XPATH,
                                                                                  "//h6[@class='d-inline h5']")))
@@ -397,15 +397,16 @@ def get_all_courses():
 
 
 def main():
+    driver = webdriver.Chrome(webDriverPath)
     driver.get("http://lms.galgotiasuniversity.edu.in/")
 
-    login()
+    login(driver)
 
-    print(get_all_courses())
-    all_courses = get_all_courses()
+    print(get_all_courses(driver))
+    all_courses = get_all_courses(driver)
     all_courses.remove("Student Center")
     for course in all_courses:
-        create_report(course)
+        create_report(course, driver)
         time.sleep(5)
 
     # for assignment in incomplete_assignments:
@@ -440,9 +441,10 @@ def main():
 
 
 def login_to_lms():
+    driver = webdriver.Chrome(webDriverPath)
     driver.get("http://lms.galgotiasuniversity.edu.in/")
 
-    login()
+    login(driver)
 
 
 if __name__ == '__main__':
