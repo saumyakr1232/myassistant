@@ -1,4 +1,7 @@
 import datetime
+
+import wikipedia
+import wolframalpha
 import smtplib
 import subprocess
 import urllib.request
@@ -20,6 +23,7 @@ import random
 from assist.whatsapp import monitorWhatsapp
 from assist.lms import VisitLms
 from assist.iclouds import iclouds
+from assist.alert import NotifyMe
 
 CurrentOs = platform.system()
 name = "saumya"
@@ -31,8 +35,9 @@ MONTHS = ["january", "february", "march", "april", "may", "june", "july", "augus
 DAY_EXTENTIONS = ["rd", "th", "st", "nd"]
 
 CALENDAR_STRS = ["what do i have", "do i have plans", "am i busy", "am i free", "calendar"]
-WAKE = ["nobita", 'chalo beta']
+WAKE = ["nobita"]
 TIME_STRS = ["what's the time", "tell me the time", "what time is it", "what is the time"]
+app_id = "AP8UVR-5E83UJJTRX"
 
 
 def speak2(text):
@@ -120,14 +125,14 @@ def get_date(text):
 "what do i have planned on september 9th"
 
 
-def main(text):
+def main():
+    client = wolframalpha.Client(app_id)
     print("Main.main() called")
     while True:
-
-        # # text = get_audio()
-        # text = "nobita what do i have "
+        # text = get_audio()
+        text = "nobita temperature on 3 nov 2020 in new delhi"
         for wake_word in WAKE:
-            if  wake_word in text:
+            if wake_word in text:
                 greetings = [f"hey, how can I help you {name}", f"hey, what's up? {name}",
                              f"I'm listening {name}", f"how can I help you? {name}",
                              f"hello {name}"]
@@ -274,8 +279,6 @@ def main(text):
                         else:
                             speak("im sorry i could not find the definition for " + definition)
 
-                # todo:search on wikipedia
-
                 # Current city or region
                 for phrase in ["where am i", "my location"]:
 
@@ -338,6 +341,25 @@ def main(text):
                         else:
                             subprocess.Popen(f'{app}.exe')
 
+                # wolfram
+                try:
+                    text = text.replace(WAKE[0], "")
+                    wolfram_res = next(client.query(text).results).text
+                    wiki_res = wikipedia.summary(text, sentences=2)
+                    speak(wolfram_res)
+                    NotifyMe.msg_box(title="Wikipedia Result", text=wiki_res, style=0)
+                except wikipedia.exceptions.DisambiguationError:
+                    wolfram_res = next(client.query(text).results).text
+                    speak(wolfram_res)
+                    NotifyMe.msg_box(title="wolfram result", text=wolfram_res, style=0)
+                except wikipedia.exceptions.PageError:
+                    wolfram_res = next(client.query(text).results).text
+                    speak(wolfram_res)
+                    NotifyMe.msg_box(title="Wolfarm result", text=wolfram_res, style=0)
+                except:
+                    wiki_res = wikipedia.summary(text, sentences=2)
+                    speak(wiki_res)
+                    NotifyMe.msg_box(title="Wiki Result", text=wiki_res, style=0)
 
 
 if __name__ == '__main__':
