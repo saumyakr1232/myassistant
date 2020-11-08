@@ -1,30 +1,31 @@
 import datetime
-import wikipedia
-import wolframalpha
+import platform
+import random
 import smtplib
 import subprocess
-import urllib.request
-import requests
 import threading
-from assist.utils import helper
-from time import ctime
-import bs4 as bs
-import pyautogui
-import platform
-from assist.note import note
-import playsound
-import speech_recognition as sr
-import pyttsx3
-from gtts import gTTS
-from assist.calendar import g_calendar
+import urllib.request
 import webbrowser
-import random
-from assist.whatsapp import monitorWhatsapp
-from assist.lms import VisitLms
-from assist.iclouds import iclouds
-from assist.alert import NotifyMe
+from time import ctime
 
 import PySimpleGUI as sg
+import bs4 as bs
+import playsound
+import pyautogui
+import pyttsx3
+import requests
+import speech_recognition as sr
+import wikipedia
+import wolframalpha
+from gtts import gTTS
+
+from assist.alert import NotifyMe
+from assist.calendar import g_calendar
+from assist.iclouds import iclouds
+from assist.lms import VisitLms
+from assist.note import note
+from assist.utils import helper
+from assist.whatsapp import monitorWhatsapp
 
 CurrentOs = platform.system()
 name = "saumya"
@@ -134,7 +135,6 @@ def main():
 
     client = wolframalpha.Client(app_id)
 
-
     while True:
         sg.theme('DarkPurple')
         layout = [[sg.Text('Enter a command'), sg.InputText()], [sg.Button('Ok'), sg.Button('Cancel')]]
@@ -167,7 +167,7 @@ def main():
                         else:
                             speak("I don't understand")
 
-                for phrase in NOTE_STRS: # ["make a note", "write this down", "remember this"]
+                for phrase in NOTE_STRS:  # ["make a note", "write this down", "remember this"]
                     if phrase in text:
                         speak("what would you like me tho write down?")
 
@@ -187,7 +187,7 @@ def main():
                         got_answer = True
 
                 # Time
-                for phrase in TIME_STRS: # ["what's the time", "tell me the time", "what time is it", "what is the time"]
+                for phrase in TIME_STRS:  # ["what's the time", "tell me the time", "what time is it", "what is the time"]
                     if phrase in text:
                         time = ctime().split(" ")[4].split(":")[0:2]
                         if time[0] == "00":
@@ -207,7 +207,6 @@ def main():
                         webbrowser.get().open(url)
                         speak("Here is what I found for" + search_term + "on google")
                         got_answer = True
-
 
                 # search Youtube
                 for phrase in ["youtube"]:
