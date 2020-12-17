@@ -7,7 +7,7 @@ import threading
 import urllib.request
 import webbrowser
 from time import ctime
-
+import os
 import PySimpleGUI as sg
 import bs4 as bs
 import playsound
@@ -18,7 +18,7 @@ import speech_recognition as sr
 import wikipedia
 import wolframalpha
 from gtts import gTTS
-
+import sys
 from assist.alert import NotifyMe
 from assist.calendar import g_calendar
 from assist.iclouds import iclouds
@@ -43,18 +43,42 @@ app_id = "AP8UVR-5E83UJJTRX"
 
 
 def speak2(text):
-    tts = gTTS(text=text, lang="en")
-    filename = "voice.mp3"
-    flag = True
-    while flag:
-        try:
-            tts.save(filename)
-            flag = False
-        except ValueError as v:
-            print(str(v))
-            flag = True
+    """
+    Convert text to speech using gTTS
+    :prams text: text (String)
+    :return: True / False (play sound if True otherwise write exception to log and return False)
+    """
+    try:
+        tts = gTTS(text=text, lang="en")
+        filename = "voice.mp3"
+        flag = True
+        while flag:
+            try:
+                tts.save(filename)
+                flag = False
+            except ValueError as v:
+                print(str(v))
+                flag = True
 
-    playsound.playsound(filename)
+        playsound.playsound(filename)
+        os.remove(filename)
+        return True
+    except Exception as e:
+        print("Sorry didn't understand")
+        return False
+
+
+def shutdown():
+    """
+    Shutdown assistant, exit the program
+    return: True if all goes well False otherwise
+    """
+    try:
+        speak("Good bye. Have a nice day")
+        sys.exit()
+    except Exception as e:
+        print(e)
+        return False
 
 
 def speak(text):
@@ -66,19 +90,29 @@ def speak(text):
     engine.runAndWait()
 
 
-def get_audio():
+def mic_input():
+    """
+    Fetch input from mic
+    return user's voice input as lower text
+    """
     print("Listening")
     r = sr.Recognizer()
     with sr.Microphone() as source:
-        audio = r.listen(source, phrase_time_limit=6)
-        said = ""
-
+        print('Say something ... ')
+        r.pause_threshold = 1
+        r.adjust_for_ambient_noise(source, duration=1)
+        audio = r.listen(source, phrase_time_limit=6)  # fixme : phrase_time_limit remove it
         try:
-            said = r.recognize_google(audio)
-            print(said)
+            command = r.recognize_google(audio)
+            print(f"you said {command} \n")
+        except sr.UnknownValueError:
+            print("....")
+            command = mic_input()
+            return command
         except Exception as e:
             print("Exception: " + str(e))
-    return said.lower()
+            return False
+    return command.lower()
 
 
 def get_date(text):
@@ -202,7 +236,7 @@ def main():
                 # search google
                 for phrase in ["search for"]:
                     if phrase in text and 'youtube' not in text:
-                        search_term = text.split("for")[-1]
+                        search_term = text.split("for")[-1].replace("nobita", "")
                         url = "https://google.com/search?q=" + search_term
                         webbrowser.get().open(url)
                         speak("Here is what I found for" + search_term + "on google")
@@ -231,7 +265,7 @@ def main():
                 for phrase in ["play game", "rock paper", "start game"]:
                     if phrase in text:
                         speak("choose among rock paper or scissor")
-                        text = get_audio()
+                        text = mic_input()
                         moves = ["rock", "paper", "scissor"]
 
                         cmove = random.choice(moves)
@@ -290,25 +324,12 @@ def main():
                         myScreenshot = pyautogui.screenshot()
                         myScreenshot.save(f'{datetime.datetime.now()}-screen.png')  # todo get proper directory
                 # wikipedia
-                for phrase in ["definition of"]:
-                    if phrase in text:
-                        got_answer = True
-                        speak("what do you need the definition of")
-                        definition = get_audio()
-                        url = urllib.request.urlopen('https://en.wikipedia.org/wiki/' + definition)
-                        soup = bs.BeautifulSoup(url, 'lxml')
-                        definitions = []
-                        for paragraph in soup.find_all('p'):
-                            definitions.append(str(paragraph.text))
-                        if definitions:
-                            if definitions[0]:
-                                speak('im sorry i could not find that definition, please try a web search')
-                            elif definitions[1]:
-                                speak('here is what i found ' + definitions[1])
-                            else:
-                                speak('Here is what i found ' + definitions[2])
-                        else:
-                            speak("im sorry i could not find the definition for " + definition)
+                if "definition of" in text:
+                    definition_of = text.split("definition of")
+                    helper.tell_me_about(definition_of)
+                if "tell me about" in text:
+                    topic = text.split("tell me about")
+                    helper.tell_me_about(topic)
 
                 # Current city or region
                 for phrase in ["where am i", "my location"]:
@@ -325,7 +346,7 @@ def main():
                         got_answer = True
                         receiver = text.split("to")[1]
                         speak("Sir, what should i say? ")
-                        message = get_audio()
+                        message = mic_input()
                         try:
                             server = smtplib.SMTP('smtp.gmail.com', 587)
                             server.ehlo()
@@ -382,18 +403,20 @@ def main():
                 # wolfram
                 if not got_answer:
                     try:
+                        # fixme: rethink this 
                         text = text.replace(WAKE[0], "")
                         wolfram_res = next(client.query(text).results).text
-                        wiki_res = wikipedia.summary(text, sentences=2)
-                        speak(wolfram_res)
-                        NotifyMe.msg_box(title="Wikipedia Result", text=wiki_res, style=0)
+                        # wiki_res = wikipedia.summary(text, sentences=2)
+                        # speak(wolfram_res)
+                        # NotifyMe.msg_box(title="Wikipedia Result", text=wiki_res, style=0)
+                        NotifyMe.msg_box(title="wolfram result", text=wolfram_res, style=0)
                     except wikipedia.exceptions.DisambiguationError:
                         wolfram_res = next(client.query(text).results).text
-                        speak(wolfram_res)
+                        # speak(wolfram_res)
                         NotifyMe.msg_box(title="wolfram result", text=wolfram_res, style=0)
                     except wikipedia.exceptions.PageError:
                         wolfram_res = next(client.query(text).results).text
-                        speak(wolfram_res)
+                        # speak(wolfram_res)
                         NotifyMe.msg_box(title="Wolfarm result", text=wolfram_res, style=0)
                     except:
                         print("some error occured")
@@ -401,26 +424,26 @@ def main():
 
 
 if __name__ == '__main__':
-    if helper.isNetworkConnectionAvail():
-        speak("Welcome back sir, should i monitor your whatsapp?")
-        text = get_audio()
-        # text = "hmm"
-        for word in ["yes", "please", "yeah", "hmm"]:
-            if word in text or word == text:
-                speak("Which group should i monitor")
-                answer = get_audio()
-                # answer = "unofficial sec 4 at level 7"
-                try:
-                    group_to_monitor = answer.split("at level")[0]
-                    level = int(answer.split("at level")[1])
-                    print(f"group to monitor :{group_to_monitor}, level: {level}")
-                    if group_to_monitor:
-                        thread_monitor_whatsapp = threading.Thread(target=monitorWhatsapp.monitor_group,
-                                                                   args=(group_to_monitor, 7), daemon=True)
-                        thread_monitor_whatsapp.start()
-                except Exception as e:
-                    print(str(e))
-                    speak("Sorry, don't understand")
-                    break
+    # if helper.isNetworkConnectionAvail():
+    #     speak("Welcome back sir, should i monitor your whatsapp?")
+    #     # text = get_audio()
+    #     text = "hmm"
+    #     for word in ["yes", "please", "yeah", "hmm"]:
+    #         if word in text or word == text:
+    #             speak("Which group should i monitor")
+    #             # answer = get_audio()
+    #             answer = "unofficial sec 4 at level 7"
+    #             try:
+    #                 group_to_monitor = answer.split("at level")[0]
+    #                 level = int(answer.split("at level")[1])
+    #                 print(f"group to monitor :{group_to_monitor}, level: {level}")
+    #                 if group_to_monitor:
+    #                     thread_monitor_whatsapp = threading.Thread(target=monitorWhatsapp.monitor_group,
+    #                                                                args=(group_to_monitor, 7), daemon=True)
+    #                     thread_monitor_whatsapp.start()
+    #             except Exception as e:
+    #                 print(str(e))
+    #                 speak("Sorry, don't understand")
+    #                 break
 
     main()

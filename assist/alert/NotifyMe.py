@@ -2,6 +2,9 @@ import tkinter as tk
 from tkinter import messagebox as msg
 
 import playsound
+import gi
+
+gi.require_version('Notify', '0.7')
 from gi.repository import Notify
 from gtts import gTTS
 from plyer import notification
