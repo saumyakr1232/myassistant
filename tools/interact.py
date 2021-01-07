@@ -1,6 +1,6 @@
 from settings.logs import *
-from settings.settings import interaction_setting as it
-from settings.settings import bot
+from settings.setting import interaction_setting as it
+from settings.setting import bot
 from system.screen_text import processing
 import random
 

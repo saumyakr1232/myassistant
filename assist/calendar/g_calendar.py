@@ -13,6 +13,7 @@ from googleapiclient.discovery import build
 SCOPES = ['https://www.googleapis.com/auth/calendar.readonly']
 os.chdir("/home/saumyakr1232/PycharmProjects/myassistant/assist/calendar")
 
+#pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib
 
 def authenticate_calendar():
     """Shows basic usage of the Google Calendar API.

@@ -1,5 +1,5 @@
 import logging
-from settings.settings import DEBUG
+from settings.setting import DEBUG
 
 logging.basicConfig(
     level=logging.ERROR,

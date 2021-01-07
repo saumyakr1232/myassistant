@@ -31,7 +31,7 @@ def command_sep():
 
 
 def clear_screen(start=True):
-    from settings.settings import START_SCREEN_NAME
+    from settings.setting import START_SCREEN_NAME
     # for windows
     if name == 'nt':
         _ = system('cls')

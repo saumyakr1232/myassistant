@@ -2,9 +2,9 @@ from tools.configParser import ConfigParser_manager as CM
 from system.path import getpath
 import os
 from termcolor import cprint
-from settings.settings import bot as bt
-from settings.settings import interaction_setting as its
-from settings.settings import update_bot
+from settings.setting import bot as bt
+from settings.setting import interaction_setting as its
+from settings.setting import update_bot
 from tools.json_manager import JsonManager as JM
 
 config_keys = ['-config', '-settings']
@@ -301,7 +301,7 @@ class Config:
 
     def dev_mode(self):
 
-        from settings.settings import update_dev
+        from settings.setting import update_dev
 
         pt = '-' * 10 + 'Welcome to secret mode for developer' + '-' * 10
         cprint(pt, 'magenta')
@@ -901,7 +901,7 @@ class Config:
             confirm = input()
             positive = ['y', 'yes', 'ok', 'okay']
             if confirm.lower() in positive:
-                from settings.settings import all_sections
+                from settings.setting import all_sections
                 # print(all_sections)
                 try:
                     obj = CM()

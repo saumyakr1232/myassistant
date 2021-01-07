@@ -1,4 +1,4 @@
-from settings.settings import bot
+from settings.setting import bot
 from datetime import datetime
 import time
 

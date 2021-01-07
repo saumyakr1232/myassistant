@@ -4,7 +4,7 @@ from system.path import getpath
 from termcolor import cprint
 from tools.configParser import ConfigParser_manager as CM
 
-conf_path = os.path.join(getpath(__file__), 'setting.yaml')
+conf_path = os.path.join(getpath(__file__), 'settings.yaml')
 default_path = os.path.join(getpath(__file__), 'default.yaml')
 export_file_name = "ai_virtual_assistant_configs.yaml"
 
@@ -16,7 +16,7 @@ def import_setting():
         cprint(' Export file exits. Do you want to import settings(y/n) :', 'cyan', end="")
         confirm = input()
         if confirm.lower() in ['y', 'yes', 'ok', 'okay']:
-            from settings.settings import all_sections
+            from settings.setting import all_sections
             try:
                 obj = CM()
                 for section in all_sections:
@@ -102,14 +102,17 @@ def check_if_first_time():
     section = 'start_time'
     obj = CM()
     dic = obj.read(conf_path, section)
-    if dic['first_start'] == 'False':
+    print(dic)
+    print(type(dic))
+    if dic['first_time'] == 'False':
         return False
     else:
         first_time()
-        dic['first_start'] = 'False'
-        obj.update(conf_path,dic,section)
+        dic['first_time'] = 'False'
+        obj.update(conf_path, dic, section)
         return True
     pass
 
 
-check_if_first_time()
+if __name__ == '__main__':
+    check_if_first_time()

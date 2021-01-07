@@ -14,14 +14,17 @@ class ConfigParser_manager:
 
     def update(self, file_name, value, section='user'):
         try:
-            with open(file_name,'r+') as f:
+
+            with open(file_name, 'r') as f:
                 doc = yaml.full_load(f)
 
+            with open(file_name, 'w') as f:
                 doc[section] = value
 
                 yaml.dump(doc, f)
 
-        except:
+        except Exception as e:
+            print(e)
             return False
 
 
@@ -32,5 +35,6 @@ if __name__ == '__main__':
     print(dic)
     dic['saumya'] = 'glo'
     obj.update('Test.yaml', dic, section=section)
-    dic = obj.read('Test.yaml', section=section)
-    print(dic)
+    dic2 = obj.read('Test.yaml', section=section)
+    print("after update")
+    print(dic2)

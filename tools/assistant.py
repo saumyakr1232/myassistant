@@ -8,7 +8,7 @@ try:
     from tools.string_processing import is_matched
     from tools.json_manager import JsonManager
     from system.Notification import notifyMe
-    from settings.settings import bot, DEBUG, LEARN
+    from settings.setting import bot, DEBUG, LEARN
     from termcolor import cprint
     from settings.config import if_config_type
     from system.path import getpath
