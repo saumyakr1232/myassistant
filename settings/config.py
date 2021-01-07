@@ -8,21 +8,25 @@ from settings.setting import update_bot
 from tools.json_manager import JsonManager as JM
 
 config_keys = ['-config', '-settings']
-conf_path = os.path.join(getpath(__file__), 'settings.conf')
-default_path = os.path.join(getpath(__file__), 'default.conf')
+conf_path = os.path.join(getpath(__file__), 'settings.yaml')
+default_path = os.path.join(getpath(__file__), 'default.yaml')
 train_path = os.path.join(getpath(__file__), '.trained')
 
 yes = ['yes', 'y']
 
 
+# noinspection PyMethodMayBeStatic,PyBroadException,DuplicatedCode
 class Config:
-    export_file_name = 'ai_virtual_assistant_configs.conf'
+    export_file_name = 'ai_virtual_assistant_configs.yaml'
     obj = CM()
-    lt = ['Bot', 'Interaction', 'Competitive Programming', 'Features Installation', 'Training Mode',
+    lt = ['Bot', 'Interaction', 'Compiler Options', 'Features Installation', 'Training Mode',
           'Export/Import settings']
     confirm_keys = ['y', 'yes', 'ok']
 
     def change_gender(self):
+        """
+        change Gender of bot
+        """
         pt = '-' * 22 + 'Gender Change' + '-' * 22
         cprint(pt, 'magenta')
         print()
@@ -43,6 +47,9 @@ class Config:
             cprint("Cancelled.", 'red')
 
     def change_name(self):
+        """
+        change bot name
+        """
         pt = '-' * 22 + 'Name Change' + '-' * 22
         cprint(pt, 'magenta')
         print()
@@ -63,7 +70,9 @@ class Config:
             cprint("Cancelled.", 'red')
 
     def change_boss(self):
-
+        """
+        change bot boss
+        """
         pt = '-' * 22 + 'Boss Change' + '-' * 22
         cprint(pt, 'magenta')
         print()
@@ -84,10 +93,17 @@ class Config:
             cprint("Cancelled.", 'red')
 
     def change_voice_engine(self):
+        """
+        configure voice engine
+        """
         pt = '-' * 22 + 'Voice Engine Change' + '-' * 22
         cprint(pt, 'magenta')
         print()
         cprint(f" Current voice engine : {bt['boss']}", 'yellow')
+
+    '''
+    configure bot profile setting
+    '''
 
     def bot(self, no):
         bot = [
@@ -96,6 +112,7 @@ class Config:
             'Boss',
             'Voice_engine'
         ]
+
         pt = '-' * 22 + self.lt[no] + '-' * 22
         cprint(pt, 'magenta')
         cprint(" Select the index to change,", 'yellow')
@@ -133,6 +150,10 @@ class Config:
             else:
                 ok = True
                 cprint(" You have selected wrong index. Please try again.", 'red')
+
+    '''
+    configure Interaction setting
+    '''
 
     def Interaction(self, no):
 
@@ -298,8 +319,10 @@ class Config:
                 ok = True
                 cprint(" You have selected wrong index. Please try again.", 'red')
 
-
     def dev_mode(self):
+        """
+            configure Developer options
+        """
 
         from settings.setting import update_dev
 
@@ -364,6 +387,9 @@ class Config:
         cprint('-' * len(pt), 'magenta')
 
     def cpp_template(self):
+        """
+        configure cpp template settings
+        """
         from settings.compiler import template_path as tp, update_tp
         pt = '-' * 22 + 'c++ Template' + '-' * 22
         cprint(pt, 'magenta')
@@ -408,6 +434,9 @@ class Config:
                 cprint("Path doesn't exist. Try again.", 'red')
 
     def python_template(self):
+        """
+        configure python template
+        """
         from settings.compiler import template_path as tp, update_tp
         pt = '-' * 22 + 'Python Template' + '-' * 22
         cprint(pt, 'magenta')
@@ -452,9 +481,11 @@ class Config:
                 cprint("Path doesn't exist. Try again.", 'red')
 
     def temp_path(self):
+        """
+        change template path
+        """
         try:
-
-            optinos = [
+            options = [
                 'C++',
                 'Python'
             ]
@@ -465,7 +496,7 @@ class Config:
 
             print()
             # print(bt)
-            for i, w in enumerate(optinos):
+            for i, w in enumerate(options):
                 cprint(f'  {i + 1}) {w}', 'blue')
             cprint('  0) Cancel', 'red')
             print()
@@ -479,29 +510,30 @@ class Config:
                     cprint(" Operation cancelled.", 'red')
                     return
                 elif no == 1:
-                    cprint(f' You have selected {optinos[no - 1]} .', 'yellow')
+                    cprint(f' You have selected {options[no - 1]} .', 'yellow')
                     self.cpp_template()
                 elif no == 2:
-                    cprint(f' You have selected {optinos[no - 1]} .', 'yellow')
+                    cprint(f' You have selected {options[no - 1]} .', 'yellow')
                     self.python_template()
                 else:
                     ok = True
                     cprint(" You have selected wrong index. Please try again.", 'red')
 
-
-
         except Exception as e:
             cprint(e, 'red')
 
     def cpp_compiler(self):
+        """
+        configure cpp compiler command
+        """
         try:
             from settings.compiler import compiler, update_compiler
             pt = '-' * 22 + 'C++ Compiler' + '-' * 22
             cprint(pt, 'magenta')
             print()
-            # print(compiler)
+            print(compiler)
             ccp = compiler['c++']
-            # print(ccp)
+            print(ccp)
             cprint(" Current Compiling Command : ", 'yellow', end='')
             cprint(str(ccp), 'cyan')
             print()
@@ -516,8 +548,7 @@ class Config:
                 cprint(' Enter the index number : ', 'cyan', end='')
                 no = int(input())
                 if no == 0:
-                    cprint(" Going back.", 'red')
-                    self.competitve_programming()
+                    pass
                 elif no == 1:
                     print()
                     cprint(" Enter new command(wrong command might broke c++ compiling and testing) : ", 'cyan', end='')
@@ -529,15 +560,18 @@ class Config:
                     self.obj.update(conf_path, x, section)
                     compiler['c++'] = command
                     update_compiler(compiler)
-                    cprint(' C++ compiling command updated succussfully.', 'green')
+                    cprint(' C++ compiling command updated successfully.', 'green')
                     self.cpp_compiler()
                 else:
-                    cprint(" You have choosen wrong index.", 'red')
+                    cprint(" You have chosen wrong index.", 'red')
                     ok = True
         except Exception as e:
             cprint(e, 'red')
 
     def cpp_debug_compiler(self):
+        """
+        configure cpp debug compiler command
+        """
         try:
             from settings.compiler import compiler, update_compiler
             pt = '-' * 22 + 'C++ Debug Compiler' + '-' * 22
@@ -560,8 +594,9 @@ class Config:
                 cprint(' Enter the index number : ', 'cyan', end='')
                 no = int(input())
                 if no == 0:
-                    cprint(" Going back.", 'red')
-                    self.competitve_programming()
+                    # cprint(" Going back.", 'red')
+                    # self.compiler_option()
+                    pass
                 elif no == 1:
                     print()
                     cprint(" Enter new command(wrong command might broke c++ debug compiling and testing) : ", 'cyan',
@@ -574,15 +609,18 @@ class Config:
                     self.obj.update(conf_path, x, section)
                     compiler['c++ debug'] = command
                     update_compiler(compiler)
-                    cprint(' C++ debug compiling command updated succussfully.', 'green')
+                    cprint(' C++ debug compiling command updated successfully.', 'green')
                     self.cpp_debug_compiler()
                 else:
-                    cprint(" You have choosen wrong index.", 'red')
+                    cprint(" You have chosen wrong index.", 'red')
                     ok = True
         except Exception as e:
             cprint(e, 'red')
 
     def python_compiler(self):
+        """
+        configure python compiler command
+        """
         try:
             from settings.compiler import compiler, update_compiler
             pt = '-' * 22 + 'Python Run Command' + '-' * 22
@@ -605,8 +643,7 @@ class Config:
                 cprint(' Enter the index number : ', 'cyan', end='')
                 no = int(input())
                 if no == 0:
-                    cprint(" Going back.", 'red')
-                    self.competitve_programming()
+                    pass
                 elif no == 1:
                     print()
                     cprint(" Enter new command(wrong command might broke running python file) : ", 'cyan', end='')
@@ -618,30 +655,30 @@ class Config:
                     self.obj.update(conf_path, x, section)
                     compiler['python'] = command
                     update_compiler(compiler)
-                    cprint(' Python running command updated succussfully.', 'green')
+                    cprint(' Python running command updated successfully.', 'green')
                     self.python_compiler()
                 else:
-                    cprint(" You have choosen wrong index.", 'red')
+                    cprint(" You have chosen wrong index.", 'red')
                     ok = True
         except Exception as e:
             cprint(e, 'red')
 
-    def compiler_option(self):
+    def compiler_option(self, no):
         try:
-            optinos = [
+            options = [
                 'C++',
                 'C++ Debug',
                 'python'
             ]
 
-            pt = '-' * 22 + "Compiler" + '-' * 22
+            pt = '-' * 22 + self.lt[no] + '-' * 22
             cprint(pt, 'magenta')
             print()
             cprint(" All the available settings are given below,", 'yellow')
 
             print()
             # print(bt)
-            for i, w in enumerate(optinos):
+            for i, w in enumerate(options):
                 cprint(f'  {i + 1}) {w}', 'blue')
             cprint('  0) Cancel', 'red')
             print()
@@ -655,13 +692,13 @@ class Config:
                     cprint(" Operation cancelled.", 'red')
                     return
                 elif no == 1:
-                    cprint(f' You have selected {optinos[no - 1]} .', 'yellow')
+                    cprint(f' You have selected {options[no - 1]} .', 'yellow')
                     self.cpp_compiler()
                 elif no == 2:
-                    cprint(f' You have selected {optinos[no - 1]} .', 'yellow')
+                    cprint(f' You have selected {options[no - 1]} .', 'yellow')
                     self.cpp_debug_compiler()
                 elif no == 3:
-                    cprint(f' You have selected {optinos[no - 1]} .', 'yellow')
+                    cprint(f' You have selected {options[no - 1]} .', 'yellow')
                     self.python_compiler()
                 else:
                     ok = True
@@ -669,8 +706,6 @@ class Config:
 
         except Exception as e:
             cprint(e, 'red')
-
-
 
     def after_parsing_open_with_and_editor(self):
 
@@ -765,11 +800,10 @@ class Config:
 
                         return
                     else:
-                        cprint(" You have choosen wrong index.", 'red')
+                        cprint(" You have chosen wrong index.", 'red')
                         ok = True
         except Exception as e:
             cprint(e, 'red')
-
 
     def features(self, no):
         from system.install_features import speed_up, install_speaking_system, install_command_system
@@ -778,7 +812,7 @@ class Config:
             'Speaking Capability',
             'Voice Command'
         ]
-        pt = '-' * 22 + "Features Installaion" + '-' * 22
+        pt = '-' * 22 + "Features Installation" + '-' * 22
         cprint(pt, 'magenta')
         print()
         cprint(" All the available options are given below : ", 'yellow')
@@ -886,9 +920,9 @@ class Config:
         try:
             with open(conf_path, 'r') as f:
                 value = f.read()
-            with open(self.export_file_name, 'w') as f:
+            with open(self.export_file_name, 'x') as f:
                 f.write(value)
-            cprint(" File exported successfully.", 'green')
+            cprint(f" File exported successfully. \n{getpath(self.export_file_name)}{self.export_file_name}", 'green')
         except Exception as e:
             cprint(f' Got error : {e}', 'red')
         pass
@@ -1002,7 +1036,7 @@ class Config:
                     self.Interaction(no - 1)
                 elif no == 3:
                     cprint(f' You have selected {self.lt[no - 1]} .', 'yellow')
-                    self.competitve_programming(no - 1)
+                    self.compiler_option(no - 1)
                 elif no == 4:
                     cprint(f' You have selected {self.lt[no - 1]} .', 'yellow')
                     self.features(no - 1)
@@ -1026,3 +1060,7 @@ def if_config_type(msg):
         return True
     else:
         return False
+
+
+if __name__ == '__main__':
+    if_config_type("-config")

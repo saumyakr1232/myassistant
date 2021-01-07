@@ -114,5 +114,4 @@ def check_if_first_time():
     pass
 
 
-if __name__ == '__main__':
-    check_if_first_time()
+check_if_first_time()

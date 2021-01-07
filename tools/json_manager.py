@@ -16,7 +16,9 @@ class JsonManager:
             print(e)
 
     @staticmethod
-    def json_write(json_file, data={}):
+    def json_write(json_file, data=None):
+        if data is None:
+            data = {}
         try:
             with open(json_file, "w") as write_file:
                 json.dump(data, write_file)
