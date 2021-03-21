@@ -22,10 +22,13 @@ try:
     from assist.utils.helper import tell_me_about
     import pyautogui
     import datetime
+
 except Exception as e:
     print(e)
-
+import logging
 app_id = "AP8UVR-5E83UJJTRX"
+
+logger = logging.getLogger(__name__)
 
 def check(msg, mp, need=90):
     logger.debug('check->' + msg)
@@ -33,6 +36,8 @@ def check(msg, mp, need=90):
         if is_matched(word, msg, need):
             return True
     return False
+
+
 def get_date(text):
     text = text.lower()
     today = datetime.date.today()
@@ -79,7 +84,7 @@ def get_date(text):
     return datetime.date(month=month, day=day, year=year)
 
 
-"what do i have planned on september 9th"
+# "what do i have planned on september 9th"
 
 def rep(msg, mp):
     msg = msg.lower()
@@ -96,7 +101,7 @@ def ask_question(msg):
 def assistant(msg):
     logger.debug("called ai")
     msg = msg.replace('  ', ' ').strip().lower()
-
+    msg.replace(bot['name'], '')
     reply = 'don\'t know what to do sir'
 
     try:

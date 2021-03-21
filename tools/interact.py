@@ -131,7 +131,7 @@ def mic_input():
         return get_text_input()
 
 
-def get_audio():
+def get_input():
     if it['voice_read_voice_reply']:
         return mic_input()
     elif it['text_read']:

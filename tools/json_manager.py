@@ -5,7 +5,7 @@ except Exception as e:
 
 
 class JsonManager:
-    """ It will loads data and dumps data into json. Written By Saurav Paul"""
+    """ It will loads data and dumps data into json."""
     @staticmethod
     def json_read(json_file):
         try:
