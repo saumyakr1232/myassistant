@@ -1,2 +1,5 @@
 /venv/
 /.idea/
+/assist/calendar/credentials.json
+/assist/calendar/token.pickle
+token.pickle
