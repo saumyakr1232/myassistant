@@ -1,15 +1,18 @@
 from __future__ import print_function
+
 import datetime
-import pickle
 import os.path
-from googleapiclient.discovery import build
-from google_auth_oauthlib.flow import InstalledAppFlow
-from google.auth.transport.requests import Request
+import pickle
+
 import pytz
+from google.auth.transport.requests import Request
+from google_auth_oauthlib.flow import InstalledAppFlow
+from googleapiclient.discovery import build
 
 # If modifying these scopes, delete the file token.pickle.
 SCOPES = ['https://www.googleapis.com/auth/calendar.readonly']
-os.chdir("/home/saumyakr1232/PycharmProjects/myassistant/assist/calendar")
+
+#pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib
 
 def authenticate_calendar():
     """Shows basic usage of the Google Calendar API.
@@ -76,5 +79,7 @@ def get_events(day):
             print(event["summary"] + " at " + start_time)
             messages.append(event["summary"] + " at " + start_time)
         return messages
+
+
 if __name__ == '__main__':
-    get_events(datetime.datetime.today())
+    print(get_events(datetime.datetime.today()))

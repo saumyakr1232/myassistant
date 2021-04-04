@@ -1,10 +1,10 @@
 import io
-import time
 
 from flashtext import KeywordProcessor
+
 from assist.alert import NotifyMe
-from assist.utils import helper
 from assist.lms import VisitLms
+from assist.utils import helper
 
 
 def get_messages():
@@ -67,7 +67,7 @@ class Action:
             message = f"Sir, Someone mentioned \"{keyword}\" in {group}, would you like to investigate?"
             result = NotifyMe.msg_box(f"\"{keyword.title()}\" Alert", message, 4)
             if keyword in KeywordSets.keyWordsSet3 or KeywordSets.keyWordsSet2 or KeywordSets.keyWordsSet3 and result:
-                VisitLms
+                VisitLms.login_to_lms()
 
 
         else:

@@ -1,16 +1,17 @@
+import io
 import threading
-
-from selenium.common.exceptions import NoSuchElementException, TimeoutException, StaleElementReferenceException
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.by import By
-from assist.utils.decorators import debug
 import time
 from datetime import datetime
-import sys
-import io
+
+from selenium.common.exceptions import NoSuchElementException, TimeoutException, StaleElementReferenceException
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
+
 import assist.utils.helper as helper
+from assist.utils.decorators import debug
 from assist.whatsapp import ChatAnalysis
+
 
 @debug
 def get_chat(driver, name):
@@ -186,13 +187,11 @@ def monitor_group(group, level):
             choice = chat
 
     get_chat(driver, choice)
-    #todo try catch
-
+    # todo try catch
 
     chat_analysis_thread = threading.Thread(target=ChatAnalysis.analyseMessageAndTakeAction,
                                             args=(choice, level), daemon=True)
     chat_analysis_thread.start()
-
 
     previous_in_message = None
     while True:

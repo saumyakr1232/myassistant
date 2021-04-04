@@ -1,21 +1,16 @@
 import logging
-import os
-import pyautogui
-import random
+import time
+
 from selenium import webdriver
-from selenium.common.exceptions import NoSuchElementException, TimeoutException, ElementClickInterceptedException
-from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
-import time
+
 import assist.utils.helper as helper
 
 browserName = "chrome"
 webDriverPath = helper.getDriverPath(driver=browserName)
 userDataPath = helper.getBrowserDataPath(browser=browserName)
-
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
@@ -104,4 +99,3 @@ def main():
     login()
     open_attendance("september")
     print(driver.page_source)
-

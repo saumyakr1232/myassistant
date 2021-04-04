@@ -1,28 +1,28 @@
-import requests
-import yaml
-from pathlib import Path
-import platform
 import getpass
 import os
-from selenium.common.exceptions import InvalidArgumentException
+import platform
+import sys
+import time
+from pathlib import Path
+from urllib.request import urlopen
+from bs4 import BeautifulSoup as soup
+import smtplib
+# import requests
+import yaml
 from selenium import webdriver
+from selenium.common.exceptions import InvalidArgumentException
 from selenium.webdriver.chrome.options import Options as OptionsChrome
 from selenium.webdriver.firefox.options import Options as OptionFirefox
-import sys
+# import wikipedia
+import re
+import webbrowser
+import pyautogui
 import datetime
-import time
-
 CurrentOs = platform.system()
 OsUserName = getpass.getuser()
 
 
-def isNetworkConnectionAvail(host='http://google.com'):
-    try:
-        requests.get(host, timeout=3)
-        return True
-    except (requests.ConnectionError, requests.Timeout):
-        # print("No Internet connection")
-        return False
+
 
 
 def getCred(portal="lms"):
@@ -114,5 +114,63 @@ def is_day():
         return True
     else:
         return False
+
+
+def news():
+    try:
+        news_url = "https://news.google.com/news/rss"
+        Client = urlopen(news_url)
+        xml_page = Client.read()
+        Client.close()
+        soup_page = soup(xml_page, "xml")
+        news_list = soup_page.findAll("item")
+        li = []
+
+        for news in news_list:
+            li.append(str(news.title.text.encode('utf-8'))[1:])
+            return li
+    except Exception as e:
+        print(e)
+        return False
+
+
+def send_email(sender_email, sender_password, receiver_email, msg):
+    try:
+        mail = smtplib.SMTP('smtp.gmail.com', 587)
+        mail.ehlo()
+        mail.starttls()
+        mail.login(sender_email, sender_password)
+        mail.sendmail(sender_email, receiver_email, msg)
+        mail.close()
+        return True
+    except Exception as e:
+        print(e)
+        return False
+
+
+def tell_me_about(topic):
+    try:
+        # ny = wikipedia.page(topic)
+        # res = str(ny.content[:500].encode('utf-8'))
+        # res = re.sub('[^a-zA-Z.\d\s]', '', res)[1:]
+        res = ""
+        return res
+    except Exception as e:
+        print(e)
+        return False
+
+
+def website_opener(domain):
+    try:
+        url = 'https://www.' + domain
+        webbrowser.open(url)
+        return True
+    except Exception as e:
+        print(e)
+        return False
+
+
+if __name__ == '__main__':
+    pass
 
 

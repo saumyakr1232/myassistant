@@ -1,0 +1,28 @@
+bot:
+  boss: saumya
+  gender: Male
+  name: Nobita
+  voice_engine: pyttsx3
+  voice_reply: true
+compiler:
+  cpp: g++ -O2 -Wshift-overflow=2  -Wshadow  '{filename}' -o '{executable}' && ./'{executable}'
+  cpp_debug: g++ -std=c++17 -Wshadow -Wconversion -Wall -DPAUL -DLOCAL -Wshift-overflow=2
+    -Wshadow -fsanitize=address -fsanitize=undefined -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC  -g
+    '{filename}' -o '{executable}' && ./'{executable}'
+  python: python3 '{filename}'
+default:
+  age: 21
+  name: Gaurav
+developer:
+  debug: false
+  learn: true
+interaction_setting:
+  text_read: true
+  text_reply: true
+  voice_read_voice_reply: false
+  voice_reply: false
+start_time:
+  first_time: false
+template_path:
+  cpp: $DEFAULT
+  python: $DEFAULT

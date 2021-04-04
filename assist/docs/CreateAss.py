@@ -1,8 +1,8 @@
 from __future__ import print_function
 
 import io
-import time
 import os
+import time
 
 from googleapiclient import discovery
 from googleapiclient.http import MediaIoBaseDownload
