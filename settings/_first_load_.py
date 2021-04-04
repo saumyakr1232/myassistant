@@ -42,6 +42,7 @@ def import_setting():
 
 
 def first_time():
+    print("Called first time")
     pt = 22 * '-' + 'First time setup' + 22 * '-'
     done = import_setting()
 
@@ -74,12 +75,12 @@ def first_time():
         install_speaking_system()
         section = 'interaction_setting'
         x = obj.read(conf_path, section)
-        x['voice_reply'] = 'True'
+        x['voice_reply'] = True
         obj.update(conf_path, x, section)
     else:
         section = 'interaction_setting'
         x = obj.read(conf_path, section)
-        x['voice_reply'] = 'False'
+        x['voice_reply'] = False
         obj.update(conf_path, x, section)
 
     print()
@@ -92,7 +93,6 @@ def first_time():
         speed_up()
 
     print()
-    print()
     cprint(len(pt) * '-', 'magenta')
     from system.screen_text import clear_screen
     clear_screen(start=False)
@@ -102,16 +102,14 @@ def check_if_first_time():
     section = 'start_time'
     obj = CM()
     dic = obj.read(conf_path, section)
-    print(dic)
-    print(type(dic))
-    if dic['first_time'] == 'False':
+    # print(dic)
+    # print(type(dic))
+    if not dic['first_time']:
         return False
     else:
         first_time()
-        dic['first_time'] = 'False'
+        dic['first_time'] = False
         obj.update(conf_path, dic, section)
         return True
-    pass
 
 
-check_if_first_time()

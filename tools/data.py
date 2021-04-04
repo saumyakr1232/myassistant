@@ -21,7 +21,7 @@ def get_time():
 
 
 def digital_time():
-    return 'Sir now is ' + time.strftime("%-I:%M %p")
+    return 'Sir now is ' + time.strftime("%I:%M %p")
 
 
 data = {

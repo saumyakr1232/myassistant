@@ -7,16 +7,17 @@ from pathlib import Path
 from urllib.request import urlopen
 from bs4 import BeautifulSoup as soup
 import smtplib
-import requests
+# import requests
 import yaml
 from selenium import webdriver
 from selenium.common.exceptions import InvalidArgumentException
 from selenium.webdriver.chrome.options import Options as OptionsChrome
 from selenium.webdriver.firefox.options import Options as OptionFirefox
-import wikipedia
+# import wikipedia
 import re
 import webbrowser
-
+import pyautogui
+import datetime
 CurrentOs = platform.system()
 OsUserName = getpass.getuser()
 
@@ -149,9 +150,10 @@ def send_email(sender_email, sender_password, receiver_email, msg):
 
 def tell_me_about(topic):
     try:
-        ny = wikipedia.page(topic)
-        res = str(ny.content[:500].encode('utf-8'))
-        res = re.sub('[^a-zA-Z.\d\s]', '', res)[1:]
+        # ny = wikipedia.page(topic)
+        # res = str(ny.content[:500].encode('utf-8'))
+        # res = re.sub('[^a-zA-Z.\d\s]', '', res)[1:]
+        res = ""
         return res
     except Exception as e:
         print(e)
@@ -169,6 +171,6 @@ def website_opener(domain):
 
 
 if __name__ == '__main__':
-    print(news())
+    pass
 
 

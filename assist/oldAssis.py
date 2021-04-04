@@ -8,7 +8,7 @@ import urllib.request
 import webbrowser
 from time import ctime
 import os
-# import PySimpleGUI as sg
+import PySimpleGUI as sg
 import bs4 as bs
 import playsound
 import pyautogui

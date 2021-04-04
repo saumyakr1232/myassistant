@@ -79,8 +79,9 @@ def text_output(msg):
     bot = '(^-^)-> '
     cl = random.choice(color)
     cprint(bot, cl, attrs=['bold'], end="")
-    x = msg.capitalize()
-    cprint(x, cl)
+    if msg is not None:
+        x = msg.capitalize()
+        cprint(x, cl)
 
 
 def speak(msg):

@@ -11,7 +11,6 @@ from googleapiclient.discovery import build
 
 # If modifying these scopes, delete the file token.pickle.
 SCOPES = ['https://www.googleapis.com/auth/calendar.readonly']
-os.chdir("/home/saumyakr1232/PycharmProjects/myassistant/assist/calendar")
 
 #pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib
 
@@ -83,4 +82,4 @@ def get_events(day):
 
 
 if __name__ == '__main__':
-    get_events(datetime.datetime.today())
+    print(get_events(datetime.datetime.today()))

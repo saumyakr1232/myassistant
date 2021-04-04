@@ -21,13 +21,7 @@ def is_matched(msg, original, need=90, no=1):
 
 def string_process(msg):
     lt = list(msg.split())
-    msg = ""
-    i = 0
-    for word in lt:
-        if i:
-            msg += ' '
-        i += 1
-        msg += word
+    msg = ' '.join(lt)
     return msg.lower()
 
 
@@ -40,3 +34,7 @@ def wiki_string(msg):
             key += w + ' '
 
     return key.strip()
+
+
+if __name__ == '__main__':
+    print(string_process("how aer   you   my borhter : aldfj ;"))
