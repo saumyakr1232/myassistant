@@ -121,7 +121,7 @@ def ai(msg):
                 reply = 'Enjoy sir. '
             elif check(msg, goto_keys):
                 msg = rep(msg, goto_keys)
-                url = "https://google.com/search?q=" + msg
+                url = "https://" + msg
                 webbrowser.get().open(url)
                 reply = "Here is what I found for" + msg + "on google"
             elif check(msg, youtube):
