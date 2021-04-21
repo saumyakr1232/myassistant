@@ -9,6 +9,7 @@ from bs4 import BeautifulSoup as soup
 import smtplib
 # import requests
 import yaml
+from selenium.common.exceptions import SessionNotCreatedException
 from selenium import webdriver
 from selenium.common.exceptions import InvalidArgumentException
 from selenium.webdriver.chrome.options import Options as OptionsChrome
@@ -18,11 +19,9 @@ import re
 import webbrowser
 import pyautogui
 import datetime
+
 CurrentOs = platform.system()
 OsUserName = getpass.getuser()
-
-
-
 
 
 def getCred(portal="lms"):
@@ -41,7 +40,7 @@ def getDriverPath(driver='chrome'):
             Path(__file__).parent.parent.parent) + '/data/webDrivers/firefox/geckodriver-v0.27.0-linux64/geckodriver'
     if driver == 'firefox' and CurrentOs == "Windows":
         return str(
-            Path(__file__).parent.parent.parent) + '/data/webDrivers/firefox/geckodriver-v0.27.0-win64/geckodriver.exe'
+            Path(__file__).parent.parent.parent) + '/data/webDrivers/firefox/geckodriver-v0.29.1-win64/geckodriver.exe'
 
 
 def getMessagesFilePath():
@@ -65,8 +64,10 @@ def getBrowserDataPath(browser='chrome'):
     if CurrentOs == 'Windows' and browser == 'chrome':
         return f"C:\\Users\\{OsUserName}\\AppData\\Local\\Google\\Chrome\\User Data\\Default"
     if CurrentOs == 'Windows' and browser == 'firefox':
-        dirs = os.listdir(f"/home/{OsUserName}/.mozilla/firefox/")
+        print("here")
+        dirs = os.listdir(f"C:\\Users\\{OsUserName}\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles")
         for directory in dirs:
+            print(directory.split('.'))
             if directory.split('.').__contains__("default"):
                 return f'C:\\Users\\{OsUserName}\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles\\{directory}'
 
@@ -87,7 +88,7 @@ def _load_driver():
         option = OptionFirefox()
         option.add_argument('user-data-dir=' + browser_data_path)
         try:
-            driver = webdriver.Firefox(web_driver_path, options=option)
+            driver = webdriver.Firefox(executable_path=web_driver_path, options=option)
         except InvalidArgumentException:
             print(f"Another Window of {browserName.title()} is open Close it and try again:🤨")
             sys.exit()
@@ -96,7 +97,7 @@ def _load_driver():
         option = OptionsChrome()
         option.add_argument('user-data-dir=' + browser_data_path)
         try:
-            driver = webdriver.Chrome(web_driver_path, options=option)
+            driver = webdriver.Chrome(executable_path=web_driver_path, options=option)
         except InvalidArgumentException:
             print(f"Another Window of {browserName.title()} is open Close it and try again:🤨")
             sys.exit()
@@ -104,8 +105,13 @@ def _load_driver():
 
 
 def getWebDriver():
-    print("webdriver called")
-    Driver = _load_driver()
+    # print("webdriver called")
+    Driver = None
+    try:
+        Driver = _load_driver()
+    except SessionNotCreatedException as e:
+        print(e.msg)
+
     return Driver
 
 
@@ -172,5 +178,3 @@ def website_opener(domain):
 
 if __name__ == '__main__':
     pass
-
-

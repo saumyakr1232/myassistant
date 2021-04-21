@@ -14,12 +14,12 @@ default:
   age: 21
   name: Gaurav
 developer:
-  debug: false
-  learn: true
+  debug: True
+  learn: false
 interaction_setting:
   text_read: true
   text_reply: true
-  voice_read_voice_reply: false
+  voice_read_voice_reply: true
   voice_reply: false
 start_time:
   first_time: false

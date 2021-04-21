@@ -192,7 +192,7 @@ class Config:
                         its[key] = False
                         section = 'interaction_setting'
                         x = self.obj.read(conf_path, section)
-                        x[key] = 'False'
+                        x[key] = False
                         self.obj.update(conf_path, x, section)
 
                         cprint(" Successfully updated.", 'green')
@@ -210,7 +210,7 @@ class Config:
                         its[key] = True
                         section = 'interaction_setting'
                         x = self.obj.read(conf_path, section)
-                        x[key] = 'True'
+                        x[key] = True
                         self.obj.update(conf_path, x, section)
 
                         cprint(" Successfully updated.", 'green')
@@ -228,7 +228,7 @@ class Config:
                         its[key] = False
                         section = 'interaction_setting'
                         x = self.obj.read(conf_path, section)
-                        x[key] = 'False'
+                        x[key] = False
                         self.obj.update(conf_path, x, section)
 
                         cprint(" Successfully updated.", 'green')
@@ -241,7 +241,7 @@ class Config:
                         its[key] = True
                         section = 'interaction_setting'
                         x = self.obj.read(conf_path, section)
-                        x[key] = 'True'
+                        x[key] = True
                         self.obj.update(conf_path, x, section)
 
                         cprint(" Successfully updated.", 'green')
@@ -258,7 +258,7 @@ class Config:
                         its[key] = False
                         section = 'interaction_setting'
                         x = self.obj.read(conf_path, section)
-                        x[key] = 'False'
+                        x[key] = False
                         self.obj.update(conf_path, x, section)
 
                         cprint(" Successfully updated.", 'green')
@@ -278,7 +278,7 @@ class Config:
                         its[key] = True
                         section = 'interaction_setting'
                         x = self.obj.read(conf_path, section)
-                        x[key] = 'True'
+                        x[key] = True
                         self.obj.update(conf_path, x, section)
 
                         cprint(" Successfully updated.", 'green')
@@ -295,7 +295,7 @@ class Config:
                         its[key] = False
                         section = 'interaction_setting'
                         x = self.obj.read(conf_path, section)
-                        x[key] = 'False'
+                        x[key] = False
                         self.obj.update(conf_path, x, section)
 
                         cprint(" Successfully updated.", 'green')
@@ -308,7 +308,7 @@ class Config:
                         its[key] = True
                         section = 'interaction_setting'
                         x = self.obj.read(conf_path, section)
-                        x[key] = 'True'
+                        x[key] = True
                         self.obj.update(conf_path, x, section)
 
                         cprint(" Successfully updated.", 'green')
@@ -354,10 +354,10 @@ class Config:
                 cprint("Do you want to toggle Debug mode ?(Y/N) : ", 'cyan', end='')
                 confirm = input()
                 if confirm.lower() == 'y':
-                    if dev['debug'] == 'True':
-                        dev['debug'] = 'False'
+                    if dev['debug']:
+                        dev['debug'] = False
                     else:
-                        dev['debug'] = 'True'
+                        dev['debug'] = True
 
                     self.obj.update(conf_path, dev, section)
                     update_dev(dev)
@@ -369,10 +369,10 @@ class Config:
                 cprint("Do you want to toggle Learning mode ?(Y/N) : ", 'cyan', end='')
                 confirm = input()
                 if confirm.lower() == 'y':
-                    if dev['learn'] == 'True':
-                        dev['learn'] = 'False'
+                    if dev['learn']:
+                        dev['learn'] = False
                     else:
-                        dev['learn'] = 'True'
+                        dev['learn'] = True
 
                     self.obj.update(conf_path, dev, section)
                     update_dev(dev)

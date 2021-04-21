@@ -1,9 +1,9 @@
 try:
     from assist import assistant
     from assist.calendar import g_calendar
-    from tools.data import data, youtube, wiki, google, youtube_play, goto_keys
+    from tools.data import data, youtube, wiki, google, youtube_play, goto_keys, lms_keys, login_keys
     from tools.data import install_keys, calc_keys, should_not_learn, version_keys
-    from tools.data import CALENDAR_STRS, NOTE_STRS, DAYS, MONTHS, DAY_EXTENTIONS, TIME_STRS
+    from tools.data import CALENDAR_STRS, NOTE_STRS, DAYS, MONTHS, DAY_EXTENTIONS, TIME_STRS, DATE_STRS
     from settings.logs import *
     from system.install import install, command
     from system.screen_text import command_sep
@@ -17,22 +17,21 @@ try:
     from settings.config import train_path
     from tools.shell import if_shell_type
     from tools.run_program_file import if_run_type
-    # from assist.calendar import g_calendar
+    from assist.lms.VisitLms import login
+
     import os
     import time
     import webbrowser
-    from assist.utils.helper import tell_me_about
+    from assist.utils.helper import tell_me_about, getWebDriver
     import pyautogui
     import datetime
     import multiprocessing
 except Exception as e:
     print("Exception while importing in  ai.py")
 
-import logging
+from settings.logs import *
 
 app_id = "AP8UVR-5E83UJJTRX"
-
-logger = logging.getLogger(__name__)
 
 
 def check(msg, mp, need=90):
@@ -100,7 +99,6 @@ def rep(msg, mp):
 
 
 def ai(msg):
-
     logger.debug("called assistant")
     msg = msg.replace('  ', ' ').strip().lower()
     msg.replace(bot['name'], '')
@@ -113,127 +111,149 @@ def ai(msg):
             if is_matched(msg, line, 100):
                 reply = data[line]
                 return reply
-            if check(msg, youtube_play):
-                msg = rep(msg, youtube_play)
-                logger.info(msg)
-                url = "https://www.youtube.com/results?search_query=" + msg
-                webbrowser.get().open(url)
-                reply = 'Enjoy sir. '
-            elif check(msg, goto_keys):
-                msg = rep(msg, goto_keys)
-                url = "https://" + msg
-                webbrowser.get().open(url)
-                reply = "Here is what I found for" + msg + "on google"
-            elif check(msg, youtube):
-                msg = rep(msg, youtube_play)
-                logger.info(msg)
-                url = "https://www.youtube.com/results?search_query=" + msg
-                webbrowser.get().open(url)
-                reply = 'Enjoy sir. '
-            elif check(msg, wiki):
-                msg = rep(msg, wiki)
-                reply = tell_me_about(msg)
-            elif check(msg, google):
-                msg = rep(msg, google)
-                url = "https://google.com/search?q=" + msg
-                webbrowser.get().open(url)
-                reply = "Here is what I found for" + msg + "on google"
-            elif check(msg, install_keys):
-                msg = rep(msg, install_keys)
-                reply = install(msg)
-            elif check(msg, ["capture", "my screen", "screenshot"]):
-                try:
-                    myScreenshot = pyautogui.screenshot()
-                    myScreenshot.save(f'screenshot.png')  # todo get proper directory
-                    reply = 'screen shot saved'
-                except Exception as e:
-                    print(e)
-            elif check(msg, CALENDAR_STRS):
-                # print("calendar")
-                date = get_date(msg)
-                # print("got date ", date)
-                if date:
-                    for event in g_calendar.get_events(date):
-                        reply += event
-                    return reply
+        if check(msg, youtube_play):
+            msg = rep(msg, youtube_play)
+            logger.info(msg)
+            url = "https://www.youtube.com/results?search_query=" + msg
+            webbrowser.get().open(url)
+            reply = 'Enjoy sir. '
+        elif check(msg, lms_keys):
+            if check(msg, login_keys):
+                webdriver = getWebDriver()
+                login(webdriver)
+                reply = "logged in to lms"
 
-                else:
-                    reply = "Sorry sir, din\'t get that"
-                    return reply
-            elif check(msg, calc_keys):
-                msg = rep(msg, calc_keys)
-                opr = msg.split()[1]
-                if opr == '+' or opr == 'plus':
-                    reply = str(int(msg.split()[0]) + int(msg.split()[2]))
-                elif opr == '-' or opr == "minus":
-                    reply = str(int(msg.split()[0]) - int(msg.split()[2]))
-                elif opr == 'multiply' or 'x':
-                    reply = str(int(msg.split()[0]) * int(msg.split()[2]))
-                elif opr == 'divide':
-                    reply = str(int(msg.split()[0]) / int(msg.split()[2]))
-                elif opr == 'power':
-                    reply = str(int(msg.split()[0]) ** int(msg.split()[2]))
-                else:
-                    reply = "Wrong Operator"
+        elif check(msg, goto_keys):
+            msg = rep(msg, goto_keys)
+            url = "https://" + msg
+            webbrowser.get().open(url)
+            reply = "Here is what I found for" + msg + "on google"
+        elif check(msg, youtube):
+            msg = rep(msg, youtube_play)
+            logger.info(msg)
+            url = "https://www.youtube.com/results?search_query=" + msg
+            webbrowser.get().open(url)
+            reply = 'Enjoy sir. '
+        elif check(msg, wiki):
+            msg = rep(msg, wiki)
+            reply = tell_me_about(msg)
+        elif check(msg, google):
+            msg = rep(msg, google)
+            url = "https://google.com/search?q=" + msg
+            webbrowser.get().open(url)
+            reply = "Here is what I found for" + msg + "on google"
+        elif check(msg, install_keys):
+            msg = rep(msg, install_keys)
+            reply = install(msg)
+        elif check(msg, ["capture", "my screen", "screenshot"]):
+            try:
+                myScreenshot = pyautogui.screenshot()
+                myScreenshot.save(f'screenshot.png')  # todo get proper directory
+                reply = 'screen shot saved'
+            except Exception as e:
+                print(e)
+        elif check(msg, CALENDAR_STRS):
+            # print("calendar")
+            date = get_date(msg)
+            # print("got date ", date)
+            if date:
+                for event in g_calendar.get_events(date):
+                    reply += event
+                return reply
+
             else:
-                if 0 and 'cmd:' in msg or '-s' in msg:
-                    msg = rep(msg, {'cmd:'})
-                    msg = rep(msg, {'-s'})
-                    command_sep()
-                    command(msg.lower())
-                    command_sep()
-                    reply = 'done sir'
-                else:
-                    try:
-                        f = getpath(__file__) + '.learnt'
-                        history = JsonManager.json_read(f)
-                        for line in history:
-                            if is_matched(msg, line, 95):
-                                logging.info('Learnt this before')
-                                return history[line]
+                reply = "Sorry sir, din\'t get that"
+                return reply
+        elif check(msg, calc_keys):
+            msg = rep(msg, calc_keys)
+            opr = msg.split()[1]
+            if opr == '+' or opr == 'plus':
+                reply = str(int(msg.split()[0]) + int(msg.split()[2]))
+            elif opr == '-' or opr == "minus":
+                reply = str(int(msg.split()[0]) - int(msg.split()[2]))
+            elif opr == 'multiply' or 'x':
+                reply = str(int(msg.split()[0]) * int(msg.split()[2]))
+            elif opr == 'divide':
+                reply = str(int(msg.split()[0]) / int(msg.split()[2]))
+            elif opr == 'power':
+                reply = str(int(msg.split()[0]) ** int(msg.split()[2]))
+            else:
+                reply = "Wrong Operator"
+        elif check(msg, TIME_STRS):
 
-                    except Exception as e:
-                        logging.error("Can't read history file")
+            t = time.ctime().split(" ")[3].split(":")[0:2]
+            hours = str(abs(12 - int(t[0])))
+            minutes = t[1]
+            am_pm = "AM" if int(t[0]) < 12 else "PM"
+            t = hours + ":" + minutes + " " + am_pm
+            reply = f"Sir, time is {t}"
+        elif check(msg, DATE_STRS):
 
-                    try:
-                        ft = train_path
-                        history = JsonManager.json_read(ft)
-                        for line in history:
-                            if is_matched(msg, line, 95):
-                                logging.info('You have trained this before.')
-                                return history[line]
+            t = time.ctime().split(" ")
 
-                    except:
-                        logger.info("Can't read trained data")
+            date = t[2]
+            month = datetime.date.today().month
 
-                    t = time.time()
-                    reply = assistant.ask_question(msg)
-                    t = time.time() - t
-                    logger.info(str(t) + ' sec')
-                    # cprint(t,'red')
-                    ok = True
-                    for word in should_not_learn:
-                        if word in msg.lower() or word in reply.lower():
-                            ok = False
-                            break
+            reply = f"Sir, today is {date} {MONTHS[month - 1]}"
+        else:
+            """ run with arguments """
+            if 'cmd:' in msg or '-s' in msg:
+                msg = rep(msg, {'cmd:'})
+                msg = rep(msg, {'-s'})
+                command_sep()
+                command(msg.lower())
+                command_sep()
+                reply = 'done sir'
+            else:
+                try:
+                    f = getpath(__file__) + '.learnt'
+                    history = JsonManager.json_read(f)
+                    for line in history:
+                        if is_matched(msg, line, 95):
+                            logging.info('Learnt this before')
+                            return history[line]
 
-                    if ok:
-                        logger.info('reply -> ' + reply)
-                        if LEARN == False:
-                            cprint("(Automatically LEARN MODE is disable)Enter y to learn : ", 'red', attrs=['bold'],
-                                   end='')
-                            learn = input('')
-                        else:
-                            learn = 'y'
-                        if learn.lower() == 'y':
-                            try:
-                                history.update({msg: reply})
-                                JsonManager.json_write(f, history)
-                                logger.info('Learnt')
-                            except Exception as e:
-                                logger.info("Exception while writing learnt : " + e)
+                except Exception as e:
+                    logging.error("Can't read history file")
+
+                try:
+                    ft = train_path
+                    history = JsonManager.json_read(ft)
+                    for line in history:
+                        if is_matched(msg, line, 95):
+                            logging.info('You have trained this before.')
+                            return history[line]
+
+                except:
+                    logger.info("Can't read trained data")
+                t = time.time()
+                reply = assistant.ask_question(msg)
+                t = time.time() - t
+                logger.info(str(t) + ' sec')
+                # cprint(t,'red')
+                ok = True
+                for word in should_not_learn:
+                    if word in msg.lower() or word in reply.lower():
+                        ok = False
+                        break
+                if ok:
+                    logger.info('reply -> ' + reply)
+                    if not LEARN:
+                        cprint("(Automatically LEARN MODE is disable)Enter y to learn : ", 'red', attrs=['bold'],
+                               end='')
+                        learn = input('')
+                    else:
+                        learn = 'y'
+                    if learn.lower() == 'y':
+                        try:
+                            history.update({msg: reply})
+                            JsonManager.json_write(f, history)
+                            logger.info('Learnt')
+                        except Exception as e:
+                            logger.info("Exception while writing learnt : " + e)
         return reply
     except Exception as e:
+        logger.error(f"getting some error in ai {e}")
         logger.info('Getting some error in ai')
         logger.info(e)
         return reply

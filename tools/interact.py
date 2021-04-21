@@ -141,3 +141,7 @@ def get_input():
         logger.error('Your mircrophone audio and read text both are disabled, enable them from settings')
         cprint('Your BOT do not have any listing power, give him the power from settings -_-', 'red', attrs=['bold'])
         return 'NONE'
+
+
+if __name__ == '__main__':
+    mic_input()

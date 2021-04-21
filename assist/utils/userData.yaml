@@ -5,5 +5,5 @@ iclouds:
   username: 18scse1010138
   password: Water@1232
 
-browserPref: chrome
+browserPref: 'chrome'
 

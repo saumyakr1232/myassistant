@@ -1,290 +1,317 @@
-2020-11-08 02:05:23,382 - __main__ - INFO - Credentials are set
-2020-11-08 02:05:23,382 - __main__ - INFO - log in clicked
-2020-11-08 02:05:29,420 - __main__ - INFO - get_all_courses : called
-2020-11-08 02:05:34,886 - __main__ - INFO - get_all_courses : called
-2020-11-08 02:05:35,329 - __main__ - INFO - Looking for Block Chain Technology > Attempt :1
-2020-11-08 02:05:35,330 - __main__ - INFO - Element found
-2020-11-08 02:05:37,246 - __main__ - INFO - CAT - 2
+2021-04-21 11:03:40,591 - __main__ - DEBUG - Credentials are set
+2021-04-21 11:03:40,591 - __main__ - DEBUG - log in clicked
+2021-04-21 11:03:52,310 - __main__ - INFO - get_all_courses : called
+2021-04-21 11:03:53,849 - __main__ - INFO - Looking for Compiler Design(BTCS3602) > Attempt :1
+2021-04-21 11:03:53,885 - __main__ - INFO - Looking for Compiler Design(BTCS3602) > Attempt :2
+2021-04-21 11:03:53,908 - __main__ - INFO - Looking for Compiler Design(BTCS3602) > Attempt :3
+2021-04-21 11:03:53,935 - __main__ - INFO - Looking for Compiler Design(BTCS3602) > Attempt :4
+2021-04-21 11:03:53,935 - __main__ - INFO - Element found
+2021-04-21 11:04:02,179 - __main__ - INFO - CAT-2 (For International Students)
 Quiz
-2020-11-08 02:05:37,279 - __main__ - INFO - Looks complete
-2020-11-08 02:05:37,299 - __main__ - INFO - IA examination
+Restricted Not available unless: Your Department is NRI
+2021-04-21 11:04:02,297 - __main__ - INFO - Looks complete
+2021-04-21 11:04:02,381 - __main__ - INFO - IA-1 (For All Sections)
 Quiz
-2020-11-08 02:05:37,331 - __main__ - INFO - Looks complete
-2020-11-08 02:05:37,351 - __main__ - INFO - CAT-3 for Elective-1
+2021-04-21 11:04:02,498 - __main__ - INFO - Looks complete
+2021-04-21 11:04:02,575 - __main__ - INFO - CAT-1
 Quiz
-2020-11-08 02:05:37,384 - __main__ - INFO - Looks complete
-2020-11-08 02:05:37,405 - __main__ - INFO - CAT-3 for Elective -2
+2021-04-21 11:04:02,675 - __main__ - INFO - Looks complete
+2021-04-21 11:04:02,776 - __main__ - INFO - IA1-Sec 1 & CNCS-Mr Gokul Rajan V
 Quiz
-2020-11-08 02:05:37,438 - __main__ - INFO - Looks complete
-2020-11-08 02:05:37,459 - __main__ - INFO - CAT-3 for Elective -3
+19 Jan 2021 (Tuesday)
+6.00pm to 6.15pm
+2021-04-21 11:04:02,917 - __main__ - INFO - Looks complete
+2021-04-21 11:04:02,991 - __main__ - INFO - Re-CAT-1
 Quiz
-2020-11-08 02:05:37,492 - __main__ - INFO - Looks complete
-2020-11-08 02:05:37,515 - __main__ - INFO - ETE LAB Examination ElecSec2 Students
+2021-04-21 11:04:03,125 - __main__ - INFO - Looks complete
+2021-04-21 11:04:03,279 - __main__ - INFO - IA-2 (For All Section)
 Quiz
-2020-11-08 02:05:37,547 - __main__ - INFO - looks incomplete
-2020-11-08 02:05:37,579 - __main__ - INFO - ETE LAB Examination ElecSec3 Students
+2021-04-21 11:04:03,317 - __main__ - INFO - Looks complete
+2021-04-21 11:04:03,368 - __main__ - INFO - IA-3 (For All Section)
 Quiz
-2020-11-08 02:05:37,611 - __main__ - INFO - Looks complete
-2020-11-08 02:05:37,631 - __main__ - INFO - ETE Lab VIVA Quiz for CSE Elec 3
-2020-11-08 02:05:37,662 - __main__ - INFO - Looks complete
-2020-11-08 02:05:37,684 - __main__ - INFO - ETE Examination Elective-1 December 7th @ 7.30AM to 9.30AM
+2021-04-21 11:04:03,438 - __main__ - INFO - Looks complete
+2021-04-21 11:04:03,478 - __main__ - INFO - IA-4 (For All Section)
 Quiz
-2020-11-08 02:05:37,718 - __main__ - INFO - looks incomplete
-2020-11-08 02:05:37,752 - __main__ - INFO - ETE Examination Elective-02 December 7th @ 7.30AM to 9.30AM
+2021-04-21 11:04:03,560 - __main__ - INFO - Looks complete
+2021-04-21 11:04:03,616 - __main__ - INFO - Quiz 4-Sec 1 & CNCS 1_Mr. Gokul Rajan V
+2021-04-21 11:04:03,691 - __main__ - INFO - looks incomplete
+2021-04-21 11:04:03,742 - __main__ - INFO - Quiz 5_Sec 1 & CNCS 1_Mr. Gokul Rajan V
+2021-04-21 11:04:03,806 - __main__ - INFO - looks incomplete
+2021-04-21 11:04:04,790 - __main__ - INFO - extract_quiz_info: called
+2021-04-21 11:04:06,286 - __main__ - INFO - information extracted :Attempts allowed: 1
+This quiz closed on Wednesday, 7 April 2021, 3:30 PM
+Time limit: 25 mins
+2021-04-21 11:04:06,370 - __main__ - INFO - extract_quiz_info: called
+2021-04-21 11:04:06,551 - __main__ - INFO - information extracted :Attempts allowed: 1
+This quiz closed on Wednesday, 7 April 2021, 3:00 PM
+Time limit: 25 mins
+2021-04-21 11:04:12,967 - __main__ - INFO - Looking for Enterpreneurship(BTCS8101) > Attempt :1
+2021-04-21 11:04:12,985 - __main__ - INFO - Looking for Enterpreneurship(BTCS8101) > Attempt :2
+2021-04-21 11:04:13,008 - __main__ - INFO - Looking for Enterpreneurship(BTCS8101) > Attempt :3
+2021-04-21 11:04:13,025 - __main__ - INFO - Looking for Enterpreneurship(BTCS8101) > Attempt :4
+2021-04-21 11:04:13,038 - __main__ - INFO - Looking for Enterpreneurship(BTCS8101) > Attempt :5
+2021-04-21 11:04:13,038 - __main__ - INFO - Element found
+2021-04-21 11:04:14,640 - __main__ - INFO - CAT 1 EXAM ENTREPRENEURSHIP
 Quiz
-2020-11-08 02:05:37,785 - __main__ - INFO - looks incomplete
-2020-11-08 02:05:37,817 - __main__ - INFO - ETE Examination Elective-03 December 7th @ 7.30AM to 9.30AM
+2021-04-21 11:04:14,732 - __main__ - INFO - Looks complete
+2021-04-21 11:04:14,787 - __main__ - INFO - IA1_6/2/21
 Quiz
-2020-11-08 02:05:37,851 - __main__ - INFO - looks incomplete
-2020-11-08 02:05:39,270 - __main__ - INFO - extract_quiz_info: called
-2020-11-08 02:05:40,356 - __main__ - INFO - information extracted :Attempts allowed: 1
-The quiz will not be available until Monday, 7 December 2020, 7:30 AM
-This quiz will close on Monday, 7 December 2020, 9:30 AM.
-Time limit: 2 hours
-2020-11-08 02:05:40,385 - __main__ - INFO - extract_quiz_info: called
-2020-11-08 02:05:40,513 - __main__ - INFO - information extracted :Attempts allowed: 1
-The quiz will not be available until Monday, 7 December 2020, 7:30 AM
-This quiz will close on Monday, 7 December 2020, 9:30 AM.
-Time limit: 2 hours
-2020-11-08 02:05:40,542 - __main__ - INFO - extract_quiz_info: called
-2020-11-08 02:05:40,663 - __main__ - INFO - information extracted :Attempts allowed: 1
-The quiz will not be available until Monday, 7 December 2020, 7:30 AM
-This quiz will close on Monday, 7 December 2020, 9:30 AM.
-Time limit: 2 hours
-2020-11-08 02:05:40,693 - __main__ - INFO - extract_quiz_info: called
-2020-11-08 02:05:40,798 - __main__ - INFO - information extracted :Attempts allowed: 1
-This quiz closed on Saturday, 31 October 2020, 11:00 AM
-2020-11-08 02:05:46,362 - __main__ - INFO - Looking for Computer Graphics > Attempt :1
-2020-11-08 02:05:46,375 - __main__ - INFO - Looking for Computer Graphics > Attempt :2
-2020-11-08 02:05:46,388 - __main__ - INFO - Looking for Computer Graphics > Attempt :3
-2020-11-08 02:05:46,401 - __main__ - INFO - Looking for Computer Graphics > Attempt :4
-2020-11-08 02:05:46,402 - __main__ - INFO - Element found
-2020-11-08 02:05:47,828 - __main__ - INFO - ETE SEC 1 P1 - VIVA
+2021-04-21 11:04:14,843 - __main__ - INFO - Looks complete
+2021-04-21 11:04:14,880 - __main__ - INFO - IA_2
 Quiz
-2020-11-08 02:05:47,862 - __main__ - INFO - looks incomplete
-2020-11-08 02:05:47,894 - __main__ - INFO - ETE Lab Viva Quiz_ Sec 2_P1
-2020-11-08 02:05:47,926 - __main__ - INFO - looks incomplete
-2020-11-08 02:05:47,957 - __main__ - INFO - ETE Lab Viva Quiz_Sec 2_P2
-2020-11-08 02:05:47,989 - __main__ - INFO - looks incomplete
-2020-11-08 02:05:48,020 - __main__ - INFO - ETE Lab Viva Quiz_ Sec 9_P1
-2020-11-08 02:05:48,054 - __main__ - INFO - Looks complete
-2020-11-08 02:05:48,074 - __main__ - INFO - ETE Lab Viva Quiz_Sec 9_P2
-2020-11-08 02:05:48,110 - __main__ - INFO - looks incomplete
-2020-11-08 02:05:48,142 - __main__ - INFO - ETE Lab Viva Quiz_Se 7_P2
-2020-11-08 02:05:48,176 - __main__ - INFO - looks incomplete
-2020-11-08 02:05:48,207 - __main__ - INFO - ETE Lab quiz (viva)
-2020-11-08 02:05:48,240 - __main__ - INFO - looks incomplete
-2020-11-08 02:05:50,297 - __main__ - INFO - extract_quiz_info: called
-2020-11-08 02:05:51,384 - __main__ - INFO - information extracted :Attempts allowed: 1
-This quiz closed on Thursday, 5 November 2020, 5:09 PM
-Time limit: 13 mins
-2020-11-08 02:05:51,416 - __main__ - INFO - extract_quiz_info: called
-2020-11-08 02:05:51,536 - __main__ - INFO - information extracted :Attempts allowed: 1
-This quiz closed on Thursday, 5 November 2020, 3:30 PM
-Time limit: 20 mins
-2020-11-08 02:05:51,569 - __main__ - INFO - extract_quiz_info: called
-2020-11-08 02:05:51,693 - __main__ - INFO - information extracted :Attempts allowed: 1
-This quiz closed on Wednesday, 4 November 2020, 5:30 PM
-Time limit: 20 mins
-2020-11-08 02:05:51,728 - __main__ - INFO - extract_quiz_info: called
-2020-11-08 02:05:51,800 - __main__ - INFO - information extracted :Attempts allowed: 1
-This quiz closed on Wednesday, 4 November 2020, 12:30 PM
-Time limit: 20 mins
-2020-11-08 02:05:51,833 - __main__ - INFO - extract_quiz_info: called
-2020-11-08 02:05:51,978 - __main__ - INFO - information extracted :Attempts allowed: 1
-This quiz closed on Thursday, 5 November 2020, 10:30 AM
-Time limit: 20 mins
-2020-11-08 02:05:52,008 - __main__ - INFO - extract_quiz_info: called
-2020-11-08 02:05:52,108 - __main__ - INFO - information extracted :Attempts allowed: 1
-This quiz closed on Wednesday, 4 November 2020, 2:30 PM
-Time limit: 10 mins
-2020-11-08 02:05:57,667 - __main__ - INFO - Looking for Design & Analysis of Algorithms > Attempt :1
-2020-11-08 02:05:57,679 - __main__ - INFO - Looking for Design & Analysis of Algorithms > Attempt :2
-2020-11-08 02:05:57,694 - __main__ - INFO - Looking for Design & Analysis of Algorithms > Attempt :3
-2020-11-08 02:05:57,706 - __main__ - INFO - Looking for Design & Analysis of Algorithms > Attempt :4
-2020-11-08 02:05:57,719 - __main__ - INFO - Looking for Design & Analysis of Algorithms > Attempt :5
-2020-11-08 02:05:57,719 - __main__ - INFO - Element found
-2020-11-08 02:06:00,329 - __main__ - INFO - IA 1 sec 4 and sec 5 only
+2021-04-21 11:04:14,981 - __main__ - INFO - Looks complete
+2021-04-21 11:04:15,034 - __main__ - INFO - IA-3 for Batch 1 and 2
 Quiz
-2020-11-08 02:06:00,362 - __main__ - INFO - Looks complete
-2020-11-08 02:06:00,384 - __main__ - INFO - IA 2 sec 4 and sec 5 only
+2021-04-21 11:04:15,093 - __main__ - INFO - looks incomplete
+2021-04-21 11:04:15,173 - __main__ - INFO - IA_4
 Quiz
-2020-11-08 02:06:00,419 - __main__ - INFO - Looks complete
-2020-11-08 02:06:00,441 - __main__ - INFO - IA 3 for sec 4,5,6 and 7
+2021-04-21 11:04:15,280 - __main__ - INFO - Looks complete
+2021-04-21 11:04:15,346 - __main__ - INFO - IA_5
 Quiz
-2020-11-08 02:06:00,478 - __main__ - INFO - looks incomplete
-2020-11-08 02:06:00,512 - __main__ - INFO - IA 4 for sec 4,5,6 and 7
+2021-04-21 11:04:15,422 - __main__ - INFO - Looks complete
+2021-04-21 11:04:15,471 - __main__ - INFO - IA_1
 Quiz
-2020-11-08 02:06:00,547 - __main__ - INFO - looks incomplete
-2020-11-08 02:06:00,583 - __main__ - INFO - IA 1 for Sec-2, Sec-3 and Sec-8 Only
+2021-04-21 11:04:15,581 - __main__ - INFO - Looks complete
+2021-04-21 11:04:15,643 - __main__ - INFO - CAT_2
 Quiz
-2020-11-08 02:06:00,617 - __main__ - INFO - Looks complete
-2020-11-08 02:06:00,640 - __main__ - INFO - IA 2 for Sec-2, Sec-3 and Sec-8 Only
-Quiz
-2020-11-08 02:06:00,673 - __main__ - INFO - Looks complete
-2020-11-08 02:06:00,694 - __main__ - INFO - IA 3 for Sec-2, Sec-3 and Sec-8 Only
-Quiz
-2020-11-08 02:06:00,727 - __main__ - INFO - Looks complete
-2020-11-08 02:06:00,750 - __main__ - INFO - CAT-2_BCSE3031
-Quiz
-2020-11-08 02:06:00,784 - __main__ - INFO - Looks complete
-2020-11-08 02:06:01,496 - __main__ - INFO - extract_quiz_info: called
-2020-11-08 02:06:02,391 - __main__ - INFO - information extracted :Attempts allowed: 1
-This quiz closed on Saturday, 3 October 2020, 12:42 PM
-Time limit: 1 hour 30 mins
-2020-11-08 02:06:02,424 - __main__ - INFO - extract_quiz_info: called
-2020-11-08 02:06:02,531 - __main__ - INFO - information extracted :Attempts allowed: 1
-This quiz closed on Saturday, 3 October 2020, 12:40 PM
-Time limit: 1 hour 30 mins
-2020-11-08 02:06:08,034 - __main__ - INFO - Looking for DSCPP > Attempt :1
-2020-11-08 02:06:08,046 - __main__ - INFO - Looking for DSCPP > Attempt :2
-2020-11-08 02:06:08,060 - __main__ - INFO - Looking for DSCPP > Attempt :3
-2020-11-08 02:06:08,075 - __main__ - INFO - Looking for DSCPP > Attempt :4
-2020-11-08 02:06:08,087 - __main__ - INFO - Looking for DSCPP > Attempt :5
-2020-11-08 02:06:08,100 - __main__ - INFO - Looking for DSCPP > Attempt :6
-2020-11-08 02:06:08,100 - __main__ - INFO - Element found
-2020-11-08 02:06:09,026 - __main__ - INFO - DSCPP ASSESSMENT 2
-Quiz
-2020-11-08 02:06:09,059 - __main__ - INFO - Looks complete
-2020-11-08 02:06:09,081 - __main__ - INFO - DSCPP Assessment 1
-Quiz
-2020-11-08 02:06:09,116 - __main__ - INFO - Looks complete
-2020-11-08 02:06:09,138 - __main__ - INFO - DSCPP Grand Assessment Test
-Quiz
-2020-11-08 02:06:09,173 - __main__ - INFO - Looks complete
-2020-11-08 02:06:09,193 - __main__ - INFO - PEP Enabled Program Quiz for Faculty Members
-2020-11-08 02:06:09,227 - __main__ - INFO - Looks complete
-2020-11-08 02:06:14,706 - __main__ - INFO - Looking for English Proficiency and Aptitude Building - 5 > Attempt :1
-2020-11-08 02:06:14,718 - __main__ - INFO - Looking for English Proficiency and Aptitude Building - 5 > Attempt :2
-2020-11-08 02:06:14,730 - __main__ - INFO - Looking for English Proficiency and Aptitude Building - 5 > Attempt :3
-2020-11-08 02:06:14,743 - __main__ - INFO - Looking for English Proficiency and Aptitude Building - 5 > Attempt :4
-2020-11-08 02:06:14,755 - __main__ - INFO - Looking for English Proficiency and Aptitude Building - 5 > Attempt :5
-2020-11-08 02:06:14,768 - __main__ - INFO - Looking for English Proficiency and Aptitude Building - 5 > Attempt :6
-2020-11-08 02:06:14,780 - __main__ - INFO - Looking for English Proficiency and Aptitude Building - 5 > Attempt :7
-2020-11-08 02:06:14,780 - __main__ - INFO - Element found
-2020-11-08 02:06:15,907 - __main__ - INFO - ETE English Nov 2020
-Quiz
-2020-11-08 02:06:15,939 - __main__ - INFO - Looks complete
-2020-11-08 02:06:15,960 - __main__ - INFO - ETE Quant Nov 2020
-Quiz
-2020-11-08 02:06:15,991 - __main__ - INFO - Looks complete
-2020-11-08 02:06:21,478 - __main__ - INFO - Looking for Industrial/Summer Training -II > Attempt :1
-2020-11-08 02:06:21,491 - __main__ - INFO - Looking for Industrial/Summer Training -II > Attempt :2
-2020-11-08 02:06:21,504 - __main__ - INFO - Looking for Industrial/Summer Training -II > Attempt :3
-2020-11-08 02:06:21,517 - __main__ - INFO - Looking for Industrial/Summer Training -II > Attempt :4
-2020-11-08 02:06:21,530 - __main__ - INFO - Looking for Industrial/Summer Training -II > Attempt :5
-2020-11-08 02:06:21,543 - __main__ - INFO - Looking for Industrial/Summer Training -II > Attempt :6
-2020-11-08 02:06:21,556 - __main__ - INFO - Looking for Industrial/Summer Training -II > Attempt :7
-2020-11-08 02:06:21,569 - __main__ - INFO - Looking for Industrial/Summer Training -II > Attempt :8
-2020-11-08 02:06:21,569 - __main__ - INFO - Element found
-2020-11-08 02:06:48,151 - __main__ - INFO - Looking for Industry Oriented Java-III > Attempt :1
-2020-11-08 02:06:48,164 - __main__ - INFO - Looking for Industry Oriented Java-III > Attempt :2
-2020-11-08 02:06:48,177 - __main__ - INFO - Looking for Industry Oriented Java-III > Attempt :3
-2020-11-08 02:06:48,190 - __main__ - INFO - Looking for Industry Oriented Java-III > Attempt :4
-2020-11-08 02:06:48,202 - __main__ - INFO - Looking for Industry Oriented Java-III > Attempt :5
-2020-11-08 02:06:48,215 - __main__ - INFO - Looking for Industry Oriented Java-III > Attempt :6
-2020-11-08 02:06:48,228 - __main__ - INFO - Looking for Industry Oriented Java-III > Attempt :7
-2020-11-08 02:06:48,241 - __main__ - INFO - Looking for Industry Oriented Java-III > Attempt :8
-2020-11-08 02:06:48,254 - __main__ - INFO - Looking for Industry Oriented Java-III > Attempt :9
-2020-11-08 02:06:48,254 - __main__ - INFO - Element found
-2020-11-08 02:06:49,901 - __main__ - INFO - ETE_QUIZ_BCSE3074_03-11-2020_6.30 PM TO 10.30PM
-2020-11-08 02:06:49,932 - __main__ - INFO - Looks complete
-2020-11-08 02:06:49,950 - __main__ - INFO - Collection Quiz (all batches)
-2020-11-08 02:06:49,986 - __main__ - INFO - Looks complete
-2020-11-08 02:06:50,005 - __main__ - INFO - JDBC_quiz (all batches)
-2020-11-08 02:06:50,033 - __main__ - INFO - Looks complete
-2020-11-08 02:06:50,049 - __main__ - INFO - SERVLET Quiz (all batches)
-2020-11-08 02:06:50,078 - __main__ - INFO - Looks complete
-2020-11-08 02:06:50,094 - __main__ - INFO - JSP QUIZ (all batches)
-2020-11-08 02:06:50,121 - __main__ - INFO - Looks complete
-2020-11-08 02:06:50,144 - __main__ - INFO - J2EE Quiz (all batches)
-2020-11-08 02:06:50,178 - __main__ - INFO - Looks complete
-2020-11-08 02:06:50,195 - __main__ - INFO - Collection Quiz_All section_19.8.2020
-2020-11-08 02:06:50,223 - __main__ - INFO - Looks complete
-2020-11-08 02:06:55,555 - __main__ - INFO - Looking for Industry Oriented Python-2(BCSE3072) > Attempt :1
-2020-11-08 02:06:55,570 - __main__ - INFO - Looking for Industry Oriented Python-2(BCSE3072) > Attempt :2
-2020-11-08 02:07:26,687 - __main__ - INFO - Looking for Industry Oriented Python-III > Attempt :1
-2020-11-08 02:07:26,701 - __main__ - INFO - Looking for Industry Oriented Python-III > Attempt :2
-2020-11-08 02:07:56,433 - __main__ - INFO - Looking for Machine Learning > Attempt :1
-2020-11-08 02:07:56,446 - __main__ - INFO - Looking for Machine Learning > Attempt :2
-2020-11-08 02:07:56,461 - __main__ - INFO - Looking for Machine Learning > Attempt :3
-2020-11-08 02:07:56,476 - __main__ - INFO - Looking for Machine Learning > Attempt :4
-2020-11-08 02:07:56,491 - __main__ - INFO - Looking for Machine Learning > Attempt :5
-2020-11-08 02:07:56,505 - __main__ - INFO - Looking for Machine Learning > Attempt :6
-2020-11-08 02:07:56,518 - __main__ - INFO - Looking for Machine Learning > Attempt :7
-2020-11-08 02:07:56,531 - __main__ - INFO - Looking for Machine Learning > Attempt :8
-2020-11-08 02:07:56,544 - __main__ - INFO - Looking for Machine Learning > Attempt :9
-2020-11-08 02:07:56,559 - __main__ - INFO - Looking for Machine Learning > Attempt :10
-2020-11-08 02:07:56,573 - __main__ - INFO - Looking for Machine Learning > Attempt :11
-2020-11-08 02:07:56,586 - __main__ - INFO - Looking for Machine Learning > Attempt :12
-2020-11-08 02:07:56,587 - __main__ - INFO - Element found
-2020-11-08 02:07:58,467 - __main__ - INFO - CAT-1
-Quiz
-2020-11-08 02:07:58,501 - __main__ - INFO - Looks complete
-2020-11-08 02:07:58,524 - __main__ - INFO - CAT-2
-Quiz
-2020-11-08 02:07:58,558 - __main__ - INFO - Looks complete
-2020-11-08 02:07:58,580 - __main__ - INFO - IA-1
-Quiz
-2020-11-08 02:07:58,618 - __main__ - INFO - Looks complete
-2020-11-08 02:07:58,640 - __main__ - INFO - IA-2
-Quiz
-2020-11-08 02:07:58,677 - __main__ - INFO - Looks complete
-2020-11-08 02:07:58,702 - __main__ - INFO - IA-3
-Quiz
-2020-11-08 02:07:58,736 - __main__ - INFO - Looks complete
-2020-11-08 02:07:58,759 - __main__ - INFO - IA-4
-Quiz
-2020-11-08 02:07:58,792 - __main__ - INFO - Looks complete
-2020-11-08 02:07:58,815 - __main__ - INFO - ETE - SEC 3 - VIVA
-Quiz
-2020-11-08 02:07:58,851 - __main__ - INFO - looks incomplete
-2020-11-08 02:07:58,884 - __main__ - INFO - ETE_LAB_QUIZ_SECTION_4(06/11/20)
-2020-11-08 02:07:58,917 - __main__ - INFO - looks incomplete
-2020-11-08 02:07:58,949 - __main__ - INFO - Practical ETE - Viva
-Quiz
-2020-11-08 02:07:58,981 - __main__ - INFO - looks incomplete
-2020-11-08 02:07:59,012 - __main__ - INFO - ETE Viva
-Quiz
-2020-11-08 02:07:59,046 - __main__ - INFO - Looks complete
-2020-11-08 02:08:00,089 - __main__ - INFO - extract_quiz_info: called
-2020-11-08 02:08:01,264 - __main__ - INFO - information extracted :Attempts allowed: 1
-This quiz closed on Friday, 6 November 2020, 5:30 PM
+Restricted Not available unless: Your Department is NRI
+2021-04-21 11:04:15,740 - __main__ - INFO - Looks complete
+2021-04-21 11:04:16,280 - __main__ - INFO - extract_quiz_info: called
+2021-04-21 11:04:18,126 - __main__ - INFO - information extracted :Attempts allowed: 1
+This quiz closed on Wednesday, 24 February 2021, 2:15 PM
 Time limit: 15 mins
-2020-11-08 02:08:01,292 - __main__ - INFO - extract_quiz_info: called
-2020-11-08 02:08:01,408 - __main__ - INFO - information extracted :Attempts allowed: 1
-This quiz closed on Friday, 6 November 2020, 5:30 PM
-Time limit: 15 mins
-2020-11-08 02:08:01,437 - __main__ - INFO - extract_quiz_info: called
-2020-11-08 02:08:01,507 - __main__ - INFO - information extracted :Attempts allowed: 1
-This quiz closed on Saturday, 31 October 2020, 5:30 PM
-Time limit: 15 mins
-2020-11-08 02:08:07,010 - __main__ - INFO - Looking for Minor Project > Attempt :1
-2020-11-08 02:08:07,023 - __main__ - INFO - Looking for Minor Project > Attempt :2
-2020-11-08 02:08:07,036 - __main__ - INFO - Looking for Minor Project > Attempt :3
-2020-11-08 02:08:07,049 - __main__ - INFO - Looking for Minor Project > Attempt :4
-2020-11-08 02:08:07,063 - __main__ - INFO - Looking for Minor Project > Attempt :5
-2020-11-08 02:08:07,076 - __main__ - INFO - Looking for Minor Project > Attempt :6
-2020-11-08 02:08:07,092 - __main__ - INFO - Looking for Minor Project > Attempt :7
-2020-11-08 02:08:07,107 - __main__ - INFO - Looking for Minor Project > Attempt :8
-2020-11-08 02:08:07,121 - __main__ - INFO - Looking for Minor Project > Attempt :9
-2020-11-08 02:08:07,136 - __main__ - INFO - Looking for Minor Project > Attempt :10
-2020-11-08 02:08:07,150 - __main__ - INFO - Looking for Minor Project > Attempt :11
-2020-11-08 02:08:07,164 - __main__ - INFO - Looking for Minor Project > Attempt :12
-2020-11-08 02:08:07,178 - __main__ - INFO - Looking for Minor Project > Attempt :13
-2020-11-08 02:08:07,179 - __main__ - INFO - Element found
-2020-11-08 02:08:33,938 - __main__ - INFO - Looking for Software Engineering & Testing Methodologies > Attempt :1
-2020-11-08 02:08:33,951 - __main__ - INFO - Looking for Software Engineering & Testing Methodologies > Attempt :2
-2020-11-08 02:08:33,964 - __main__ - INFO - Looking for Software Engineering & Testing Methodologies > Attempt :3
-2020-11-08 02:08:33,976 - __main__ - INFO - Looking for Software Engineering & Testing Methodologies > Attempt :4
-2020-11-08 02:08:33,989 - __main__ - INFO - Looking for Software Engineering & Testing Methodologies > Attempt :5
-2020-11-08 02:08:34,001 - __main__ - INFO - Looking for Software Engineering & Testing Methodologies > Attempt :6
-2020-11-08 02:08:34,014 - __main__ - INFO - Looking for Software Engineering & Testing Methodologies > Attempt :7
-2020-11-08 02:08:34,027 - __main__ - INFO - Looking for Software Engineering & Testing Methodologies > Attempt :8
-2020-11-08 02:08:34,041 - __main__ - INFO - Looking for Software Engineering & Testing Methodologies > Attempt :9
-2020-11-08 02:08:34,055 - __main__ - INFO - Looking for Software Engineering & Testing Methodologies > Attempt :10
-2020-11-08 02:08:34,069 - __main__ - INFO - Looking for Software Engineering & Testing Methodologies > Attempt :11
-2020-11-08 02:08:34,083 - __main__ - INFO - Looking for Software Engineering & Testing Methodologies > Attempt :12
-2020-11-08 02:08:34,097 - __main__ - INFO - Looking for Software Engineering & Testing Methodologies > Attempt :13
-2020-11-08 02:08:34,110 - __main__ - INFO - Looking for Software Engineering & Testing Methodologies > Attempt :14
-2020-11-08 02:08:34,110 - __main__ - INFO - Element found
+2021-04-21 11:04:24,606 - __main__ - INFO - Looking for Industrial/Summer Training -II > Attempt :1
+2021-04-21 11:04:24,636 - __main__ - INFO - Looking for Industrial/Summer Training -II > Attempt :2
+2021-04-21 11:04:24,665 - __main__ - INFO - Looking for Industrial/Summer Training -II > Attempt :3
+2021-04-21 11:04:24,666 - __main__ - INFO - Element found
+2021-04-21 11:04:52,519 - __main__ - INFO - Looking for Industry Oriented Java-IV(BTCS3652) > Attempt :1
+2021-04-21 11:04:52,557 - __main__ - INFO - Looking for Industry Oriented Java-IV(BTCS3652) > Attempt :2
+2021-04-21 11:04:52,598 - __main__ - INFO - Looking for Industry Oriented Java-IV(BTCS3652) > Attempt :3
+2021-04-21 11:04:52,628 - __main__ - INFO - Looking for Industry Oriented Java-IV(BTCS3652) > Attempt :4
+2021-04-21 11:04:52,650 - __main__ - INFO - Looking for Industry Oriented Java-IV(BTCS3652) > Attempt :5
+2021-04-21 11:04:52,673 - __main__ - INFO - Looking for Industry Oriented Java-IV(BTCS3652) > Attempt :6
+2021-04-21 11:04:52,696 - __main__ - INFO - Looking for Industry Oriented Java-IV(BTCS3652) > Attempt :7
+2021-04-21 11:04:52,697 - __main__ - INFO - Element found
+2021-04-21 11:05:21,282 - __main__ - INFO - Looking for Industry Oriented Python-2(BCSE3072) > Attempt :1
+2021-04-21 11:05:21,318 - __main__ - INFO - Looking for Industry Oriented Python-2(BCSE3072) > Attempt :2
+2021-04-21 11:05:21,355 - __main__ - INFO - Looking for Industry Oriented Python-2(BCSE3072) > Attempt :3
+2021-04-21 11:05:21,406 - __main__ - INFO - Looking for Industry Oriented Python-2(BCSE3072) > Attempt :4
+2021-04-21 11:05:21,452 - __main__ - INFO - Looking for Industry Oriented Python-2(BCSE3072) > Attempt :5
+2021-04-21 11:05:21,474 - __main__ - INFO - Looking for Industry Oriented Python-2(BCSE3072) > Attempt :6
+2021-04-21 11:05:21,509 - __main__ - INFO - Looking for Industry Oriented Python-2(BCSE3072) > Attempt :7
+2021-04-21 11:05:21,547 - __main__ - INFO - Looking for Industry Oriented Python-2(BCSE3072) > Attempt :8
+2021-04-21 11:05:21,548 - __main__ - INFO - Element found
+2021-04-21 11:05:24,807 - __main__ - INFO - Diagnostic Test
+Quiz
+2021-04-21 11:05:24,876 - __main__ - INFO - Looks complete
+2021-04-21 11:05:24,927 - __main__ - INFO - Sample Quiz only for testing purpose 5 April, 2020
+Sample Quiz only for testing purpose on 5 April, 2020
+2021-04-21 11:05:25,019 - __main__ - INFO - Looks complete
+2021-04-21 11:05:25,059 - __main__ - INFO - Assessment-1 Industry Oriented Python-2 MCQ on 4 April 2020 (SeCTION 1- 7)
+Quiz
+SECTION CSE-1 to CSE-7
+Sections 1, 2,3, 4, 5 , 6 and 7
+Timings : 2:00 PM to 2:30 PM
+Assessment-1 Industry Oriented Python-2 MCQ on 4 April 2020
+2021-04-21 11:05:25,152 - __main__ - INFO - Looks complete
+2021-04-21 11:05:25,217 - __main__ - INFO - Assessment-1 Industry Oriented Python-2 MCQ on 4 April 2020 SECTION 8-10CNCS,AIML,CCV/DA,BA/OSS/OT/GG
+Quiz
+Assessment -1 TIMING : 2:30 PM to 3:00 PM
+Batch - CSE-8, 9, 10, CNCS, AIML, CCV/DA, BA/OSS/OT/GG
+INDUSTRY ORIENTED PYTHON-2 
+BCSE-3072
+2021-04-21 11:05:25,287 - __main__ - INFO - Looks complete
+2021-04-21 11:05:25,330 - __main__ - INFO - Assessment-1 MCQ on 7 April 2020 (only for missed candidates)
+Quiz
+Assessment-1 MCQ on 7 April 2020 
+Industry Oriented Python-2
+Timings: 5:30 - 6:00 PM
+(only for missed candidates)
+2021-04-21 11:05:25,395 - __main__ - INFO - Looks complete
+2021-04-21 11:05:25,433 - __main__ - INFO - Quiz (Assessment-1) for Remedial classes IOP-2 on 13 April 2020
+quiz for remedial classes 
+Industry oriented Python-2 BCSE-3072
+13 April 2020
+Timings : 5:30 PM - 6:00 PM
+2021-04-21 11:05:25,504 - __main__ - INFO - Looks complete
+2021-04-21 11:05:25,532 - __main__ - INFO - Internal Lab Exam Quiz (or viva ) Section 6 Group 2
+2021-04-21 11:05:25,581 - __main__ - INFO - Looks complete
+2021-04-21 11:05:25,632 - __main__ - INFO - 3:00 - 3:30 PM Quiz for Internal Lab Exam for CCV/DA/Others on 21 April 2020
+Quiz contains 10 questions (MCQ)
+2021-04-21 11:05:25,741 - __main__ - INFO - Looks complete
+2021-04-21 11:05:25,793 - __main__ - INFO - Internal Exam Quiz Batch 4 & CNCS-22-04-2020
+2021-04-21 11:05:25,877 - __main__ - INFO - Looks complete
+2021-04-21 11:05:25,927 - __main__ - INFO - Section-1-Quiz-Internal Lab Exam(23-04-2020)
+2021-04-21 11:05:26,027 - __main__ - INFO - Looks complete
+2021-04-21 11:05:26,085 - __main__ - INFO - 10:00 - 10:30 AM Quiz Internal Lab exam CSE-5 on 23 April 2020
+This quiz has 10 questions
+2021-04-21 11:05:26,180 - __main__ - INFO - Looks complete
+2021-04-21 11:05:26,256 - __main__ - INFO - MCQ Quiz for Assessment-3 IOP-2 on 27 April 2020 for section 1-7
+Timings : 5:30 PM(27 April 2020) to 8:30 AM(28 April 2020)
+Object Oriented Programming
+Python Fundamentals  
+Functions / recursive functions
+Files in Python
+2021-04-21 11:05:26,345 - __main__ - INFO - Looks complete
+2021-04-21 11:05:26,370 - __main__ - INFO - Internal Lab Exam Quiz( or viva) for Section 2 Group P2
+2021-04-21 11:05:26,428 - __main__ - INFO - Looks complete
+2021-04-21 11:05:26,459 - __main__ - INFO - BA+OSS+IOT+GG_Internal-Lab_Viva_P1-P2_PKDeka-AKBharti
+Quiz
+2021-04-21 11:05:26,516 - __main__ - INFO - Looks complete
+2021-04-21 11:05:26,542 - __main__ - INFO - Internal Exam Quiz Section 3&7
+2021-04-21 11:05:26,627 - __main__ - INFO - Looks complete
+2021-04-21 11:05:26,711 - __main__ - INFO - MCQ Assessment-3 for IOP-2 on 27 April 2020 for section 8-10, CNCS, AIML, CCV/DA, BA, OSS, OT, GG
+Quiz
+Timings : 6:30 PM (27 April 2020) to 08:30 AM(28 April 2020)
+2021-04-21 11:05:26,831 - __main__ - INFO - Looks complete
+2021-04-21 11:05:26,906 - __main__ - INFO - Internal Viva of IOP-2 for AIML section sem IV by PKDeka+AKBharti
+Quiz
+This quiz contains 10 multiple choice questions and total time for quiz allotted is 30 Min.
+2021-04-21 11:05:27,028 - __main__ - INFO - Looks complete
+2021-04-21 11:05:27,095 - __main__ - INFO - BCSE3072 Quiz5 Database connectivity
+Unit-5 Database connect
+Create a table
+Insert values into table ; Query
+2021-04-21 11:05:27,178 - __main__ - INFO - Looks complete
+2021-04-21 11:05:27,241 - __main__ - INFO - BCSE3072_Quiz6
+Unit 6: Database connectivity
+Retrieving data, updating data and deleting data from a table
+2021-04-21 11:05:27,303 - __main__ - INFO - Looks complete
+2021-04-21 11:05:27,366 - __main__ - INFO - BCSE3072_Quiz7
+Unit 7
+Transaction processing, using comment
+using rollback
+2021-04-21 11:05:27,426 - __main__ - INFO - Looks complete
+2021-04-21 11:05:27,455 - __main__ - INFO - sq
+Quiz
+2021-04-21 11:05:27,557 - __main__ - INFO - Looks complete
+2021-04-21 11:05:27,600 - __main__ - INFO - BCSE3072_Quiz8
+Networking
+Sharing data using sockets
+2021-04-21 11:05:27,669 - __main__ - INFO - Looks complete
+2021-04-21 11:05:27,709 - __main__ - INFO - BCSE3072 Quiz-9 Echo-server/client
+BCSE3071 Quiz 9 Echo-server / client
+2021-04-21 11:05:27,789 - __main__ - INFO - Looks complete
+2021-04-21 11:05:27,857 - __main__ - INFO - BCSE-3072 Quiz 10 Multi-threading and Synchronizing
+BCSE-3072 Quiz 10
+Multi-threading and Synchronizing
+2021-04-21 11:05:27,922 - __main__ - INFO - Looks complete
+2021-04-21 11:05:27,967 - __main__ - INFO - Internal Exam Quiz section 8
+2021-04-21 11:05:28,063 - __main__ - INFO - Looks complete
+2021-04-21 11:05:28,113 - __main__ - INFO - Internal Exam Quiz Batch 9
+Time 10.30 to 11. am
+2021-04-21 11:05:28,168 - __main__ - INFO - Looks complete
+2021-04-21 11:05:28,216 - __main__ - INFO - Internal Quiz Batch 4 & CNCS
+2021-04-21 11:05:28,325 - __main__ - INFO - Looks complete
+2021-04-21 11:05:28,373 - __main__ - INFO - BCSE3072 Section 10 P2 ( 29 Apr 2020 1:30 pm to 3:30 pm)
+Quiz
+2021-04-21 11:05:28,471 - __main__ - INFO - Looks complete
+2021-04-21 11:05:28,520 - __main__ - INFO - DSCPP Training QUIZ 1
+2021-04-21 11:05:28,600 - __main__ - INFO - Looks complete
+2021-04-21 11:05:34,968 - __main__ - INFO - Looking for Industry Oriented Python-IV(BTCS3651) > Attempt :1
+2021-04-21 11:05:35,003 - __main__ - INFO - Looking for Industry Oriented Python-IV(BTCS3651) > Attempt :2
+2021-04-21 11:05:35,038 - __main__ - INFO - Looking for Industry Oriented Python-IV(BTCS3651) > Attempt :3
+2021-04-21 11:05:35,080 - __main__ - INFO - Looking for Industry Oriented Python-IV(BTCS3651) > Attempt :4
+2021-04-21 11:05:35,115 - __main__ - INFO - Looking for Industry Oriented Python-IV(BTCS3651) > Attempt :5
+2021-04-21 11:05:35,149 - __main__ - INFO - Looking for Industry Oriented Python-IV(BTCS3651) > Attempt :6
+2021-04-21 11:05:35,188 - __main__ - INFO - Looking for Industry Oriented Python-IV(BTCS3651) > Attempt :7
+2021-04-21 11:05:35,226 - __main__ - INFO - Looking for Industry Oriented Python-IV(BTCS3651) > Attempt :8
+2021-04-21 11:05:35,266 - __main__ - INFO - Looking for Industry Oriented Python-IV(BTCS3651) > Attempt :9
+2021-04-21 11:05:35,267 - __main__ - INFO - Element found
+2021-04-21 11:05:37,589 - __main__ - INFO - QUIZ 1
+Unit 1 - First Assessment 
+Quiz-1
+Timing : 5:30 PM to 6:00 PM (20 Questions)  
+2021-04-21 11:05:37,690 - __main__ - INFO - Looks complete
+2021-04-21 11:05:37,742 - __main__ - INFO - Unit 2 Quiz
+2021-04-21 11:05:37,806 - __main__ - INFO - Looks complete
+2021-04-21 11:05:37,873 - __main__ - INFO - Unit 3 Assessment Quiz
+2021-04-21 11:05:37,948 - __main__ - INFO - Looks complete
+2021-04-21 11:05:38,007 - __main__ - INFO - Unit-4 Assessment Quiz
+2021-04-21 11:05:38,106 - __main__ - INFO - Looks complete
+2021-04-21 11:05:38,165 - __main__ - INFO - Unit 5 Quiz (11-04-2021)
+2021-04-21 11:05:38,234 - __main__ - INFO - Looks complete
+2021-04-21 11:05:38,284 - __main__ - INFO - Unit 6 Quiz 1
+2021-04-21 11:05:38,339 - __main__ - INFO - looks incomplete
+2021-04-21 11:05:38,455 - __main__ - INFO - Batch 1 to 4 - ETE QUIZ ( or VIVA)
+Batch 1 to 4 - ETE QUIZ ( or VIVA)  
+
+Date: 20/04/2021
+Timing : 8:30 PM to 9:30 PM
+2021-04-21 11:05:38,585 - __main__ - INFO - looks incomplete
+2021-04-21 11:05:38,694 - __main__ - INFO - Batch 5 to 8 - ETE QUIZ ( or VIVA)
+Batch 5 to 8 - ETE QUIZ ( or VIVA)  
+Date : 20/04/2021
+Timing : 6:30 PM to 7:30 PM
+2021-04-21 11:05:38,819 - __main__ - INFO - looks incomplete
+2021-04-21 11:05:38,932 - __main__ - INFO - Batch 9 to Onwards Quiz ( Viva ) ETE
+Batch 9 to Onwards - ETE QUIZ ( or VIVA)  
+Date: 20/04/2021
+Quiz Timing: 7:30 PM to 8:30 PM
+2021-04-21 11:05:39,060 - __main__ - INFO - Looks complete
+2021-04-21 11:05:40,425 - __main__ - INFO - extract_quiz_info: called
+2021-04-21 11:05:41,386 - __main__ - INFO - information extracted :Attempts allowed: 1
+This quiz closed on Tuesday, 20 April 2021, 7:30 PM
+Time limit: 30 mins
+2021-04-21 11:05:41,433 - __main__ - INFO - extract_quiz_info: called
+2021-04-21 11:05:41,530 - __main__ - INFO - information extracted :Attempts allowed: 1
+This quiz closed on Tuesday, 20 April 2021, 9:30 PM
+Time limit: 30 mins
+2021-04-21 11:05:41,575 - __main__ - INFO - extract_quiz_info: called
+2021-04-21 11:05:41,684 - __main__ - INFO - information extracted :Attempts allowed: 1
+This quiz closed on Sunday, 18 April 2021, 11:59 PM
+Time limit: 30 mins
+2021-04-21 11:05:48,023 - __main__ - INFO - Looking for InfyTQ Java > Attempt :1
+2021-04-21 11:05:48,042 - __main__ - INFO - Looking for InfyTQ Java > Attempt :2
+2021-04-21 11:05:48,062 - __main__ - INFO - Looking for InfyTQ Java > Attempt :3
+2021-04-21 11:05:48,085 - __main__ - INFO - Looking for InfyTQ Java > Attempt :4
+2021-04-21 11:05:48,118 - __main__ - INFO - Looking for InfyTQ Java > Attempt :5
+2021-04-21 11:05:48,152 - __main__ - INFO - Looking for InfyTQ Java > Attempt :6
+2021-04-21 11:05:48,186 - __main__ - INFO - Looking for InfyTQ Java > Attempt :7
+2021-04-21 11:05:48,221 - __main__ - INFO - Looking for InfyTQ Java > Attempt :8
+2021-04-21 11:05:48,261 - __main__ - INFO - Looking for InfyTQ Java > Attempt :9
+2021-04-21 11:05:48,298 - __main__ - INFO - Looking for InfyTQ Java > Attempt :10
+2021-04-21 11:05:48,299 - __main__ - INFO - Element found
+2021-04-21 11:05:50,678 - __main__ - INFO - DBMS TRAINING ASSESSMENT-QUIZ
+2021-04-21 11:05:50,779 - __main__ - INFO - looks incomplete
+2021-04-21 11:05:50,859 - __main__ - INFO - Quiz_1 (16-01-2021)(Batch A)
+2021-04-21 11:05:50,945 - __main__ - INFO - Looks complete
+2021-04-21 11:05:51,006 - __main__ - INFO - Quiz_2 (23-01-2021)(Batch A)
+2021-04-21 11:05:51,113 - __main__ - INFO - Looks complete
+2021-04-21 11:05:51,172 - __main__ - INFO - Quiz_3(30-01-2021)(Batch A)
+2021-04-21 11:05:51,271 - __main__ - INFO - Looks complete
+2021-04-21 11:05:51,330 - __main__ - INFO - Quiz_4(06-02-2021) (Batch A)
+2021-04-21 11:05:51,433 - __main__ - INFO - Looks complete
+2021-04-21 11:05:51,493 - __main__ - INFO - QUIZ_5 (14-02-21)(Batch A)
+2021-04-21 11:05:51,603 - __main__ - INFO - Looks complete
+2021-04-21 11:05:51,667 - __main__ - INFO - Quiz (20.2.2020) for A & B both
+2021-04-21 11:05:51,764 - __main__ - INFO - Looks complete
+2021-04-21 11:05:52,271 - __main__ - INFO - extract_quiz_info: called
+2021-04-21 11:05:53,782 - __main__ - INFO - information extracted :Attempts allowed: 1
+This quiz closed on Wednesday, 31 March 2021, 11:59 PM
+Time limit: 30 mins
+2021-04-21 11:06:00,316 - __main__ - INFO - Looking for Learning interests survey form > Attempt :1
+2021-04-21 11:06:00,351 - __main__ - INFO - Looking for Learning interests survey form > Attempt :2
+2021-04-21 11:06:00,387 - __main__ - INFO - Looking for Learning interests survey form > Attempt :3
+2021-04-21 11:06:00,425 - __main__ - INFO - Looking for Learning interests survey form > Attempt :4
+2021-04-21 11:06:00,466 - __main__ - INFO - Looking for Learning interests survey form > Attempt :5
+2021-04-21 11:06:00,502 - __main__ - INFO - Looking for Learning interests survey form > Attempt :6
+2021-04-21 11:06:00,542 - __main__ - INFO - Looking for Learning interests survey form > Attempt :7
+2021-04-21 11:06:00,580 - __main__ - INFO - Looking for Learning interests survey form > Attempt :8
+2021-04-21 11:06:00,623 - __main__ - INFO - Looking for Learning interests survey form > Attempt :9
+2021-04-21 11:06:00,663 - __main__ - INFO - Looking for Learning interests survey form > Attempt :10
+2021-04-21 11:06:00,699 - __main__ - INFO - Looking for Learning interests survey form > Attempt :11
+2021-04-21 11:06:00,699 - __main__ - INFO - Element found
+2021-04-21 11:06:28,368 - __main__ - INFO - Looking for Minor Project > Attempt :1
+2021-04-21 11:06:28,396 - __main__ - INFO - Looking for Minor Project > Attempt :2
+2021-04-21 11:06:28,432 - __main__ - INFO - Looking for Minor Project > Attempt :3
+2021-04-21 11:06:28,469 - __main__ - INFO - Looking for Minor Project > Attempt :4
+2021-04-21 11:06:28,504 - __main__ - INFO - Looking for Minor Project > Attempt :5
+2021-04-21 11:06:28,538 - __main__ - INFO - Looking for Minor Project > Attempt :6
+2021-04-21 11:06:28,571 - __main__ - INFO - Looking for Minor Project > Attempt :7
+2021-04-21 11:06:28,611 - __main__ - INFO - Looking for Minor Project > Attempt :8
+2021-04-21 11:06:28,655 - __main__ - INFO - Looking for Minor Project > Attempt :9
+2021-04-21 11:06:28,694 - __main__ - INFO - Looking for Minor Project > Attempt :10
+2021-04-21 11:06:28,743 - __main__ - INFO - Looking for Minor Project > Attempt :11
+2021-04-21 11:06:28,794 - __main__ - INFO - Looking for Minor Project > Attempt :12
+2021-04-21 11:06:28,794 - __main__ - INFO - Element found

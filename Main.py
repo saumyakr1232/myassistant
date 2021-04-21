@@ -42,7 +42,7 @@ def main(get="", original_path=""):
     else:
         msg = ai(get)
         speak(msg)
-        line_sep(t=2)
+        line_sep(t=1)
     logger.debug("Bot stopped.")
 
 

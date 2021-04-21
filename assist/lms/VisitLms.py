@@ -5,7 +5,7 @@ import time
 
 import pyautogui
 from selenium import webdriver
-from selenium.common.exceptions import NoSuchElementException, TimeoutException, ElementClickInterceptedException
+from selenium.common.exceptions import NoSuchElementException, TimeoutException, ElementClickInterceptedException, WebDriverException
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
@@ -13,10 +13,6 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 
 import assist.utils.helper as helper
-
-browserName = "chrome"
-webDriverPath = helper.getDriverPath(driver=browserName)
-userDataPath = helper.getBrowserDataPath(browser=browserName)
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
@@ -40,7 +36,7 @@ logger.addHandler(f_handler)
 def copy_assignment_doc(file_name):
     """
 
-    :param file_name:
+    :param file_name: Create a copy of file
     :return:
     """
     os.chdir(os.getcwd())  # TODO Create a dedicated directory for assignments
@@ -55,10 +51,6 @@ def copy_assignment_doc(file_name):
 
 
 def get_incomplete_quizzes(driver):
-    # /html/body/div[3]/div[3]/div/div/section/div/div/ul/li[2]/div[3]/ul/li//div/div/div[2]
-    # /span/form/div/button/img[contains(@title,'Not completed')]
-
-    # //li//div/div/div[2]/span/form/div/button/img[contains(@title,'Not completed')]
 
     items = WebDriverWait(driver, 20).until(
         EC.presence_of_all_elements_located((By.XPATH, "//li[contains(@class, 'quiz')]")))
@@ -156,8 +148,9 @@ def extract_assign_info(driver):
 
 
 def login(driver):
-    login_btn = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.LINK_TEXT, "Log in")))
-    login_btn.click()
+    driver.get('https://lms.galgotiasuniversity.edu.in/login/index.php')
+    # login_btn = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.LINK_TEXT, "Log in")))
+    # login_btn.click()
 
     username = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID, "username")))
     password = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID, "password")))
@@ -166,13 +159,13 @@ def login(driver):
 
     username.send_keys("18scse1010138")
     password.send_keys("Watermelo@1232")
-    logger.info("Credentials are set")
-    logger.info("log in clicked")
+    logger.debug("Credentials are set")
+    logger.debug("log in clicked")
     login_btn_final.click()
 
 
 def submit_assignment(assignment, driver):
-    print(f"HERE {assignment}")
+    logger.debug(f"Submit assignment called with {assignment}")
     tabs = driver.window_handles
     driver.switch_to.window(tabs[0])
     time.sleep(5)
@@ -398,12 +391,14 @@ def get_all_courses(driver):
 
 
 def main():
-    driver = webdriver.Chrome(webDriverPath)
+    driver = helper.getWebDriver()
     driver.get("http://lms.galgotiasuniversity.edu.in/")
 
     login(driver)
 
-    print(get_all_courses(driver))
+    time.sleep(5)
+
+
     all_courses = get_all_courses(driver)
     all_courses.remove("Student Center")
     for course in all_courses:
@@ -441,12 +436,24 @@ def main():
         driver.close()
 
 
-def login_to_lms():
-    driver = webdriver.Chrome(webDriverPath)
-    driver.get("http://lms.galgotiasuniversity.edu.in/")
-
-    login(driver)
+# def login_to_lms():
+#     logger.info("login called")
+#     # driver = webdriver.Firefox(webDriverPath)
+#     driver = helper.getWebDriver()
+#     driver.get("http://lms.galgotiasuniversity.edu.in/")
+#
+#     login(driver)
+#     try:
+#         while True:
+#             driver.get_window_rect()
+#     except WebDriverException:
+#         print("[*] Exiting...")
+#     except KeyboardInterrupt:
+#         print("[*] Exiting...")
+#         driver.close()
 
 
 if __name__ == '__main__':
+    # driver = helper.getWebDriver()
     main()
+

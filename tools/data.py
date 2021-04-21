@@ -53,6 +53,7 @@ google = ['search google', 'google search', 'find google', 'google find', 'googl
           'find it', 'find', 'how to']
 youtube_play = ['play youtube', 'youtube play']
 goto_keys = ['goto', 'go to']
+
 install_keys = ['pip install', 'install pip', 'install']
 calc_keys = ['calculator', 'calculate', 'calculations', 'calculations', 'calc', 'solve it', 'solve']
 
@@ -67,4 +68,9 @@ DAY_EXTENTIONS = ["rd", "th", "st", "nd"]
 
 CALENDAR_STRS = ["what do i have", "do i have plans", "am i busy", "am i free", "calendar"]
 WAKE = ["nobita"]
-TIME_STRS = ["what's the time", "tell me the time", "what time is it", "what is the time"]
+TIME_STRS = ["what's the time", "tell me the time", "what time is it", "what is the time", "tell me time", "time"]
+DATE_STRS = ["what's the date", "tell me the date", "what date is it", "what is the date", "tell me date", "date"]
+
+
+lms_keys = ['lms', 'gu lms']
+login_keys = ['log in', 'login', 'signin', 'sign in']

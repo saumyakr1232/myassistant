@@ -25,14 +25,22 @@ if __name__ == '__main__':
     userPage = BeautifulSoup(logged_in, 'html.parser')
 
     all_para = userPage.text
-    print(all_para)
+    print("all para ", all_para)
 
-    print(logincheck)
-    print(type(logincheck))
+    print("login chek ", logincheck)
 
-    print(response1.read())
 
-    with open("result.html", 'w+') as f:
-        f.write()
+    response1_output = response1.read()
+
+    print("response_1 ", response1_output)
+
+    with open("test.html", 'wb') as f:
+        f.write(response1_output)
+
+    with open("test.html", 'wb') as f:
+        f.write(response1_output)
+
+    with open("test1.html", 'wb') as f:
+        f.write(logincheck)
 # ('User-agent', ('Mozilla/4.0 (compatible; MSIE 6.0; '
 # 'Windows NT 5.2; .NET CLR 1.1.4322)')

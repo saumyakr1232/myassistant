@@ -12,4 +12,4 @@ logging.basicConfig(
 logger = logging.getLogger()
 
 if DEBUG:
-    logger.setLevel(20)
+    logger.setLevel(logging.DEBUG)

@@ -1,2 +1,3 @@
 def ask_question(quesion):
-    pass
+    return "I don't Know that"
+
