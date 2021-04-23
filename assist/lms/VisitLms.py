@@ -1,43 +1,28 @@
+from settings.logs import logger
 import logging
 import os
 import random
 import time
-
 import pyautogui
-from selenium import webdriver
-from selenium.common.exceptions import NoSuchElementException, TimeoutException, ElementClickInterceptedException, WebDriverException
+from selenium.common.exceptions import NoSuchElementException, TimeoutException, ElementClickInterceptedException, \
+    WebDriverException, NoSuchWindowException
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
-
+from tools.string_processing import is_matched
 import assist.utils.helper as helper
-
-logger = logging.getLogger(__name__)
-logger.setLevel(logging.DEBUG)
-
-# Create handlers
-c_handler = logging.StreamHandler()
-f_handler = logging.FileHandler('visitLms.log', 'w')
-# c_handler.setLevel(logging.DEBUG)
-# f_handler.setLevel(logging.DEBUG)
-
-# formatter
-formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-c_handler.setFormatter(formatter)
-f_handler.setFormatter(formatter)
-
-# adding handlers to logger
-logger.addHandler(c_handler)
-logger.addHandler(f_handler)
+from models.models import Quiz, Assignment
+logger.setLevel(logging.INFO)
 
 
 def copy_assignment_doc(file_name):
     """
-
-    :param file_name: Create a copy of file
-    :return:
+    @param file_name: Location of file
+    @type file_name: str
+    @return: None
+    @rtype: None
     """
     os.chdir(os.getcwd())  # TODO Create a dedicated directory for assignments
     while True:
@@ -51,19 +36,28 @@ def copy_assignment_doc(file_name):
 
 
 def get_incomplete_quizzes(driver):
+    """
+    Search for all incomplete quizzes on course page
+    @param driver: Web driver
+    @type driver:
+    @return: list of  Quiz
+    @rtype: list
+    """
+    logger.debug("get incomplete quizzes called")
 
     items = WebDriverWait(driver, 20).until(
         EC.presence_of_all_elements_located((By.XPATH, "//li[contains(@class, 'quiz')]")))
 
-    print([x.text for x in items])
+    # print([x.text for x in items])
 
     incomplete_quizzes = []
+
     for x in items:
         logger.info(x.text)
         l = x.text.split("\n")
-        # title="Not completed: 15 June 2020 Coding Decoding Quiz(6.40-8pm)_Bhawana. Select to mark as complete."
+
         try:
-            print(f"checking:   Not completed: {l[0]}. Select to mark as complete.")
+            # print(f"checking:   Not completed: {l[0]}. Select to mark as complete.")
             x.find_element_by_xpath(
                 f'//img[contains(@title, \'Not completed: {l[0]}. Select to mark as complete.\')]')
             logger.info("looks incomplete")
@@ -79,9 +73,10 @@ def get_incomplete_assignments(driver):
     logger.info("get_incomplete_assignments : called")
     items = WebDriverWait(driver, 20).until(EC.presence_of_all_elements_located((By.XPATH,
                                                                                  "//li[contains(@class, 'assign')]")))
-    print([x.text for x in items])
+    # print([x.text for x in items])
 
     incomplete_assignments = []
+
     for x in items:
         logger.info(x.text)
         # title="Not completed: Assignment: UNIT 2. Select to mark as complete.
@@ -89,7 +84,7 @@ def get_incomplete_assignments(driver):
             x.find_element_by_xpath(
                 f'//img[contains(@title, \'Not completed: {x.find_element_by_class_name("instancename").text}. Select to mark as complete.\')]')
             logger.info("looks incomplete")
-            incomplete_assignments.append(x.find_element_by_xpath(".//div[@class='activityinstance']"))
+            incomplete_assignments.append(x.find_element_by_xpath('.//div[@class=\'activityinstance\']'))
         except NoSuchElementException:
             logger.info("Looks complete")
 
@@ -98,20 +93,67 @@ def get_incomplete_assignments(driver):
 
 def select_course(title, driver):
     courses_list = WebDriverWait(driver, 20).until(EC.presence_of_all_elements_located((By.CLASS_NAME, "coursename")))
-    print([x.text for x in courses_list])
+    # print([x.text for x in courses_list])
     i = 1
     for course in courses_list:
         text = str(course.text)
         logger.info(f"Looking for {title} > Attempt :{i}")
         i += 1
         if text.__contains__(title):
-            logger.info("Element found")
+            logger.info(f"{title} Element found ")
             course.click()
             break
     return courses_list
 
 
-def extract_quiz_info(driver):
+def _quiz_obj_from_text(title, text, course):
+    """
+    Convert string to Quiz object
+    @param title: Quiz title
+    @type title: str
+    @param text: description
+    @type text: str
+    @param course: course name
+    @type course: str
+    @return: Quiz object
+    @rtype: Quiz
+    """
+    text = text.lower()
+    lines = text.split("\n")
+
+    lines = [line.strip() for line in lines if line.strip() != ""]
+
+    quiz = Quiz()
+    quiz.title = title
+    quiz.course = course
+    try:
+        attempt_allowed = lines[0].replace("attempts allowed:", "")
+        attempt_allowed.strip()
+        quiz.attempts = int(attempt_allowed)
+
+        if lines[1].find("until") != -1:
+            start_date = lines[1][lines[1].find("until") + 5:].replace(',', "").strip()
+            quiz.start_date = start_date
+            quiz.time_limit = lines[3].replace("time limit:", " ").strip()
+        else:
+            quiz.due_date = lines[1][lines[1].find("on") + 2:].replace(',', '').strip()
+            quiz.time_limit = lines[2].replace("time limit:", " ").strip()
+    except Exception as e:
+        logger.error(e)
+
+    return quiz
+
+
+def extract_quiz_info(driver, course=""):
+    """
+    Extract Quiz data from quiz page
+    @param driver: Web driver
+    @type driver:
+    @param course: course name
+    @type course: str
+    @return: Quiz object
+    @rtype: Quiz
+    """
     logger.info("extract_quiz_info: called")
     quiz_info_elements = WebDriverWait(driver, 20).until(
         EC.presence_of_all_elements_located((By.XPATH, "//div[contains(@class, 'box py-3 quizinfo')]")))
@@ -121,10 +163,53 @@ def extract_quiz_info(driver):
     for element in quiz_info_elements:
         info += element.text
     logger.info(f"information extracted :{info}")
-    return {quiz_title_element.text: info}
+
+    quiz = _quiz_obj_from_text(quiz_title_element.text, info, course)
+
+    return quiz
 
 
-def extract_assign_info(driver):
+def _assignment_obj_from_text(title, text, doc_link, doc_name, course):
+    """
+    Convert text to Assignment Object
+    @param title: title of assignment
+    @type title: str
+    @param text: description of Assignment
+    @type text: str
+    @param doc_link: url of attachment
+    @type doc_link: str
+    @param doc_name: name of attachment
+    @type doc_name: str
+    @param course: course name
+    @type course: str
+    @return:
+    @rtype:
+    """
+    assignment = Assignment()
+    assignment.title = title
+    assignment.doc_link = doc_link
+    assignment.doc_name = doc_name
+    assignment.course = course
+
+    try:
+        info_list = text.split("\n")
+        assignment.due_date = info_list[3].replace("Due date", '').strip()
+    except IndexError as e:
+        logger.error(e)
+
+    return assignment
+
+
+def extract_assign_info(driver, course):
+    """
+    Fetch assignment data from assignment page
+    @param driver: Web driver
+    @type driver:
+    @param course: Course Name
+    @type course: str
+    @return: Assignment Object
+    @rtype: Assignment
+    """
     logger.info("extract_assign_info: called")
     assign_info_table = WebDriverWait(driver, 10).until(
         EC.presence_of_element_located((By.XPATH, "//table[@class='generaltable']"))
@@ -136,18 +221,34 @@ def extract_assign_info(driver):
         EC.presence_of_element_located((By.XPATH, "//div[@class= 'fileuploadsubmission']//a"))
     )
     try:
-        os.remove(f"C:\\Users\\saumy\\Downloads\\{assign_document_element.text}")
+        path = helper.get_directory('assignment_attachment')
+        duplicate = path / f"{assign_document_element.text}"
+        os.remove(duplicate)
+        logger.info("duplicate removed")
     except FileNotFoundError:
+        logger.debug("no duplicate found")
         pass
+    logger.info("saving attachment")
     assign_document_element.click()
     logger.info(
         f"Document link : {assign_document_element.get_attribute('href')} \n Document Name : {assign_document_element.text}")
-    return {assign_title_element.text: assign_info_table.text,
-            "document_link": assign_document_element.get_attribute('href'),
-            "document_name": assign_document_element.text}
+
+    return _assignment_obj_from_text(title=assign_title_element.text,
+                                     text=assign_info_table.text,
+                                     doc_name=assign_document_element.text,
+                                     doc_link=assign_document_element.get_attribute('href'),
+                                     course=course)
 
 
 def login(driver):
+    """
+    Login to galgotias lms
+    @param driver: Web driver
+    @type driver:
+    @return: None
+    @rtype:
+    """
+    logger.debug("login called")
     driver.get('https://lms.galgotiasuniversity.edu.in/login/index.php')
     # login_btn = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.LINK_TEXT, "Log in")))
     # login_btn.click()
@@ -156,15 +257,25 @@ def login(driver):
     password = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID, "password")))
 
     login_btn_final = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID, "loginbtn")))
-
-    username.send_keys("18scse1010138")
-    password.send_keys("Watermelo@1232")
+    #todo: store id password in setting.yaml
+    cred = helper.get_cred('lms')
+    username.send_keys(cred['username'])
+    password.send_keys(cred["password"])
     logger.debug("Credentials are set")
     logger.debug("log in clicked")
     login_btn_final.click()
 
-
+#todo: Fix submit_assignment function
 def submit_assignment(assignment, driver):
+    """
+    Submit assignment file on lms
+    @param assignment: file uri
+    @type assignment: str
+    @param driver: web driver
+    @type driver:
+    @return:
+    @rtype:
+    """
     logger.debug(f"Submit assignment called with {assignment}")
     tabs = driver.window_handles
     driver.switch_to.window(tabs[0])
@@ -210,46 +321,14 @@ def submit_assignment(assignment, driver):
 
 
 def attempt_quiz(driver):
-    questionAnswers = [{
-        "What happens if you call the method close() on a ResultSet object?": "the database and JDBC resources are released"},
-        {
-            "Which of the following is an advantage of using PreparedStatement in Java?": "Prevents SQL injection"},
-        {"""Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
-________ stmt=con.__________("insert into Emp values(?,?)");
-stmt.setInt(1,101);//1 specifies the first parameter in the query
-stmt.setString(2,"Ratan");""": "PreparedStatement, prepareStatement"},
-        {"How many JDBC driver types does Sun define?": "Four"},
-        {
-            "Which of the following type of JDBC driver, is also called Type 3 JDBC driver?": "JDBC-Net, pure Java driver"},
-        {"The interface ResultSet has a method, getMetaData(), that returns a/an": "Object"},
-        {"Which statements about JDBC are true?": "JDBC stands for Java DataBase Connectivity"},
-        {
-            "Which of the following holds data retrieved from a database after you execute an SQL query using Statement objects?": "ResultSet"},
-        {"Which of the following is correct about PreparedStatement?": "Both of the above"},
-        {"Which of the following is not a component/class of JDBC API?": "Transaction"},
-        {
-            "Which of the following methods are needed for loading a database driver in JDBC?": "Both a and b"},
-        {"Which of the following is correct about JDBC?": "Both of the above."},
-        {"Which of the following is used to limit the number of rows returned?": "setMaxRows(int i)"},
-        {"What is the package name of Class?": "java.lang"},
-        {"The JDBC-ODBC bridge is": "Multithreaded"},
-        {"Which method is used to perform DML statements in JDBC?": "executeUpdate()"},
-        {
-            "How can you execute a stored procedure in the database?": "Call method execute() on a CallableStatement object"},
-        {"Resultset is an interface, how does it support rs.Next()?": """Every vendor of Database provides implementation of ResultSet & other interfaces, through the
-Driver"""},
-        {
-            "Which of the following statements is false as far as different type of statements is concern in JDBC?": "Interim Statement"},
-        {"""Which of the following encapsulates an SQL statement which is passed to the database to be parsed, compiled, planned
-and executed?""": "Statement"},
-        {"""The method on the result set that tests whether or not there remains at least one unfetched tuple in the result set, is said
-to be""": "Next method"},
-        {"Which type of Statement can execute parameterized queries?": "PreparedStatement"},
-        {
-            "What happens if you call deleteRow() on a ResultSet object?": """The row you are positioned on is deleted from the ResultSet and from the database"""},
-        {
-            "Which JDBC driver Type(s) can be used in either applet or servlet code?": "Both Type 3 and Type 4"},
-        {"Which packages contain the JDBC classes?": "java.sql and javax.sql"}]
+    """
+    Attempt a quiz
+    @param driver: Web driver
+    @type driver:
+    @return:
+    @rtype:
+    """
+    questionAnswers = []
 
     quizLink = WebDriverWait(driver, 20).until(
         EC.presence_of_element_located((By.XPATH, "//span[text()='JDBC (all batches)']")))
@@ -276,8 +355,8 @@ to be""": "Next method"},
         question = WebDriverWait(driver, 20).until(
             EC.presence_of_element_located((By.XPATH, f"//div[@class='qtext']")))
         question = str(question.text)
-        print(f"{_} {question}", "\n*********************************")
-        print("Searching", end="")
+        # print(f"{_} {question}", "\n*********************************")
+        # print("Searching", end="")
         for l in questionAnswers:
             q, a = list(l.items())[0]
             q = str(q)
@@ -286,7 +365,7 @@ to be""": "Next method"},
             q = q.strip().lower()
             a = a.replace(" ", "")
             a = a.strip().lower()
-            print(".", end="")
+            # print(".", end="")
 
             question = question.strip().lower()
             if q == question:
@@ -302,7 +381,7 @@ to be""": "Next method"},
                             answer = WebDriverWait(driver, 20).until(
                                 EC.presence_of_element_located((By.XPATH, f"//span[text()='{i}']")))
                             answer.click()
-                            print("Tukka")
+                            # print("Tuukka")
                             break
 
                 else:
@@ -310,7 +389,7 @@ to be""": "Next method"},
                     answer = WebDriverWait(driver, 20).until(
                         EC.presence_of_element_located((By.XPATH, f"//span[text()='{i}']")))
                     answer.click()
-                    print("Tukka")
+                    # print("Tuukka")
 
                 break
         else:
@@ -318,14 +397,14 @@ to be""": "Next method"},
             answer = WebDriverWait(driver, 20).until(
                 EC.presence_of_element_located((By.XPATH, f"//span[text()='{i}']")))
             answer.click()
-            print("Tukka")
-            print()
-        print()
+            # print("Tuukka")
+            # print()
+        # print()
         try:
-            next = WebDriverWait(driver, 20).until(
+            next_element = WebDriverWait(driver, 20).until(
                 EC.presence_of_element_located((By.XPATH, "//input[contains(@class,'mod_quiz-next-nav btn')]")))
-            next.click()
-            print("next")
+            next_element.click()
+            # print("next")
         except Exception:
             submit0 = WebDriverWait(driver, 20).until(
                 EC.presence_of_element_located((By.XPATH, "// input[ @ value = 'Finish attempt ...']")))
@@ -349,45 +428,120 @@ to be""": "Next method"},
 
 
 def create_report(course, driver):
+    """
+    Create a map of incomplete assignments and quizzes
+    @param course: Course name
+    @type course: str
+    @param driver: Web driver
+    @type driver: driver
+    @return: map of assignment and quizzes
+    @rtype: dict
+    """
+    quiz_info = []
+    assignment_info = []
     select_course(course, driver)
 
-    incomplete_quizzes = []
+    incomplete_quizzes_elements = []
     incomplete_assignments = []
     try:
-        incomplete_quizzes = get_incomplete_quizzes(driver)
-        # incomplete_assignments = get_incomplete_assignments()
+        incomplete_quizzes_elements = get_incomplete_quizzes(driver)
+        incomplete_assignments = get_incomplete_assignments(driver)
     except TimeoutException:
         pass
 
-    print(f"incomplete quiz :{[x.text for x in incomplete_quizzes]}")
-    print(f"incomplete assign : {[x.text for x in incomplete_assignments]}")
+    # print(f"incomplete quiz :{[x.text for x in incomplete_quizzes_elements]}")
+    # print(f"incomplete assign : {[x.text for x in incomplete_assignments]}")
 
-    quiz_info = []
-    assignment_info = []
 
-    for quiz in incomplete_quizzes:
-        print(f"HERE : {quiz}")
-        print(f"quiz {quiz.text}")
+    for quiz in incomplete_quizzes_elements:
         ActionChains(driver).key_down(Keys.CONTROL).click(quiz).key_up(Keys.CONTROL).perform()
-
-    WebDriverWait(driver, 10).until(EC.number_of_windows_to_be(len(incomplete_quizzes) + 1))
+    WebDriverWait(driver, 10).until(EC.number_of_windows_to_be(len(incomplete_quizzes_elements) + 1))
     tabs = driver.window_handles
 
     for i in range(1, len(tabs)):
         driver.switch_to.window(tabs[i])
-        quiz_info.append(extract_quiz_info(driver))
+        quiz_info.append(extract_quiz_info(driver, course))
         driver.close()
     driver.switch_to.window(tabs[0])
 
-    print(f"quiz info {quiz_info}")
+    for assignment in incomplete_assignments:
+        ActionChains(driver).key_down(Keys.CONTROL).click(assignment).key_up(Keys.CONTROL).perform()
+
+    WebDriverWait(driver, 10).until(EC.number_of_windows_to_be(len(incomplete_assignments) + 1))
+
+    tabs = driver.window_handles
+
+    for i in range(1, len(tabs)):
+        driver.switch_to.window(tabs[i])
+        assignment_info.append(extract_assign_info(driver, course))
+        driver.close()
+    driver.switch_to.window(tabs[0])
+
     driver.back()
+
+    return {"quizzes": quiz_info, "assignments": assignment_info}
 
 
 def get_all_courses(driver):
+    """
+    Returns all courses from lms
+    @param driver: Web driver
+    @type driver:
+    @return: list of courses
+    @rtype: list(str)
+    """
+    courses = []
+
     logger.info("get_all_courses : called")
     items = WebDriverWait(driver, 20).until(EC.presence_of_all_elements_located((By.XPATH,
                                                                                  "//h6[@class='d-inline h5']")))
-    return [i.text for i in items]
+    courses.extend([i.text for i in items])
+
+    return courses
+
+
+def get_incomplete_assignments_and_quizzes(course=""):
+    """
+    map all the courses with their incomplete quiz and assignment
+    @param course: Course name
+    @type course: str
+    @return: map of course to incomplete ass and quizzes
+    @rtype: dict
+    """
+    report = {}
+    try:
+        path = helper.get_directory('assignment_attachment')
+        path = str(path.absolute())
+        driver = helper.getWebDriver(path)
+        driver.get("http://lms.galgotiasuniversity.edu.in/")
+
+        login(driver)
+
+        time.sleep(5)
+
+        all_courses = get_all_courses(driver)
+        try:
+            all_courses.remove("Student Center")
+        except ValueError as e:
+            logger.error(e)
+
+        if course != "":
+            for c in all_courses:
+                if is_matched(course, c.lower(), need=70):
+                    report[c] = create_report(c, driver)
+                    break
+        else:
+            for course in all_courses:
+                report[course] = create_report(course, driver)
+                time.sleep(5)
+        driver.close()
+    except NoSuchWindowException as e:
+        logger.error(e.msg)
+    except Exception as e:
+        logger.error(f"Some error while collecting incomplete quiz/Assignment data {e}")
+
+    finally:
+        return report
 
 
 def main():
@@ -398,12 +552,15 @@ def main():
 
     time.sleep(5)
 
-
     all_courses = get_all_courses(driver)
     all_courses.remove("Student Center")
-    for course in all_courses:
-        create_report(course, driver)
+
+    report = {}
+    for course in all_courses[:2]:
+        report[course] = create_report(course, driver)
         time.sleep(5)
+
+    driver.close()
 
     # for assignment in incomplete_assignments:
     #     print(f"HERE {assignment}")
@@ -436,24 +593,21 @@ def main():
         driver.close()
 
 
-# def login_to_lms():
-#     logger.info("login called")
-#     # driver = webdriver.Firefox(webDriverPath)
-#     driver = helper.getWebDriver()
-#     driver.get("http://lms.galgotiasuniversity.edu.in/")
-#
-#     login(driver)
-#     try:
-#         while True:
-#             driver.get_window_rect()
-#     except WebDriverException:
-#         print("[*] Exiting...")
-#     except KeyboardInterrupt:
-#         print("[*] Exiting...")
-#         driver.close()
+def login_to_lms():
+    logger.info("login called")
+
+    driver = helper.getWebDriver()
+    driver.get("http://lms.galgotiasuniversity.edu.in/")
+    login(driver)
+    try:
+        while True:
+            driver.get_window_rect()
+    except WebDriverException:
+        print("[*] Exiting...")
+    except  KeyboardInterrupt:
+        print("[*] Exiting...")
+        driver.close()
 
 
 if __name__ == '__main__':
-    # driver = helper.getWebDriver()
-    main()
-
+    print(get_incomplete_assignments_and_quizzes('compiler'))

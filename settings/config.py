@@ -178,7 +178,11 @@ class Config:
         while ok:
             ok = False
             cprint(" Enter the index number : ", 'cyan', end='')
-            no = int(input())
+            try:
+                no = int(input())
+            except ValueError:
+                cprint("Not a option")
+                no = int(input())
             if no == 0:
                 cprint(" Operation cancelled.", 'red')
                 return

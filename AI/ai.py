@@ -4,6 +4,7 @@ try:
     from tools.data import data, youtube, wiki, google, youtube_play, goto_keys, lms_keys, login_keys
     from tools.data import install_keys, calc_keys, should_not_learn, version_keys
     from tools.data import CALENDAR_STRS, NOTE_STRS, DAYS, MONTHS, DAY_EXTENTIONS, TIME_STRS, DATE_STRS
+    from tools.data import incomp_ass_quiz_keys
     from settings.logs import *
     from system.install import install, command
     from system.screen_text import command_sep
@@ -17,12 +18,14 @@ try:
     from settings.config import train_path
     from tools.shell import if_shell_type
     from tools.run_program_file import if_run_type
-    from assist.lms.VisitLms import login
-
+    from assist.lms import VisitLms
+    import requests
     import os
+    import threading
+    import subprocess
     import time
     import webbrowser
-    from assist.utils.helper import tell_me_about, getWebDriver
+    from assist.utils.helper import tell_me_about, getWebDriver, CurrentOs
     import pyautogui
     import datetime
     import multiprocessing
@@ -99,6 +102,16 @@ def rep(msg, mp):
 
 
 def ai(msg):
+    """
+    config, setting
+    basic questions
+    lms_keys
+    wiki, youtube, google
+    goto
+    install, calculate
+    calendar
+    time, date
+    """
     logger.debug("called assistant")
     msg = msg.replace('  ', ' ').strip().lower()
     msg.replace(bot['name'], '')
@@ -117,17 +130,12 @@ def ai(msg):
             url = "https://www.youtube.com/results?search_query=" + msg
             webbrowser.get().open(url)
             reply = 'Enjoy sir. '
-        elif check(msg, lms_keys):
-            if check(msg, login_keys):
-                webdriver = getWebDriver()
-                login(webdriver)
-                reply = "logged in to lms"
 
         elif check(msg, goto_keys):
             msg = rep(msg, goto_keys)
             url = "https://" + msg
             webbrowser.get().open(url)
-            reply = "Here is what I found for" + msg + "on google"
+            reply = "Here is what I found for " + msg + "on google"
         elif check(msg, youtube):
             msg = rep(msg, youtube_play)
             logger.info(msg)
@@ -195,6 +203,54 @@ def ai(msg):
             month = datetime.date.today().month
 
             reply = f"Sir, today is {date} {MONTHS[month - 1]}"
+        elif check(msg, ["where am i", "my location"]):
+            # Ip_info = requests.get('https://api.ipdata.co?api-key=test').json()
+            # loc = Ip_info['region']
+            # reply = f"You must be somewhere in {loc}"
+            reply = "Ip location is not setup yet"
+            pass
+        elif check(msg, ["send email", "send an email" "email to ", "mail to"]):
+            reply = "Email feature is not setup yet"
+            pass
+
+        elif check(msg, ['launch', 'run']):
+            msg = rep(msg, ['launch', 'run'])
+            print(msg)
+            if CurrentOs == "Linux":
+                subprocess.Popen(msg)
+            else:
+                subprocess.Popen(f'{msg}.exe')
+            reply = f"Launching {msg}"
+
+        # specials cases
+
+        elif check(msg, lms_keys):
+            d = threading.Thread(name='login_lms', target=VisitLms.login_to_lms)
+            d.setDaemon(True)
+            d.start()
+            reply = "Logging in to lms "
+
+        elif check(msg, incomp_ass_quiz_keys, need=50):
+
+            if msg.find('of') != -1 or msg.find('for') != -1:
+                if msg.find('of') != -1:
+                    course = msg.split('of')[1].strip()
+                else:
+                    course = msg.split('for')[1].strip()
+
+                d = threading.Thread(name="incom_ass_quiz", target=VisitLms.get_incomplete_assignments_and_quizzes,
+                                     args=(course,))
+                d.setDaemon(True)
+                d.start()
+                reply = f"Sir, Fetching all Icomplete assignments and quizzes of {course}"
+
+            else:
+                d = threading.Thread(name="incom_ass_quiz", target=VisitLms.get_incomplete_assignments_and_quizzes)
+                d.setDaemon(True)
+                d.start()
+                reply = "Sir, Fetching all  Incomplete assignments and quizzes from lms"
+
+
         else:
             """ run with arguments """
             if 'cmd:' in msg or '-s' in msg:

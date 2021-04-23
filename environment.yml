@@ -1,0 +1,34 @@
+name: myassistant
+channels:
+  - conda-forge
+dependencies:
+#  - plyer
+  - PyAutoGUI
+#  - gTTS
+#  - pyttsx3
+  - requests
+  - httplib2
+  - pytz
+#  - playsound
+  - pdfminer
+  - SpeechRecognition
+#  - google_auth_oauthlib
+#  - wolframalpha
+  - wikipedia
+  - beautifulsoup4
+  - flashtext
+  - fuzzywuzzy
+#  - google_api_python_client
+#  - Image
+  - mechanize
+  - oauth2client
+  - Pillow
+  - protobuf
+  - pyfiglet
+  - PyPDF2
+  - PySimpleGUI
+  - pytesseract
+  - PyYAML
+  - selenium
+  - termcolor
+  - tqdm

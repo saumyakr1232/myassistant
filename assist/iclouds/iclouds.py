@@ -99,3 +99,7 @@ def main():
     login()
     open_attendance("september")
     print(driver.page_source)
+
+
+if __name__ == '__main__':
+    login_to_iclouds()

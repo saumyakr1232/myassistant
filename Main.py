@@ -7,7 +7,7 @@ from settings.setting import START_SCREEN_NAME
 from AI.data import GOOGLE, bye
 from AI.ai import ai
 import os
-
+from settings._first_load_ import check_if_first_time
 
 def check_done(msg):
     for i in GOOGLE:
@@ -47,4 +47,5 @@ def main(get="", original_path=""):
 
 
 if __name__ == '__main__':
+    check_if_first_time()
     main()

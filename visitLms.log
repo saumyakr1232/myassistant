@@ -1,0 +1,413 @@
+2021-04-22 15:21:07,087 - assist.lms.VisitLms - DEBUG - login called
+2021-04-22 15:21:07,740 - assist.lms.VisitLms - DEBUG - Credentials are set
+2021-04-22 15:21:07,740 - assist.lms.VisitLms - DEBUG - log in clicked
+2021-04-22 15:21:17,636 - assist.lms.VisitLms - INFO - get_all_courses : called
+2021-04-22 15:21:18,114 - assist.lms.VisitLms - INFO - Looking for Compiler Design(BTCS3602) > Attempt :1
+2021-04-22 15:21:18,114 - assist.lms.VisitLms - INFO - Compiler Design(BTCS3602) Element found 
+2021-04-22 15:21:19,541 - assist.lms.VisitLms - INFO - CAT-2 (For International Students)
+Quiz
+Restricted Not available unless: Your Department is NRI
+2021-04-22 15:21:19,569 - assist.lms.VisitLms - INFO - Looks complete
+2021-04-22 15:21:19,585 - assist.lms.VisitLms - INFO - IA-1 (For All Sections)
+Quiz
+2021-04-22 15:21:19,614 - assist.lms.VisitLms - INFO - Looks complete
+2021-04-22 15:21:19,630 - assist.lms.VisitLms - INFO - CAT-1
+Quiz
+2021-04-22 15:21:19,659 - assist.lms.VisitLms - INFO - Looks complete
+2021-04-22 15:21:19,679 - assist.lms.VisitLms - INFO - IA1-Sec 1 & CNCS-Mr Gokul Rajan V
+Quiz
+19 Jan 2021 (Tuesday)
+6.00pm to 6.15pm
+2021-04-22 15:21:19,715 - assist.lms.VisitLms - INFO - Looks complete
+2021-04-22 15:21:19,730 - assist.lms.VisitLms - INFO - Re-CAT-1
+Quiz
+2021-04-22 15:21:19,762 - assist.lms.VisitLms - INFO - Looks complete
+2021-04-22 15:21:19,779 - assist.lms.VisitLms - INFO - IA-2 (For All Section)
+Quiz
+2021-04-22 15:21:19,810 - assist.lms.VisitLms - INFO - Looks complete
+2021-04-22 15:21:19,828 - assist.lms.VisitLms - INFO - IA-3 (For All Section)
+Quiz
+2021-04-22 15:21:19,858 - assist.lms.VisitLms - INFO - Looks complete
+2021-04-22 15:21:19,874 - assist.lms.VisitLms - INFO - IA-4 (For All Section)
+Quiz
+2021-04-22 15:21:19,901 - assist.lms.VisitLms - INFO - Looks complete
+2021-04-22 15:21:19,916 - assist.lms.VisitLms - INFO - Quiz 4-Sec 1 & CNCS 1_Mr. Gokul Rajan V
+2021-04-22 15:21:19,943 - assist.lms.VisitLms - INFO - looks incomplete
+2021-04-22 15:21:19,969 - assist.lms.VisitLms - INFO - Quiz 5_Sec 1 & CNCS 1_Mr. Gokul Rajan V
+2021-04-22 15:21:20,001 - assist.lms.VisitLms - INFO - looks incomplete
+2021-04-22 15:21:20,012 - assist.lms.VisitLms - INFO - get_incomplete_assignments : called
+2021-04-22 15:21:20,163 - assist.lms.VisitLms - INFO - CAT-3
+Assignment
+Students write name and admission number in answer sheet. 
+Students also write contribution of each group members. 
+The Complete assessment will be activity based on CO-5 and CO-6.
+Maximum Mark will be 30.
+Time duration can be fixed based on activity , In the attached Date sheet it is 2 hour. 
+Group activities can also be given, with Maximum 3 students in a group and Case Study can be given to 3 Groups.
+Solutions for the Problems must be unique and report must be minimum of 6 pages and maximum up-to 10 Pages, including Diagrams, Algorithm, Interpretation of Results, Review of Literature etc.
+The  Report (PDF, Docx) must be screened through ithenticate and plagiarism must be less than 10%.
+2021-04-22 15:21:20,200 - assist.lms.VisitLms - INFO - Looks complete
+2021-04-22 15:21:20,216 - assist.lms.VisitLms - INFO - Assignment -1 (Sec 1 & CNCS)
+2021-04-22 15:21:20,254 - assist.lms.VisitLms - INFO - looks incomplete
+2021-04-22 15:21:20,282 - assist.lms.VisitLms - INFO - Assignment 3_CNCS-1 & Sec 1_Mr Gokul Rajan V
+2021-04-22 15:21:20,320 - assist.lms.VisitLms - INFO - Looks complete
+2021-04-22 15:21:20,335 - assist.lms.VisitLms - INFO - Assignment 4_Sec 1 & CNCS 1_Mr Gokul Rajan V
+2021-04-22 15:21:20,370 - assist.lms.VisitLms - INFO - Looks complete
+2021-04-22 15:21:20,385 - assist.lms.VisitLms - INFO - Case Study 1_Sec 1 & CNCS 1_Mr Gokul Rajan V
+Assignment
+Restricted Available until end of 8 April 2021
+2021-04-22 15:21:20,421 - assist.lms.VisitLms - INFO - Looks complete
+2021-04-22 15:21:21,117 - assist.lms.VisitLms - INFO - extract_quiz_info: called
+2021-04-22 15:21:21,835 - assist.lms.VisitLms - INFO - information extracted :Attempts allowed: 1
+This quiz closed on Wednesday, 7 April 2021, 3:30 PM
+Time limit: 25 mins
+2021-04-22 15:21:21,887 - assist.lms.VisitLms - INFO - extract_quiz_info: called
+2021-04-22 15:21:21,971 - assist.lms.VisitLms - INFO - information extracted :Attempts allowed: 1
+This quiz closed on Wednesday, 7 April 2021, 3:00 PM
+Time limit: 25 mins
+2021-04-22 15:21:22,361 - assist.lms.VisitLms - INFO - extract_assign_info: called
+2021-04-22 15:21:23,697 - assist.lms.VisitLms - INFO - Document link : https://lms.galgotiasuniversity.edu.in/pluginfile.php/1473414/mod_assign/introattachment/0/BTCS6204_Assignment%20No-1.docx?forcedownload=1 
+ Document Name : BTCS6204_Assignment No-1.docx
+2021-04-22 15:21:29,521 - assist.lms.VisitLms - INFO - Looking for Enterpreneurship(BTCS8101) > Attempt :1
+2021-04-22 15:21:29,532 - assist.lms.VisitLms - INFO - Looking for Enterpreneurship(BTCS8101) > Attempt :2
+2021-04-22 15:21:29,532 - assist.lms.VisitLms - INFO - Enterpreneurship(BTCS8101) Element found 
+2021-04-22 15:21:30,271 - assist.lms.VisitLms - INFO - CAT 1 EXAM ENTREPRENEURSHIP
+Quiz
+2021-04-22 15:21:30,301 - assist.lms.VisitLms - INFO - Looks complete
+2021-04-22 15:21:30,319 - assist.lms.VisitLms - INFO - IA1_6/2/21
+Quiz
+2021-04-22 15:21:30,348 - assist.lms.VisitLms - INFO - Looks complete
+2021-04-22 15:21:30,364 - assist.lms.VisitLms - INFO - IA_2
+Quiz
+2021-04-22 15:21:30,397 - assist.lms.VisitLms - INFO - Looks complete
+2021-04-22 15:21:30,413 - assist.lms.VisitLms - INFO - IA-3 for Batch 1 and 2
+Quiz
+2021-04-22 15:21:30,443 - assist.lms.VisitLms - INFO - looks incomplete
+2021-04-22 15:21:30,472 - assist.lms.VisitLms - INFO - IA_4
+Quiz
+2021-04-22 15:21:30,502 - assist.lms.VisitLms - INFO - Looks complete
+2021-04-22 15:21:30,519 - assist.lms.VisitLms - INFO - IA_5
+Quiz
+2021-04-22 15:21:30,550 - assist.lms.VisitLms - INFO - Looks complete
+2021-04-22 15:21:30,567 - assist.lms.VisitLms - INFO - IA_1
+Quiz
+2021-04-22 15:21:30,596 - assist.lms.VisitLms - INFO - Looks complete
+2021-04-22 15:21:30,614 - assist.lms.VisitLms - INFO - CAT_2
+Quiz
+Restricted Not available unless: Your Department is NRI
+2021-04-22 15:21:30,645 - assist.lms.VisitLms - INFO - Looks complete
+2021-04-22 15:21:30,645 - assist.lms.VisitLms - INFO - get_incomplete_assignments : called
+2021-04-22 15:21:30,715 - assist.lms.VisitLms - INFO - CAT3_BATCH1,2
+Assignment
+2021-04-22 15:21:30,754 - assist.lms.VisitLms - INFO - Looks complete
+2021-04-22 15:21:30,775 - assist.lms.VisitLms - INFO - CAT 3 FOR ENTREPERNEURSHIP BATCH 3 AND 4
+Assignment
+Attached is the question for your team report. See the enclosed question and answer the question in the form of report writing and submit single report group wise on the same.
+2021-04-22 15:21:30,813 - assist.lms.VisitLms - INFO - Looks complete
+2021-04-22 15:21:31,226 - assist.lms.VisitLms - INFO - extract_quiz_info: called
+2021-04-22 15:21:31,899 - assist.lms.VisitLms - INFO - information extracted :Attempts allowed: 1
+This quiz closed on Wednesday, 24 February 2021, 2:15 PM
+Time limit: 15 mins
+2021-04-22 15:21:37,519 - assist.lms.VisitLms - INFO - Looking for Industrial/Summer Training -II > Attempt :1
+2021-04-22 15:21:37,532 - assist.lms.VisitLms - INFO - Looking for Industrial/Summer Training -II > Attempt :2
+2021-04-22 15:21:37,543 - assist.lms.VisitLms - INFO - Looking for Industrial/Summer Training -II > Attempt :3
+2021-04-22 15:21:37,555 - assist.lms.VisitLms - INFO - Looking for Industrial/Summer Training -II > Attempt :4
+2021-04-22 15:21:37,566 - assist.lms.VisitLms - INFO - Looking for Industrial/Summer Training -II > Attempt :5
+2021-04-22 15:21:37,577 - assist.lms.VisitLms - INFO - Looking for Industrial/Summer Training -II > Attempt :6
+2021-04-22 15:21:37,577 - assist.lms.VisitLms - INFO - Industrial/Summer Training -II Element found 
+2021-04-22 15:22:04,129 - assist.lms.VisitLms - INFO - Looking for Industry Oriented Java-IV(BTCS3652) > Attempt :1
+2021-04-22 15:22:04,138 - assist.lms.VisitLms - INFO - Looking for Industry Oriented Java-IV(BTCS3652) > Attempt :2
+2021-04-22 15:22:04,150 - assist.lms.VisitLms - INFO - Looking for Industry Oriented Java-IV(BTCS3652) > Attempt :3
+2021-04-22 15:22:04,160 - assist.lms.VisitLms - INFO - Looking for Industry Oriented Java-IV(BTCS3652) > Attempt :4
+2021-04-22 15:22:04,171 - assist.lms.VisitLms - INFO - Looking for Industry Oriented Java-IV(BTCS3652) > Attempt :5
+2021-04-22 15:22:04,182 - assist.lms.VisitLms - INFO - Looking for Industry Oriented Java-IV(BTCS3652) > Attempt :6
+2021-04-22 15:22:04,193 - assist.lms.VisitLms - INFO - Looking for Industry Oriented Java-IV(BTCS3652) > Attempt :7
+2021-04-22 15:22:04,193 - assist.lms.VisitLms - INFO - Industry Oriented Java-IV(BTCS3652) Element found 
+2021-04-22 15:22:05,084 - assist.lms.VisitLms - INFO - ETE_Quiz (All Batches)(5:30 to 7:30)
+2021-04-22 15:22:05,112 - assist.lms.VisitLms - INFO - Looks complete
+2021-04-22 15:22:05,112 - assist.lms.VisitLms - INFO - get_incomplete_assignments : called
+2021-04-22 15:22:05,170 - assist.lms.VisitLms - INFO - Questions(CNCS-P1)
+Assignment
+2021-04-22 15:22:05,209 - assist.lms.VisitLms - INFO - Looks complete
+2021-04-22 15:22:10,753 - assist.lms.VisitLms - INFO - Looking for Industry Oriented Python-2(BCSE3072) > Attempt :1
+2021-04-22 15:22:10,765 - assist.lms.VisitLms - INFO - Looking for Industry Oriented Python-2(BCSE3072) > Attempt :2
+2021-04-22 15:22:10,775 - assist.lms.VisitLms - INFO - Looking for Industry Oriented Python-2(BCSE3072) > Attempt :3
+2021-04-22 15:22:10,785 - assist.lms.VisitLms - INFO - Looking for Industry Oriented Python-2(BCSE3072) > Attempt :4
+2021-04-22 15:22:10,796 - assist.lms.VisitLms - INFO - Looking for Industry Oriented Python-2(BCSE3072) > Attempt :5
+2021-04-22 15:22:10,806 - assist.lms.VisitLms - INFO - Looking for Industry Oriented Python-2(BCSE3072) > Attempt :6
+2021-04-22 15:22:10,817 - assist.lms.VisitLms - INFO - Looking for Industry Oriented Python-2(BCSE3072) > Attempt :7
+2021-04-22 15:22:10,828 - assist.lms.VisitLms - INFO - Looking for Industry Oriented Python-2(BCSE3072) > Attempt :8
+2021-04-22 15:22:10,828 - assist.lms.VisitLms - INFO - Industry Oriented Python-2(BCSE3072) Element found 
+2021-04-22 15:22:12,520 - assist.lms.VisitLms - INFO - Diagnostic Test
+Quiz
+2021-04-22 15:22:12,548 - assist.lms.VisitLms - INFO - Looks complete
+2021-04-22 15:22:12,563 - assist.lms.VisitLms - INFO - Sample Quiz only for testing purpose 5 April, 2020
+Sample Quiz only for testing purpose on 5 April, 2020
+2021-04-22 15:22:12,595 - assist.lms.VisitLms - INFO - Looks complete
+2021-04-22 15:22:12,619 - assist.lms.VisitLms - INFO - Assessment-1 Industry Oriented Python-2 MCQ on 4 April 2020 (SeCTION 1- 7)
+Quiz
+SECTION CSE-1 to CSE-7
+Sections 1, 2,3, 4, 5 , 6 and 7
+Timings : 2:00 PM to 2:30 PM
+Assessment-1 Industry Oriented Python-2 MCQ on 4 April 2020
+2021-04-22 15:22:12,653 - assist.lms.VisitLms - INFO - Looks complete
+2021-04-22 15:22:12,679 - assist.lms.VisitLms - INFO - Assessment-1 Industry Oriented Python-2 MCQ on 4 April 2020 SECTION 8-10CNCS,AIML,CCV/DA,BA/OSS/OT/GG
+Quiz
+Assessment -1 TIMING : 2:30 PM to 3:00 PM
+Batch - CSE-8, 9, 10, CNCS, AIML, CCV/DA, BA/OSS/OT/GG
+INDUSTRY ORIENTED PYTHON-2 
+BCSE-3072
+2021-04-22 15:22:12,707 - assist.lms.VisitLms - INFO - Looks complete
+2021-04-22 15:22:12,724 - assist.lms.VisitLms - INFO - Assessment-1 MCQ on 7 April 2020 (only for missed candidates)
+Quiz
+Assessment-1 MCQ on 7 April 2020 
+Industry Oriented Python-2
+Timings: 5:30 - 6:00 PM
+(only for missed candidates)
+2021-04-22 15:22:12,756 - assist.lms.VisitLms - INFO - Looks complete
+2021-04-22 15:22:12,773 - assist.lms.VisitLms - INFO - Quiz (Assessment-1) for Remedial classes IOP-2 on 13 April 2020
+quiz for remedial classes 
+Industry oriented Python-2 BCSE-3072
+13 April 2020
+Timings : 5:30 PM - 6:00 PM
+2021-04-22 15:22:12,804 - assist.lms.VisitLms - INFO - Looks complete
+2021-04-22 15:22:12,817 - assist.lms.VisitLms - INFO - Internal Lab Exam Quiz (or viva ) Section 6 Group 2
+2021-04-22 15:22:12,844 - assist.lms.VisitLms - INFO - Looks complete
+2021-04-22 15:22:12,859 - assist.lms.VisitLms - INFO - 3:00 - 3:30 PM Quiz for Internal Lab Exam for CCV/DA/Others on 21 April 2020
+Quiz contains 10 questions (MCQ)
+2021-04-22 15:22:12,887 - assist.lms.VisitLms - INFO - Looks complete
+2021-04-22 15:22:12,901 - assist.lms.VisitLms - INFO - Internal Exam Quiz Batch 4 & CNCS-22-04-2020
+2021-04-22 15:22:12,926 - assist.lms.VisitLms - INFO - Looks complete
+2021-04-22 15:22:12,963 - assist.lms.VisitLms - INFO - Section-1-Quiz-Internal Lab Exam(23-04-2020)
+2021-04-22 15:22:12,994 - assist.lms.VisitLms - INFO - Looks complete
+2021-04-22 15:22:13,020 - assist.lms.VisitLms - INFO - 10:00 - 10:30 AM Quiz Internal Lab exam CSE-5 on 23 April 2020
+This quiz has 10 questions
+2021-04-22 15:22:13,067 - assist.lms.VisitLms - INFO - Looks complete
+2021-04-22 15:22:13,085 - assist.lms.VisitLms - INFO - MCQ Quiz for Assessment-3 IOP-2 on 27 April 2020 for section 1-7
+Timings : 5:30 PM(27 April 2020) to 8:30 AM(28 April 2020)
+Object Oriented Programming
+Python Fundamentals  
+Functions / recursive functions
+Files in Python
+2021-04-22 15:22:13,111 - assist.lms.VisitLms - INFO - Looks complete
+2021-04-22 15:22:13,121 - assist.lms.VisitLms - INFO - Internal Lab Exam Quiz( or viva) for Section 2 Group P2
+2021-04-22 15:22:13,141 - assist.lms.VisitLms - INFO - Looks complete
+2021-04-22 15:22:13,152 - assist.lms.VisitLms - INFO - BA+OSS+IOT+GG_Internal-Lab_Viva_P1-P2_PKDeka-AKBharti
+Quiz
+2021-04-22 15:22:13,175 - assist.lms.VisitLms - INFO - Looks complete
+2021-04-22 15:22:13,187 - assist.lms.VisitLms - INFO - Internal Exam Quiz Section 3&7
+2021-04-22 15:22:13,212 - assist.lms.VisitLms - INFO - Looks complete
+2021-04-22 15:22:13,231 - assist.lms.VisitLms - INFO - MCQ Assessment-3 for IOP-2 on 27 April 2020 for section 8-10, CNCS, AIML, CCV/DA, BA, OSS, OT, GG
+Quiz
+Timings : 6:30 PM (27 April 2020) to 08:30 AM(28 April 2020)
+2021-04-22 15:22:13,261 - assist.lms.VisitLms - INFO - Looks complete
+2021-04-22 15:22:13,276 - assist.lms.VisitLms - INFO - Internal Viva of IOP-2 for AIML section sem IV by PKDeka+AKBharti
+Quiz
+This quiz contains 10 multiple choice questions and total time for quiz allotted is 30 Min.
+2021-04-22 15:22:13,306 - assist.lms.VisitLms - INFO - Looks complete
+2021-04-22 15:22:13,321 - assist.lms.VisitLms - INFO - BCSE3072 Quiz5 Database connectivity
+Unit-5 Database connect
+Create a table
+Insert values into table ; Query
+2021-04-22 15:22:13,352 - assist.lms.VisitLms - INFO - Looks complete
+2021-04-22 15:22:13,372 - assist.lms.VisitLms - INFO - BCSE3072_Quiz6
+Unit 6: Database connectivity
+Retrieving data, updating data and deleting data from a table
+2021-04-22 15:22:13,401 - assist.lms.VisitLms - INFO - Looks complete
+2021-04-22 15:22:13,418 - assist.lms.VisitLms - INFO - BCSE3072_Quiz7
+Unit 7
+Transaction processing, using comment
+using rollback
+2021-04-22 15:22:13,451 - assist.lms.VisitLms - INFO - Looks complete
+2021-04-22 15:22:13,464 - assist.lms.VisitLms - INFO - sq
+Quiz
+2021-04-22 15:22:13,490 - assist.lms.VisitLms - INFO - Looks complete
+2021-04-22 15:22:13,506 - assist.lms.VisitLms - INFO - BCSE3072_Quiz8
+Networking
+Sharing data using sockets
+2021-04-22 15:22:13,537 - assist.lms.VisitLms - INFO - Looks complete
+2021-04-22 15:22:13,551 - assist.lms.VisitLms - INFO - BCSE3072 Quiz-9 Echo-server/client
+BCSE3071 Quiz 9 Echo-server / client
+2021-04-22 15:22:13,575 - assist.lms.VisitLms - INFO - Looks complete
+2021-04-22 15:22:13,590 - assist.lms.VisitLms - INFO - BCSE-3072 Quiz 10 Multi-threading and Synchronizing
+BCSE-3072 Quiz 10
+Multi-threading and Synchronizing
+2021-04-22 15:22:13,616 - assist.lms.VisitLms - INFO - Looks complete
+2021-04-22 15:22:13,628 - assist.lms.VisitLms - INFO - Internal Exam Quiz section 8
+2021-04-22 15:22:13,651 - assist.lms.VisitLms - INFO - Looks complete
+2021-04-22 15:22:13,666 - assist.lms.VisitLms - INFO - Internal Exam Quiz Batch 9
+Time 10.30 to 11. am
+2021-04-22 15:22:13,691 - assist.lms.VisitLms - INFO - Looks complete
+2021-04-22 15:22:13,703 - assist.lms.VisitLms - INFO - Internal Quiz Batch 4 & CNCS
+2021-04-22 15:22:13,725 - assist.lms.VisitLms - INFO - Looks complete
+2021-04-22 15:22:13,737 - assist.lms.VisitLms - INFO - BCSE3072 Section 10 P2 ( 29 Apr 2020 1:30 pm to 3:30 pm)
+Quiz
+2021-04-22 15:22:13,761 - assist.lms.VisitLms - INFO - Looks complete
+2021-04-22 15:22:13,772 - assist.lms.VisitLms - INFO - DSCPP Training QUIZ 1
+2021-04-22 15:22:13,796 - assist.lms.VisitLms - INFO - Looks complete
+2021-04-22 15:22:13,796 - assist.lms.VisitLms - INFO - get_incomplete_assignments : called
+2021-04-22 15:22:13,992 - assist.lms.VisitLms - INFO - Assignment 1 Handwritten solution (pdf) 31 March - 4 April 2020
+Submit any 3 exercise solutions handwritten (pdf)
+The list of 8 exercises are given in the file =handassig1.txt attached here. 
+2021-04-22 15:22:14,028 - assist.lms.VisitLms - INFO - Looks complete
+2021-04-22 15:22:14,040 - assist.lms.VisitLms - INFO - Batch-5 Assignment 7/4/2020
+2021-04-22 15:22:14,075 - assist.lms.VisitLms - INFO - Looks complete
+2021-04-22 15:22:14,088 - assist.lms.VisitLms - INFO - Batch 8 Sanjay Sharma Grp 9.4.20
+Assignment
+2021-04-22 15:22:14,126 - assist.lms.VisitLms - INFO - Looks complete
+2021-04-22 15:22:14,138 - assist.lms.VisitLms - INFO - assignment batch 8 sanjay sharma grp 15.4.20
+2021-04-22 15:22:14,174 - assist.lms.VisitLms - INFO - Looks complete
+2021-04-22 15:22:14,187 - assist.lms.VisitLms - INFO - Assignment for Batch 2 and 6 ( Group P2 )
+2021-04-22 15:22:14,224 - assist.lms.VisitLms - INFO - Looks complete
+2021-04-22 15:22:14,237 - assist.lms.VisitLms - INFO - Batch 8 Assignment 22.4.20 sanjay sharma grp
+2021-04-22 15:22:14,274 - assist.lms.VisitLms - INFO - Looks complete
+2021-04-22 15:22:14,287 - assist.lms.VisitLms - INFO - Batch-5 16/4/2020
+Assignment
+2021-04-22 15:22:14,325 - assist.lms.VisitLms - INFO - Looks complete
+2021-04-22 15:22:14,337 - assist.lms.VisitLms - INFO - Assignment Batch-5, 17/4/2020
+2021-04-22 15:22:14,372 - assist.lms.VisitLms - INFO - Looks complete
+2021-04-22 15:22:14,385 - assist.lms.VisitLms - INFO - Batch -5 30/4/2020
+Assignment
+2021-04-22 15:22:14,422 - assist.lms.VisitLms - INFO - Looks complete
+2021-04-22 15:22:14,434 - assist.lms.VisitLms - INFO - BCSE3072 Section10 Group P2 ( 29 Apr 2020 1:30pm to 3:30 pm)
+Assignment
+2021-04-22 15:22:14,472 - assist.lms.VisitLms - INFO - Looks complete
+2021-04-22 15:22:20,088 - assist.lms.VisitLms - INFO - Looking for Industry Oriented Python-IV(BTCS3651) > Attempt :1
+2021-04-22 15:22:20,099 - assist.lms.VisitLms - INFO - Looking for Industry Oriented Python-IV(BTCS3651) > Attempt :2
+2021-04-22 15:22:20,111 - assist.lms.VisitLms - INFO - Looking for Industry Oriented Python-IV(BTCS3651) > Attempt :3
+2021-04-22 15:22:20,122 - assist.lms.VisitLms - INFO - Looking for Industry Oriented Python-IV(BTCS3651) > Attempt :4
+2021-04-22 15:22:20,133 - assist.lms.VisitLms - INFO - Looking for Industry Oriented Python-IV(BTCS3651) > Attempt :5
+2021-04-22 15:22:20,144 - assist.lms.VisitLms - INFO - Looking for Industry Oriented Python-IV(BTCS3651) > Attempt :6
+2021-04-22 15:22:20,155 - assist.lms.VisitLms - INFO - Looking for Industry Oriented Python-IV(BTCS3651) > Attempt :7
+2021-04-22 15:22:20,166 - assist.lms.VisitLms - INFO - Looking for Industry Oriented Python-IV(BTCS3651) > Attempt :8
+2021-04-22 15:22:20,178 - assist.lms.VisitLms - INFO - Looking for Industry Oriented Python-IV(BTCS3651) > Attempt :9
+2021-04-22 15:22:20,178 - assist.lms.VisitLms - INFO - Industry Oriented Python-IV(BTCS3651) Element found 
+2021-04-22 15:22:21,423 - assist.lms.VisitLms - INFO - QUIZ 1
+Unit 1 - First Assessment 
+Quiz-1
+Timing : 5:30 PM to 6:00 PM (20 Questions)  
+2021-04-22 15:22:21,466 - assist.lms.VisitLms - INFO - Looks complete
+2021-04-22 15:22:21,488 - assist.lms.VisitLms - INFO - Unit 2 Quiz
+2021-04-22 15:22:21,523 - assist.lms.VisitLms - INFO - Looks complete
+2021-04-22 15:22:21,541 - assist.lms.VisitLms - INFO - Unit 3 Assessment Quiz
+2021-04-22 15:22:21,574 - assist.lms.VisitLms - INFO - Looks complete
+2021-04-22 15:22:21,595 - assist.lms.VisitLms - INFO - Unit-4 Assessment Quiz
+2021-04-22 15:22:21,627 - assist.lms.VisitLms - INFO - Looks complete
+2021-04-22 15:22:21,645 - assist.lms.VisitLms - INFO - Unit 5 Quiz (11-04-2021)
+2021-04-22 15:22:21,678 - assist.lms.VisitLms - INFO - Looks complete
+2021-04-22 15:22:21,697 - assist.lms.VisitLms - INFO - Unit 6 Quiz 1
+2021-04-22 15:22:21,728 - assist.lms.VisitLms - INFO - looks incomplete
+2021-04-22 15:22:21,766 - assist.lms.VisitLms - INFO - Batch 1 to 4 - ETE QUIZ ( or VIVA)
+Batch 1 to 4 - ETE QUIZ ( or VIVA)  
+
+Date: 20/04/2021
+Timing : 8:30 PM to 9:30 PM
+2021-04-22 15:22:21,806 - assist.lms.VisitLms - INFO - looks incomplete
+2021-04-22 15:22:21,839 - assist.lms.VisitLms - INFO - Batch 5 to 8 - ETE QUIZ ( or VIVA)
+Batch 5 to 8 - ETE QUIZ ( or VIVA)  
+Date : 20/04/2021
+Timing : 6:30 PM to 7:30 PM
+2021-04-22 15:22:21,872 - assist.lms.VisitLms - INFO - looks incomplete
+2021-04-22 15:22:21,905 - assist.lms.VisitLms - INFO - Batch 9 to Onwards Quiz ( Viva ) ETE
+Batch 9 to Onwards - ETE QUIZ ( or VIVA)  
+Date: 20/04/2021
+Quiz Timing: 7:30 PM to 8:30 PM
+2021-04-22 15:22:21,944 - assist.lms.VisitLms - INFO - Looks complete
+2021-04-22 15:22:21,944 - assist.lms.VisitLms - INFO - get_incomplete_assignments : called
+2021-04-22 15:22:22,081 - assist.lms.VisitLms - INFO - Unit 1 Assignment No 1
+2021-04-22 15:22:22,116 - assist.lms.VisitLms - INFO - Looks complete
+2021-04-22 15:22:22,131 - assist.lms.VisitLms - INFO - Assignment 3
+2021-04-22 15:22:22,165 - assist.lms.VisitLms - INFO - Looks complete
+2021-04-22 15:22:22,179 - assist.lms.VisitLms - INFO - Assignment 4
+2021-04-22 15:22:22,212 - assist.lms.VisitLms - INFO - looks incomplete
+2021-04-22 15:22:22,238 - assist.lms.VisitLms - INFO - Assignment 5
+2021-04-22 15:22:22,274 - assist.lms.VisitLms - INFO - looks incomplete
+2021-04-22 15:22:22,304 - assist.lms.VisitLms - INFO - Assignment 2
+2021-04-22 15:22:22,346 - assist.lms.VisitLms - INFO - Looks complete
+2021-04-22 15:22:23,433 - assist.lms.VisitLms - INFO - extract_quiz_info: called
+2021-04-22 15:22:24,248 - assist.lms.VisitLms - INFO - information extracted :Attempts allowed: 1
+This quiz closed on Tuesday, 20 April 2021, 7:30 PM
+Time limit: 30 mins
+2021-04-22 15:22:24,295 - assist.lms.VisitLms - INFO - extract_quiz_info: called
+2021-04-22 15:22:24,385 - assist.lms.VisitLms - INFO - information extracted :Attempts allowed: 1
+This quiz closed on Tuesday, 20 April 2021, 9:30 PM
+Time limit: 30 mins
+2021-04-22 15:22:24,434 - assist.lms.VisitLms - INFO - extract_quiz_info: called
+2021-04-22 15:22:24,534 - assist.lms.VisitLms - INFO - information extracted :Attempts allowed: 1
+This quiz closed on Sunday, 18 April 2021, 11:59 PM
+Time limit: 30 mins
+2021-04-22 15:22:25,212 - assist.lms.VisitLms - INFO - extract_assign_info: called
+2021-04-22 15:22:26,328 - assist.lms.VisitLms - INFO - Document link : https://lms.galgotiasuniversity.edu.in/pluginfile.php/1501805/mod_assign/introattachment/0/Assignment%205.pdf?forcedownload=1 
+ Document Name : Assignment 5.pdf
+2021-04-22 15:22:26,433 - assist.lms.VisitLms - INFO - extract_assign_info: called
+2021-04-22 15:22:26,640 - assist.lms.VisitLms - INFO - Document link : https://lms.galgotiasuniversity.edu.in/pluginfile.php/1501802/mod_assign/introattachment/0/Assignment%204.pdf?forcedownload=1 
+ Document Name : Assignment 4.pdf
+2021-04-22 15:22:32,360 - assist.lms.VisitLms - INFO - Looking for InfyTQ Java > Attempt :1
+2021-04-22 15:22:32,371 - assist.lms.VisitLms - INFO - Looking for InfyTQ Java > Attempt :2
+2021-04-22 15:22:32,383 - assist.lms.VisitLms - INFO - Looking for InfyTQ Java > Attempt :3
+2021-04-22 15:22:32,397 - assist.lms.VisitLms - INFO - Looking for InfyTQ Java > Attempt :4
+2021-04-22 15:22:32,410 - assist.lms.VisitLms - INFO - Looking for InfyTQ Java > Attempt :5
+2021-04-22 15:22:32,420 - assist.lms.VisitLms - INFO - Looking for InfyTQ Java > Attempt :6
+2021-04-22 15:22:32,431 - assist.lms.VisitLms - INFO - Looking for InfyTQ Java > Attempt :7
+2021-04-22 15:22:32,443 - assist.lms.VisitLms - INFO - Looking for InfyTQ Java > Attempt :8
+2021-04-22 15:22:32,451 - assist.lms.VisitLms - INFO - Looking for InfyTQ Java > Attempt :9
+2021-04-22 15:22:32,462 - assist.lms.VisitLms - INFO - Looking for InfyTQ Java > Attempt :10
+2021-04-22 15:22:32,462 - assist.lms.VisitLms - INFO - InfyTQ Java Element found 
+2021-04-22 15:22:33,618 - assist.lms.VisitLms - INFO - DBMS TRAINING ASSESSMENT-QUIZ
+2021-04-22 15:22:33,649 - assist.lms.VisitLms - INFO - looks incomplete
+2021-04-22 15:22:33,677 - assist.lms.VisitLms - INFO - Quiz_1 (16-01-2021)(Batch A)
+2021-04-22 15:22:33,700 - assist.lms.VisitLms - INFO - Looks complete
+2021-04-22 15:22:33,716 - assist.lms.VisitLms - INFO - Quiz_2 (23-01-2021)(Batch A)
+2021-04-22 15:22:33,745 - assist.lms.VisitLms - INFO - Looks complete
+2021-04-22 15:22:33,762 - assist.lms.VisitLms - INFO - Quiz_3(30-01-2021)(Batch A)
+2021-04-22 15:22:33,789 - assist.lms.VisitLms - INFO - Looks complete
+2021-04-22 15:22:33,806 - assist.lms.VisitLms - INFO - Quiz_4(06-02-2021) (Batch A)
+2021-04-22 15:22:33,836 - assist.lms.VisitLms - INFO - Looks complete
+2021-04-22 15:22:33,854 - assist.lms.VisitLms - INFO - QUIZ_5 (14-02-21)(Batch A)
+2021-04-22 15:22:33,888 - assist.lms.VisitLms - INFO - Looks complete
+2021-04-22 15:22:33,907 - assist.lms.VisitLms - INFO - Quiz (20.2.2020) for A & B both
+2021-04-22 15:22:33,935 - assist.lms.VisitLms - INFO - Looks complete
+2021-04-22 15:22:33,935 - assist.lms.VisitLms - INFO - get_incomplete_assignments : called
+2021-04-22 15:22:54,543 - assist.lms.VisitLms - INFO - extract_quiz_info: called
+2021-04-22 15:22:55,396 - assist.lms.VisitLms - INFO - information extracted :Attempts allowed: 1
+This quiz closed on Wednesday, 31 March 2021, 11:59 PM
+Time limit: 30 mins
+2021-04-22 15:23:01,046 - assist.lms.VisitLms - INFO - Looking for Learning interests survey form > Attempt :1
+2021-04-22 15:23:01,228 - assist.lms.VisitLms - INFO - Looking for Learning interests survey form > Attempt :2
+2021-04-22 15:23:01,241 - assist.lms.VisitLms - INFO - Looking for Learning interests survey form > Attempt :3
+2021-04-22 15:23:01,253 - assist.lms.VisitLms - INFO - Looking for Learning interests survey form > Attempt :4
+2021-04-22 15:23:01,263 - assist.lms.VisitLms - INFO - Looking for Learning interests survey form > Attempt :5
+2021-04-22 15:23:01,276 - assist.lms.VisitLms - INFO - Looking for Learning interests survey form > Attempt :6
+2021-04-22 15:23:01,287 - assist.lms.VisitLms - INFO - Looking for Learning interests survey form > Attempt :7
+2021-04-22 15:23:01,298 - assist.lms.VisitLms - INFO - Looking for Learning interests survey form > Attempt :8
+2021-04-22 15:23:01,309 - assist.lms.VisitLms - INFO - Looking for Learning interests survey form > Attempt :9
+2021-04-22 15:23:01,322 - assist.lms.VisitLms - INFO - Looking for Learning interests survey form > Attempt :10
+2021-04-22 15:23:01,340 - assist.lms.VisitLms - INFO - Looking for Learning interests survey form > Attempt :11
+2021-04-22 15:23:01,340 - assist.lms.VisitLms - INFO - Learning interests survey form Element found 
+2021-04-22 15:23:28,890 - assist.lms.VisitLms - INFO - Looking for Minor Project > Attempt :1
+2021-04-22 15:23:28,900 - assist.lms.VisitLms - INFO - Looking for Minor Project > Attempt :2
+2021-04-22 15:23:28,911 - assist.lms.VisitLms - INFO - Looking for Minor Project > Attempt :3
+2021-04-22 15:23:28,922 - assist.lms.VisitLms - INFO - Looking for Minor Project > Attempt :4
+2021-04-22 15:23:28,933 - assist.lms.VisitLms - INFO - Looking for Minor Project > Attempt :5
+2021-04-22 15:23:28,943 - assist.lms.VisitLms - INFO - Looking for Minor Project > Attempt :6
+2021-04-22 15:23:28,953 - assist.lms.VisitLms - INFO - Looking for Minor Project > Attempt :7
+2021-04-22 15:23:28,965 - assist.lms.VisitLms - INFO - Looking for Minor Project > Attempt :8
+2021-04-22 15:23:28,976 - assist.lms.VisitLms - INFO - Looking for Minor Project > Attempt :9
+2021-04-22 15:23:28,987 - assist.lms.VisitLms - INFO - Looking for Minor Project > Attempt :10
+2021-04-22 15:23:28,997 - assist.lms.VisitLms - INFO - Looking for Minor Project > Attempt :11
+2021-04-22 15:23:29,008 - assist.lms.VisitLms - INFO - Looking for Minor Project > Attempt :12
+2021-04-22 15:23:29,008 - assist.lms.VisitLms - INFO - Minor Project Element found 
+2021-04-22 15:23:55,579 - assist.lms.VisitLms - INFO - Looking for Project-II(BTCS3653) > Attempt :1
+2021-04-22 15:23:55,590 - assist.lms.VisitLms - INFO - Looking for Project-II(BTCS3653) > Attempt :2
+2021-04-22 15:23:55,600 - assist.lms.VisitLms - INFO - Looking for Project-II(BTCS3653) > Attempt :3
+2021-04-22 15:23:55,610 - assist.lms.VisitLms - INFO - Looking for Project-II(BTCS3653) > Attempt :4
+2021-04-22 15:23:55,621 - assist.lms.VisitLms - INFO - Looking for Project-II(BTCS3653) > Attempt :5
+2021-04-22 15:23:55,631 - assist.lms.VisitLms - INFO - Looking for Project-II(BTCS3653) > Attempt :6
+2021-04-22 15:23:55,642 - assist.lms.VisitLms - INFO - Looking for Project-II(BTCS3653) > Attempt :7
+2021-04-22 15:23:55,653 - assist.lms.VisitLms - INFO - Looking for Project-II(BTCS3653) > Attempt :8
+2021-04-22 15:23:55,663 - assist.lms.VisitLms - INFO - Looking for Project-II(BTCS3653) > Attempt :9
+2021-04-22 15:23:55,676 - assist.lms.VisitLms - INFO - Looking for Project-II(BTCS3653) > Attempt :10
+2021-04-22 15:23:55,688 - assist.lms.VisitLms - INFO - Looking for Project-II(BTCS3653) > Attempt :11
+2021-04-22 15:23:55,698 - assist.lms.VisitLms - INFO - Looking for Project-II(BTCS3653) > Attempt :12
+2021-04-22 15:23:55,709 - assist.lms.VisitLms - INFO - Looking for Project-II(BTCS3653) > Attempt :13
+2021-04-22 15:23:55,709 - assist.lms.VisitLms - INFO - Project-II(BTCS3653) Element found 

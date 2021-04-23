@@ -3,45 +3,44 @@ import os
 import platform
 import sys
 import time
-from pathlib import Path
 from urllib.request import urlopen
 from bs4 import BeautifulSoup as soup
 import smtplib
-# import requests
-import yaml
+import requests
 from selenium.common.exceptions import SessionNotCreatedException
 from selenium import webdriver
 from selenium.common.exceptions import InvalidArgumentException
 from selenium.webdriver.chrome.options import Options as OptionsChrome
 from selenium.webdriver.firefox.options import Options as OptionFirefox
-# import wikipedia
-import re
+from pathlib import  Path
 import webbrowser
-import pyautogui
-import datetime
+from settings.logs import logger
+from settings.setting import credentials, update_cred, conf_path, directories, update_directories, \
+    BROWSER
+from termcolor import cprint
+from tools.configParser import ConfigParser_manager as CM
 
 CurrentOs = platform.system()
 OsUserName = getpass.getuser()
 
 
-def getCred(portal="lms"):
-    with open(str(Path(__file__).parent) + "/userData.yaml", "r") as f:
-        docs = yaml.load(f, Loader=yaml.FullLoader)
-    return docs[portal]
-
 
 def getDriverPath(driver='chrome'):
+    # Todo optimize getDriverPath
+    driver_path = ""
     if driver == 'chrome' and CurrentOs == "Linux":
-        return str(Path(__file__).parent.parent.parent) + '/data/webDrivers/chrome/chromedriver_linux64/chromedriver'
+        driver_path = str(Path(__file__).parent.parent.parent) + '/data/webDrivers/chrome/chromedriver_linux64/chromedriver'
     if driver == 'chrome' and CurrentOs == 'Windows':
-        return str(Path(__file__).parent.parent.parent) + '/data/webDrivers/chrome/chromedriver_win32/chromedriver.exe'
+        driver_path =  str(Path(__file__).parent.parent.parent) + '/data/webDrivers/chrome/chromedriver_win32/chromedriver.exe'
     if driver == 'firefox' and CurrentOs == "Linux":
-        return str(
+        driver_path = str(
             Path(__file__).parent.parent.parent) + '/data/webDrivers/firefox/geckodriver-v0.27.0-linux64/geckodriver'
     if driver == 'firefox' and CurrentOs == "Windows":
-        return str(
+        driver_path = str(
             Path(__file__).parent.parent.parent) + '/data/webDrivers/firefox/geckodriver-v0.29.1-win64/geckodriver.exe'
-
+    if os.path.exists(driver_path):
+        return  driver_path
+    return driver_path
 
 def getMessagesFilePath():
     return str(Path(__file__).parent.parent.parent) + '/data/messages.txt'
@@ -53,40 +52,49 @@ def getBrowserDataPath(browser='chrome'):
     :param browser: Browser name ex: 'firefox', 'chrome'
     :return: string path
     """
-
+    data_path = ""
     if CurrentOs == "Linux" and browser == 'chrome':
-        return f'/home/{OsUserName}/.config/google-chrome/default.'
+        data_path = f'/home/{OsUserName}/.config/google-chrome/default.'
     if CurrentOs == 'Linux' and browser == 'firefox':
-        dirs = os.listdir(f"/home/{OsUserName}/.mozilla/firefox/")
-        for directory in dirs:
-            if directory.split('.').__contains__("default"):
-                return f'/home/{OsUserName}/.mozilla/firefox/{directory}'
+        if os.path.exists(f"/home/{OsUserName}/.mozilla/firefox/"):
+            dirs = os.listdir(f"/home/{OsUserName}/.mozilla/firefox/")
+            for directory in dirs:
+                if directory.split('.').__contains__("default"):
+                    data_path = f'/home/{OsUserName}/.mozilla/firefox/{directory}'
     if CurrentOs == 'Windows' and browser == 'chrome':
-        return f"C:\\Users\\{OsUserName}\\AppData\\Local\\Google\\Chrome\\User Data\\Default"
+        data_path = f"C:\\Users\\{OsUserName}\\AppData\\Local\\Google\\Chrome\\User Data\\Default"
     if CurrentOs == 'Windows' and browser == 'firefox':
-        print("here")
-        dirs = os.listdir(f"C:\\Users\\{OsUserName}\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles")
-        for directory in dirs:
-            print(directory.split('.'))
-            if directory.split('.').__contains__("default"):
-                return f'C:\\Users\\{OsUserName}\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles\\{directory}'
+        if os.path.exists(f"C:\\Users\\{OsUserName}\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles"):
+            dirs = os.listdir(f"C:\\Users\\{OsUserName}\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles")
+            for directory in dirs:
+                if directory.split('.').__contains__("default"):
+                    data_path = f'C:\\Users\\{OsUserName}\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles\\{directory}'
+    if os.path.exists(data_path):
+        return data_path
+    else:
+        return None
 
-
-def _load_driver():
+def _load_driver(download_dir=None):
     """
     Load the Selenium driver
     :return: driver
     """
-    with open(str(Path(__file__).parent) + "/userData.yaml", "r") as f:
-        docs = yaml.load(f, Loader=yaml.FullLoader)
-
-    browserName = docs['browserPref']
+    browserName = BROWSER
     browser_data_path = getBrowserDataPath(browser=browserName)
     web_driver_path = getDriverPath(driver=browserName)
     driver = None
     if browserName.lower() == "firefox":
         option = OptionFirefox()
-        option.add_argument('user-data-dir=' + browser_data_path)
+        if browser_data_path is not None:
+            option.add_argument('user-data-dir=' + browser_data_path)
+        if download_dir is not None:
+            if os.path.exists(download_dir):
+                p = {'download.default_directory': download_dir}
+                #todo: add download folder here
+                pass
+
+            else:
+                logger.debug(f"Using default download path {download_dir} doesn't exist")
         try:
             driver = webdriver.Firefox(executable_path=web_driver_path, options=option)
         except InvalidArgumentException:
@@ -96,6 +104,12 @@ def _load_driver():
     elif browserName.lower() == "chrome":
         option = OptionsChrome()
         option.add_argument('user-data-dir=' + browser_data_path)
+        if download_dir is not None:
+            if os.path.exists(download_dir):
+                p = {'download.default_directory': download_dir}
+                option.add_experimental_option('prefs', p)
+            else:
+                logger.debug(f"Using default download path {download_dir} doesn't exist")
         try:
             driver = webdriver.Chrome(executable_path=web_driver_path, options=option)
         except InvalidArgumentException:
@@ -104,11 +118,11 @@ def _load_driver():
     return driver
 
 
-def getWebDriver():
+def getWebDriver(download_dir=None):
     # print("webdriver called")
     Driver = None
     try:
-        Driver = _load_driver()
+        Driver = _load_driver(download_dir)
     except SessionNotCreatedException as e:
         print(e.msg)
 
@@ -163,7 +177,7 @@ def tell_me_about(topic):
         return res
     except Exception as e:
         print(e)
-        return False
+        return "Sorry sir"
 
 
 def website_opener(domain):
@@ -176,5 +190,53 @@ def website_opener(domain):
         return False
 
 
+def get_cred(site: str):
+    cred = {}
+    obj = CM()
+    if credentials[site] is None:
+        print()
+        cprint(f"{site} credentials are not set please enter :", 'red')
+        cprint('Username: ','green' ,end="")
+        username = input()
+        cred['username'] = username
+        cprint('Password: ', 'green', end="")
+        password = input()
+        cred['password']= password
+        obj.update(conf_path, {site:cred}, section='credentials')
+        update_cred({site: cred})
+        return cred
+    else:
+        return credentials[site.lower()]
+
+def get_directory(name):
+    logger.info("get_directory called")
+    path = None
+    obj = CM()
+    try:
+        if directories[name.lower()] is None:
+            cprint(f"Sir, you have not specified a directory for {name}", 'red')
+            cprint("Please specify directory: ", 'blue', end="")
+            d = input()
+
+            try:
+                path  = Path(d)
+                obj.update(conf_path, {name: path}, section='directories')
+                update_directories({name: path})
+            except Exception as e:
+                logger.error(f"Error while getting path {e}")
+        else:
+            path = Path(directories[name.lower()])
+    except KeyError as k:
+        logger.error(f"There is no directory for {name}")
+    return path
+
+
+def write_file_from_url(url, file):
+    logger.info(f"getting data form {url} and saving into file {file}")
+    r = requests.get(url, allow_redirects=True)
+    with open(file, 'wb') as file:
+        file.write(r.content)
+
 if __name__ == '__main__':
-    pass
+   driv = getWebDriver()
+   driv.get("https://www.google.com")

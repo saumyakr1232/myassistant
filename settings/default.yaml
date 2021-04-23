@@ -31,3 +31,5 @@ developer:
 start_time:
   first_time: True
 
+browser:
+  browser_name: chrome

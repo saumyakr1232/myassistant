@@ -12,7 +12,10 @@ all_sections = [
     'template_path',
     'compiler',
     'developer',
-    'start_time'
+    'start_time',
+    'browser',
+    'directory',
+    'credentials'
 ]
 
 
@@ -30,9 +33,20 @@ bot = {
     'voice_engine': 'pyttsx3', # can change to gTTS (online)
 }
 
+directories = {
+    'assignment_attachment': None,
+    'notes': None
+}
+
+credentials = {
+    'lms': None,
+    'icloud': None
+}
+
+
 DEBUG = True
 LEARN = True
-
+BROWSER = 'chrome'
 conf_path  = os.path.join(getpath(__file__), 'settings.yaml')
 
 try:
@@ -57,6 +71,28 @@ try:
         LEARN = True
     else:
         LEARN = False
+
+    section = 'browser'
+    x = obj.read(conf_path, section=section)
+
+    if x != "":
+        BROWSER = x['browser_name']
+
+    section = 'directories'
+
+    x = obj.read(conf_path, section=section)
+
+    if x != '':
+        for key in x.keys():
+            directories[key] = x[key]
+
+    section = 'credentials'
+    x = obj.read(conf_path, section=section)
+
+    if x != "":
+        for key in x.keys():
+            credentials[key] = x[key]
+
 
 except Exception as e:
     cprint(e,'red')
@@ -92,6 +128,20 @@ def update_dev(x):
     else:
         DEBUG = False
 
+def update_cred(x):
+    global credentials
+    for key in x.keys():
+        credentials[key] = x[key]
+    print(credentials)
+
+def update_browser(x):
+    global BROWSER
+    BROWSER = x['browser_name']
+
+def update_directories(x):
+    global  directories
+    for key in x.keys():
+        directories[key] = directories[key]
 
 if __name__ == '__main__':
     pass

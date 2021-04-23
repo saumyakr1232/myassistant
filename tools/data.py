@@ -73,4 +73,5 @@ DATE_STRS = ["what's the date", "tell me the date", "what date is it", "what is 
 
 
 lms_keys = ['lms', 'gu lms']
+incomp_ass_quiz_keys = ['get incomplete quizzes', 'incomplete assignments', 'get incomplete quiz', 'incomplete quiz']
 login_keys = ['log in', 'login', 'signin', 'sign in']
