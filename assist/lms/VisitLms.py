@@ -14,8 +14,9 @@ from selenium.webdriver.support.ui import WebDriverWait
 from tools.string_processing import is_matched
 import assist.utils.helper as helper
 from models.models import Quiz, Assignment
-logger.setLevel(logging.INFO)
-
+from UI.table import quiz_assignment_table
+from assist.alert.NotifyMe import  msg_box
+logger.setLevel(logging.CRITICAL)
 
 def copy_assignment_doc(file_name):
     """
@@ -533,7 +534,6 @@ def get_incomplete_assignments_and_quizzes(course=""):
         else:
             for course in all_courses:
                 report[course] = create_report(course, driver)
-                time.sleep(5)
         driver.close()
     except NoSuchWindowException as e:
         logger.error(e.msg)
@@ -541,6 +541,9 @@ def get_incomplete_assignments_and_quizzes(course=""):
         logger.error(f"Some error while collecting incomplete quiz/Assignment data {e}")
 
     finally:
+        # msg = helper.beautify_dict(report)
+        # msg_box("Incomplete assignment or quizes co")
+        quiz_assignment_table(report)
         return report
 
 
@@ -610,4 +613,12 @@ def login_to_lms():
 
 
 if __name__ == '__main__':
-    print(get_incomplete_assignments_and_quizzes('compiler'))
+   r = get_incomplete_assignments_and_quizzes('compiler')
+   quiz_assignment_table(r)
+   for key in r.keys():
+       print(key)
+       for ass in r[key]['assignments']:
+           print(ass)
+       for quiz in r[key]['quizzes']:
+           print(quiz)
+

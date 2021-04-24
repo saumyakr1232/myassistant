@@ -1,6 +1,6 @@
 bot:
   boss: Saurabh
-  gender: Male
+  gender: Female
   name: Nobita
   voice_engine: pyttsx3
   voice_reply: true
@@ -28,7 +28,7 @@ interaction_setting:
   text_read: true
   text_reply: true
   voice_read_voice_reply: false
-  voice_reply: false
+  voice_reply: true
 start_time:
   first_time: false
 template_path:

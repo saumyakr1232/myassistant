@@ -109,8 +109,11 @@ def ai(msg):
     wiki, youtube, google
     goto
     install, calculate
+    screenshot
     calendar
     time, date
+    login lms
+    get incomp ass / quiz data
     """
     logger.debug("called assistant")
     msg = msg.replace('  ', ' ').strip().lower()
@@ -166,7 +169,7 @@ def ai(msg):
             # print("got date ", date)
             if date:
                 for event in g_calendar.get_events(date):
-                    reply += event
+                    reply = event
                 return reply
 
             else:
@@ -237,21 +240,19 @@ def ai(msg):
                     course = msg.split('of')[1].strip()
                 else:
                     course = msg.split('for')[1].strip()
+                    cprint(f"Sir, Fetching all Incomplete assignments and quizzes of {course}", 'blue')
 
-                d = threading.Thread(name="incom_ass_quiz", target=VisitLms.get_incomplete_assignments_and_quizzes,
-                                     args=(course,))
-                d.setDaemon(True)
-                d.start()
-                reply = f"Sir, Fetching all Icomplete assignments and quizzes of {course}"
+                VisitLms.get_incomplete_assignments_and_quizzes(course)
+                reply = "Done."
 
             else:
-                d = threading.Thread(name="incom_ass_quiz", target=VisitLms.get_incomplete_assignments_and_quizzes)
-                d.setDaemon(True)
-                d.start()
-                reply = "Sir, Fetching all  Incomplete assignments and quizzes from lms"
+                VisitLms.get_incomplete_assignments_and_quizzes()
+                cprint(f"Sir, Fetching all Incomplete assignments and quizzes from lms", 'blue')
+                reply = "Done"
 
 
         else:
+            print("else 1")
             """ run with arguments """
             if 'cmd:' in msg or '-s' in msg:
                 msg = rep(msg, {'cmd:'})
@@ -261,6 +262,7 @@ def ai(msg):
                 command_sep()
                 reply = 'done sir'
             else:
+                print("else 2")
                 try:
                     f = getpath(__file__) + '.learnt'
                     history = JsonManager.json_read(f)
@@ -273,6 +275,7 @@ def ai(msg):
                     logging.error("Can't read history file")
 
                 try:
+                    print("tain_[ath")
                     ft = train_path
                     history = JsonManager.json_read(ft)
                     for line in history:
@@ -286,7 +289,7 @@ def ai(msg):
                 reply = assistant.ask_question(msg)
                 t = time.time() - t
                 logger.info(str(t) + ' sec')
-                # cprint(t,'red')
+                cprint(t,'red')
                 ok = True
                 for word in should_not_learn:
                     if word in msg.lower() or word in reply.lower():
@@ -294,6 +297,7 @@ def ai(msg):
                         break
                 if ok:
                     logger.info('reply -> ' + reply)
+                    print(LEARN)
                     if not LEARN:
                         cprint("(Automatically LEARN MODE is disable)Enter y to learn : ", 'red', attrs=['bold'],
                                end='')

@@ -29,13 +29,13 @@ class Assignment:
 
 
 class Quiz:
-    def __init__(self, title="", start_date="", due_date="", course="", attempts=1):
+    def __init__(self, title="", start_date="", due_date="", course="", attempts=1, time_limit = 0):
         self.title = title
         self.start_date = start_date
         self.due_date = due_date
         self.course = course
         self.attempts = attempts
-        self.time_limit = 0
+        self.time_limit = time_limit
         self.score = 0.0
         self.max_score = 0.0
 

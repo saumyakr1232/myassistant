@@ -2,10 +2,8 @@ import tkinter as tk
 from tkinter import messagebox as msg
 
 import playsound
-import gi
 
-gi.require_version('Notify', '0.7')
-from gi.repository import Notify
+
 from gtts import gTTS
 from plyer import notification
 
@@ -46,31 +44,31 @@ def playSound(text_to_shout):
     playsound.playsound("eng.mp3")
 
 
-def send_notification(title, message, icon=None):
-    if helper.CurrentOs == "Linux":
-        Notify.init("Assitant")
-        notification_obj = Notify.Notification.new(message)
-        # notification_obj.add_action(
-        #     "action_click",
-        #     "Yes",
-        #     call_back_fn,
-        #     arg
-        # )
-        # notification_obj.add_action(
-        #     "action_click",
-        #     "No",
-        #     call_back_fn,
-        #     arg
-        # )
-        notification_obj.show()
-
-    else:
-        notification.notify(
-            title=title,
-            message=message,
-            app_icon=icon,
-            timeout=5
-        )
+# def send_notification(title, message, icon=None):
+#     if helper.CurrentOs == "Linux":
+#         Notify.init("Assitant")
+#         notification_obj = Notify.Notification.new(message)
+#         # notification_obj.add_action(
+#         #     "action_click",
+#         #     "Yes",
+#         #     call_back_fn,
+#         #     arg
+#         # )
+#         # notification_obj.add_action(
+#         #     "action_click",
+#         #     "No",
+#         #     call_back_fn,
+#         #     arg
+#         # )
+#         notification_obj.show()
+#
+#     else:
+#         notification.notify(
+#             title=title,
+#             message=message,
+#             app_icon=icon,
+#             timeout=5
+#         )
 
 
 def notify(quiz_info):
@@ -89,11 +87,18 @@ class Icons:
 
 
 def main():
-    l = [{'16 June 2020 Percentage Quiz(6.40-8pm)_Bhawana':
-              'Attempts allowed: 1\nThis quiz closed on Tuesday, 16 June 2020, 8:00 PM\nTo attempt this quiz you need to know the quiz password\nTime limit: 1 hour 20 mins'},
-         {'15 June 2020 Coding Decoding Quiz(6.40-8pm)_Bhawana':
-              'Attempts allowed: 1\nThis quiz closed on Monday, 15 June 2020, 8:00 PM\nTo attempt this quiz you need to know the quiz password\nTime limit: 1 hour 20 mins'}]
-    notify(l)
+    # l = [{'16 June 2020 Percentage Quiz(6.40-8pm)_Bhawana':
+    #           'Attempts allowed: 1\nThis quiz closed on Tuesday, 16 June 2020, 8:00 PM\nTo attempt this quiz you need to know the quiz password\nTime limit: 1 hour 20 mins'},
+    #      {'15 June 2020 Coding Decoding Quiz(6.40-8pm)_Bhawana':
+    #           'Attempts allowed: 1\nThis quiz closed on Monday, 15 June 2020, 8:00 PM\nTo attempt this quiz you need to know the quiz password\nTime limit: 1 hour 20 mins'}]
+    # notify(l)
 
-    result = msg_box("Test", "some info", 3)
+    title = "Incomplete assignments and quizzes of compiler design"
+    message = "laj ladsjfla lasd jfallasdfjasl alsdfjlaskdj f alsdfjasldkfjals\n alsdfjalsdkjflksdajfl"
+
+    result = msg_box(title, message, 0)
     print(result)
+
+
+if __name__ == '__main__':
+    main()

@@ -3,6 +3,7 @@ import os
 import platform
 import sys
 import time
+from wikipedia import wikipedia
 from urllib.request import urlopen
 from bs4 import BeautifulSoup as soup
 import smtplib
@@ -170,10 +171,8 @@ def send_email(sender_email, sender_password, receiver_email, msg):
 
 def tell_me_about(topic):
     try:
-        # ny = wikipedia.page(topic)
-        # res = str(ny.content[:500].encode('utf-8'))
-        # res = re.sub('[^a-zA-Z.\d\s]', '', res)[1:]
-        res = ""
+        ny = wikipedia.page(topic)
+        res = str(ny.content[:500].encode('utf-8'))
         return res
     except Exception as e:
         print(e)
@@ -237,6 +236,6 @@ def write_file_from_url(url, file):
     with open(file, 'wb') as file:
         file.write(r.content)
 
+
 if __name__ == '__main__':
-   driv = getWebDriver()
-   driv.get("https://www.google.com")
+   print(news())

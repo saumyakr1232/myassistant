@@ -37,12 +37,14 @@ data = {
     "what's up": 'I am fine, thank you sir.',
     "who is your boss": "My boss is " + bot['boss'] + '.',
     "hello": "hey",
+    'hii':'hello',
     "ok": "okay",
     "okay": "ok",
     "thank you": "welcome",
     "hey": "hello",
     "what about you": "I am fine sir.",
     "how about you": "I am fine sir.",
+    'where are you from ': "I live in clouds"
 
 }
 
