@@ -24,11 +24,12 @@ developer:
   learn: true
 directories:
   assignment_attachment: C:\Users\saumyakr1232\OneDrive\Documents
+  screenshot: C:\Users\saumyakr1232\OneDrive\pictures
 interaction_setting:
   text_read: true
   text_reply: true
   voice_read_voice_reply: false
-  voice_reply: false
+  voice_reply: true
 start_time:
   first_time: false
 template_path:

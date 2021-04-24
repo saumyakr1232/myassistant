@@ -1,5 +1,5 @@
 from assist import assistant
-# from assist.calendar import g_calendar
+from assist.calendar import g_calendar
 from tools.data import data, youtube, wiki, google, youtube_play, goto_keys, lms_keys, login_keys
 from tools.data import install_keys, calc_keys, should_not_learn, version_keys
 from tools.data import CALENDAR_STRS, NOTE_STRS, DAYS, MONTHS, DAY_EXTENTIONS, TIME_STRS, DATE_STRS
@@ -22,6 +22,7 @@ from tools.interact import speak, get_input
 import random
 import requests
 import os
+from assist.utils.helper import  get_directory
 import threading
 import subprocess
 import time
@@ -161,21 +162,22 @@ def ai(msg):
         elif check(msg, ["capture", "my screen", "screenshot"]):
             try:
                 myScreenshot = pyautogui.screenshot()
-                myScreenshot.save(f'screenshot.png')  # todo get proper directory
+                path = get_directory('screenshot') / f'{datetime.datetime.now().timestamp()}-screenshot.png'
+                myScreenshot.save(path)  # todo get proper directory
                 reply = 'screen shot saved'
             except Exception as e:
                 print(e)
-        # elif check(msg, CALENDAR_STRS):
-        #     # print("calendar")
-        #     date = get_date(msg)
-        #     # print("got date ", date)
-        #     if date:
-        #         for event in g_calendar.get_events(date):
-        #             reply = event
-        #         return reply
+        elif check(msg, CALENDAR_STRS):
+            # print("calendar")
+            date = get_date(msg)
+            # print("got date ", date)
+            if date:
+                for event in g_calendar.get_events(date):
+                    reply = event
+                return reply
 
             else:
-                reply = "Sorry sir, din\'t get that"
+                reply = "Sorry sir, didn't get that"
                 return reply
         elif check(msg, calc_keys):
             msg = rep(msg, calc_keys)

@@ -35,7 +35,8 @@ bot = {
 
 directories = {
     'assignment_attachment': None,
-    'notes': None
+    'notes': None,
+    'screenshot': None
 }
 
 credentials = {

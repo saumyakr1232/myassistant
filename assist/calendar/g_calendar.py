@@ -68,7 +68,7 @@ def get_events(day):
         messages.append(f'you have {len(events)} events on this day \n')
         for event in events:
             start = event['start'].get('dateTime', event['start'].get('date'))
-            print(start, event['summary'])
+            # print(start, event['summary'])
             start_time = str(start.split("T")[1].split("+")[0])
 
             if int(start_time.split(":")[0]) < 12:
@@ -76,7 +76,7 @@ def get_events(day):
             else:
                 start_time = str(int(start_time.split(":")[0]) - 12) + start_time.split(":")[1]
                 start_time = start_time + " pm"
-            print(event["summary"] + " at " + start_time)
+            # print(event["summary"] + " at " + start_time)
             messages.append(event["summary"] + " at " + start_time)
         return messages
 

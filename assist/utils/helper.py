@@ -219,8 +219,8 @@ def get_directory(name):
 
             try:
                 path  = Path(d)
-                obj.update(conf_path, {name: path}, section='directories')
-                update_directories({name: path})
+                obj.update(conf_path, {name: str(path.absolute())}, section='directories')
+                update_directories({name: str(path.absolute())})
             except Exception as e:
                 logger.error(f"Error while getting path {e}")
         else:

@@ -1013,48 +1013,50 @@ class Config:
     def config_list(self):
         not_done = True
         while not_done:
-
-            pt = '-' * 22 + 'Config' + '-' * 22
-            cprint(pt, 'magenta')
-            print()
-            cprint(" All the available settings are given below,", 'yellow')
-            print()
-            for i, w in enumerate(self.lt):
-                cprint(f'  {i + 1}) {w}', 'blue')
-            cprint('  0) Exit', 'red')
-            print()
-            ok = True
-            while ok:
-                ok = False
-                cprint(" Enter the index number : ", 'cyan', end='')
-                no = int(input())
-                if no == 0:
-                    cprint(" Exiting.", 'red')
-                    cprint(" For some setting you might need to restart me.", 'yellow')
-                    not_done = False
-                elif no == 1:
-                    cprint(f' You have selected {self.lt[no - 1]} .', 'yellow')
-                    self.bot(no - 1)
-                elif no == 2:
-                    cprint(f' You have selected {self.lt[no - 1]} .', 'yellow')
-                    self.Interaction(no - 1)
-                elif no == 3:
-                    cprint(f' You have selected {self.lt[no - 1]} .', 'yellow')
-                    self.compiler_option(no - 1)
-                elif no == 4:
-                    cprint(f' You have selected {self.lt[no - 1]} .', 'yellow')
-                    self.features(no - 1)
-                elif no == 5:
-                    cprint(f' You have selected {self.lt[no - 1]} .', 'yellow')
-                    self.training_mode(no - 1)
-                elif no == 6:
-                    cprint(f" You have selected {self.lt[no - 1]} .", 'yellow')
-                    self.export_import_settings(no - 1)
-                elif no == 75:
-                    self.dev_mode()
-                else:
-                    ok = True
-                    cprint(" You have selected wrong index. Please try again.", 'red')
+            try:
+                pt = '-' * 22 + 'Config' + '-' * 22
+                cprint(pt, 'magenta')
+                print()
+                cprint(" All the available settings are given below,", 'yellow')
+                print()
+                for i, w in enumerate(self.lt):
+                    cprint(f'  {i + 1}) {w}', 'blue')
+                cprint('  0) Exit', 'red')
+                print()
+                ok = True
+                while ok:
+                    ok = False
+                    cprint(" Enter the index number : ", 'cyan', end='')
+                    no = int(input())
+                    if no == 0:
+                        cprint(" Exiting.", 'red')
+                        cprint(" For some setting you might need to restart me.", 'yellow')
+                        not_done = False
+                    elif no == 1:
+                        cprint(f' You have selected {self.lt[no - 1]} .', 'yellow')
+                        self.bot(no - 1)
+                    elif no == 2:
+                        cprint(f' You have selected {self.lt[no - 1]} .', 'yellow')
+                        self.Interaction(no - 1)
+                    elif no == 3:
+                        cprint(f' You have selected {self.lt[no - 1]} .', 'yellow')
+                        self.compiler_option(no - 1)
+                    elif no == 4:
+                        cprint(f' You have selected {self.lt[no - 1]} .', 'yellow')
+                        self.features(no - 1)
+                    elif no == 5:
+                        cprint(f' You have selected {self.lt[no - 1]} .', 'yellow')
+                        self.training_mode(no - 1)
+                    elif no == 6:
+                        cprint(f" You have selected {self.lt[no - 1]} .", 'yellow')
+                        self.export_import_settings(no - 1)
+                    elif no == 75:
+                        self.dev_mode()
+                    else:
+                        ok = True
+                        cprint(" You have selected wrong index. Please try again.", 'red')
+            except ValueError:
+                pass
 
 
 def if_config_type(msg):
