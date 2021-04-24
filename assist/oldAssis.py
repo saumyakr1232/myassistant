@@ -260,62 +260,62 @@ def main():
                         webbrowser.get().open(url)
                         speak("Here is what I found for " + search_term + " on google")
                         got_answer = True
-
-                # rock paper scissors
-                for phrase in ["play game", "rock paper", "start game"]:
-                    if phrase in text:
-                        speak("choose among rock paper or scissor")
-                        text = mic_input()
-                        moves = ["rock", "paper", "scissor"]
-
-                        cmove = random.choice(moves)
-                        pmove = text
-
-                        speak("The computer chose " + cmove)
-                        speak("You chose " + pmove)
-                        got_answer = True
-
-                        if pmove == cmove:
-                            speak("the match is draw")
-                        elif pmove == "rock" and cmove == "scissor":
-                            speak("Player wins")
-                        elif pmove == "rock" and cmove == "paper":
-                            speak("Computer wins")
-                        elif pmove == "paper" and cmove == "rock":
-                            speak("Player wins")
-                        elif pmove == "paper" and cmove == "scissor":
-                            speak("Computer wins")
-                        elif pmove == "scissor" and cmove == "paper":
-                            speak("Player wins")
-                        elif pmove == "scissor" and cmove == "rock":
-                            speak("Computer wins")
+                #
+                # # rock paper scissors
+                # for phrase in ["play game", "rock paper", "start game"]:
+                #     if phrase in text:
+                #         speak("choose among rock paper or scissor")
+                #         text = mic_input()
+                #         moves = ["rock", "paper", "scissor"]
+                #
+                #         cmove = random.choice(moves)
+                #         pmove = text
+                #
+                #         speak("The computer chose " + cmove)
+                #         speak("You chose " + pmove)
+                #         got_answer = True
+                #
+                #         if pmove == cmove:
+                #             speak("the match is draw")
+                #         elif pmove == "rock" and cmove == "scissor":
+                #             speak("Player wins")
+                #         elif pmove == "rock" and cmove == "paper":
+                #             speak("Computer wins")
+                #         elif pmove == "paper" and cmove == "rock":
+                #             speak("Player wins")
+                #         elif pmove == "paper" and cmove == "scissor":
+                #             speak("Computer wins")
+                #         elif pmove == "scissor" and cmove == "paper":
+                #             speak("Player wins")
+                #         elif pmove == "scissor" and cmove == "rock":
+                #             speak("Computer wins")
 
                 # Toss a coin
-                for phrase in ["toss a coin", "flip a coin"]:
-                    if phrase in text:
-                        got_answer = True
-                        moves = ["head", "tails"]
-                        cmove = random.choice(moves)
-                        speak("The computer chose " + cmove)
-
-                # calc
-                for phrase in ["plus", "minus", "multiply", "divide", "power", "+", "-", "*", "/"]:
-                    if phrase in text:
-                        got_answer = True
-                        opr = text.split()[1]
-
-                        if opr == '+' or opr == 'plus':
-                            speak(int(text.split()[0]) + int(text.split()[2]))
-                        elif opr == '-' or opr == "minus":
-                            speak(int(text.split()[0]) - int(text.split()[2]))
-                        elif opr == 'multiply' or 'x':
-                            speak(int(text.split()[0]) * int(text.split()[2]))
-                        elif opr == 'divide':
-                            speak(int(text.split()[0]) / int(text.split()[2]))
-                        elif opr == 'power':
-                            speak(int(text.split()[0]) ** int(text.split()[2]))
-                        else:
-                            speak("Wrong Operator")
+                # for phrase in ["toss a coin", "flip a coin"]:
+                #     if phrase in text:
+                #         got_answer = True
+                #         moves = ["head", "tails"]
+                #         cmove = random.choice(moves)
+                #         speak("The computer chose " + cmove)
+                #
+                # # calc
+                # for phrase in ["plus", "minus", "multiply", "divide", "power", "+", "-", "*", "/"]:
+                #     if phrase in text:
+                #         got_answer = True
+                #         opr = text.split()[1]
+                #
+                #         if opr == '+' or opr == 'plus':
+                #             speak(int(text.split()[0]) + int(text.split()[2]))
+                #         elif opr == '-' or opr == "minus":
+                #             speak(int(text.split()[0]) - int(text.split()[2]))
+                #         elif opr == 'multiply' or 'x':
+                #             speak(int(text.split()[0]) * int(text.split()[2]))
+                #         elif opr == 'divide':
+                #             speak(int(text.split()[0]) / int(text.split()[2]))
+                #         elif opr == 'power':
+                #             speak(int(text.split()[0]) ** int(text.split()[2]))
+                #         else:
+                #             speak("Wrong Operator")
 
                 # screenshot
                 for phrase in ["capture", "my screen", "screenshot"]:

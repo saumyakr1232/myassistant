@@ -1,36 +1,35 @@
-try:
-    from assist import assistant
-    from assist.calendar import g_calendar
-    from tools.data import data, youtube, wiki, google, youtube_play, goto_keys, lms_keys, login_keys
-    from tools.data import install_keys, calc_keys, should_not_learn, version_keys
-    from tools.data import CALENDAR_STRS, NOTE_STRS, DAYS, MONTHS, DAY_EXTENTIONS, TIME_STRS, DATE_STRS
-    from tools.data import incomp_ass_quiz_keys
-    from settings.logs import *
-    from system.install import install, command
-    from system.screen_text import command_sep
-    from tools.string_processing import is_matched
-    from tools.json_manager import JsonManager
-    from system.Notification import notifyMe
-    from settings.setting import bot, DEBUG, LEARN
-    from termcolor import cprint
-    from settings.config import if_config_type
-    from system.path import getpath
-    from settings.config import train_path
-    from tools.shell import if_shell_type
-    from tools.run_program_file import if_run_type
-    from assist.lms import VisitLms
-    import requests
-    import os
-    import threading
-    import subprocess
-    import time
-    import webbrowser
-    from assist.utils.helper import tell_me_about, getWebDriver, CurrentOs
-    import pyautogui
-    import datetime
-    import multiprocessing
-except Exception as e:
-    print("Exception while importing in  ai.py")
+from assist import assistant
+# from assist.calendar import g_calendar
+from tools.data import data, youtube, wiki, google, youtube_play, goto_keys, lms_keys, login_keys
+from tools.data import install_keys, calc_keys, should_not_learn, version_keys
+from tools.data import CALENDAR_STRS, NOTE_STRS, DAYS, MONTHS, DAY_EXTENTIONS, TIME_STRS, DATE_STRS
+from tools.data import incomp_ass_quiz_keys
+from settings.logs import *
+from system.install import install, command
+from system.screen_text import command_sep
+from tools.string_processing import is_matched
+from tools.json_manager import JsonManager
+from system.Notification import notifyMe
+from settings.setting import bot, DEBUG, LEARN
+from termcolor import cprint
+from settings.config import if_config_type
+from system.path import getpath
+from settings.config import train_path
+from tools.shell import if_shell_type
+from tools.run_program_file import if_run_type
+from assist.lms import VisitLms
+from tools.interact import speak, get_input
+import random
+import requests
+import os
+import threading
+import subprocess
+import time
+import webbrowser
+from assist.utils.helper import tell_me_about, getWebDriver, CurrentOs
+import pyautogui
+import datetime
+import multiprocessing
 
 from settings.logs import *
 
@@ -114,6 +113,9 @@ def ai(msg):
     time, date
     login lms
     get incomp ass / quiz data
+    play game (rock paper)
+    toss a coin
+
     """
     logger.debug("called assistant")
     msg = msg.replace('  ', ' ').strip().lower()
@@ -163,14 +165,14 @@ def ai(msg):
                 reply = 'screen shot saved'
             except Exception as e:
                 print(e)
-        elif check(msg, CALENDAR_STRS):
-            # print("calendar")
-            date = get_date(msg)
-            # print("got date ", date)
-            if date:
-                for event in g_calendar.get_events(date):
-                    reply = event
-                return reply
+        # elif check(msg, CALENDAR_STRS):
+        #     # print("calendar")
+        #     date = get_date(msg)
+        #     # print("got date ", date)
+        #     if date:
+        #         for event in g_calendar.get_events(date):
+        #             reply = event
+        #         return reply
 
             else:
                 reply = "Sorry sir, din\'t get that"
@@ -250,9 +252,38 @@ def ai(msg):
                 cprint(f"Sir, Fetching all Incomplete assignments and quizzes from lms", 'blue')
                 reply = "Done"
 
+        elif check(msg, ["play game", "rock paper", "start game"]):
+            speak("Choose among rock, paper and scissor")
+            choice = get_input()
+            moves = ["rock", "paper", "scissor"]
+            cmove = random.choice(moves)
+            pmove = choice
+
+            speak("The computer chose " + cmove)
+            speak("You chose " + pmove)
+
+
+            if pmove == cmove:
+                reply = "the match is draw"
+            elif pmove == "rock" and cmove == "scissor":
+                reply = "Player wins"
+            elif pmove == "rock" and cmove == "paper":
+                reply = "Computer wins"
+            elif pmove == "paper" and cmove == "rock":
+                reply = "Player wins"
+            elif pmove == "paper" and cmove == "scissor":
+                reply = "Computer wins"
+            elif pmove == "scissor" and cmove == "paper":
+                reply = "Player wins"
+            elif pmove == "scissor" and cmove == "rock":
+                reply = "Computer wins"
+
+        elif check(msg, ["toss a coin", "flip a coin"]):
+            moves = ["head", "tails"]
+            cmove = random.choice(moves)
+            reply = f"Its {cmove.title()}"
 
         else:
-            print("else 1")
             """ run with arguments """
             if 'cmd:' in msg or '-s' in msg:
                 msg = rep(msg, {'cmd:'})
@@ -262,7 +293,8 @@ def ai(msg):
                 command_sep()
                 reply = 'done sir'
             else:
-                print("else 2")
+                f= None
+                history = None
                 try:
                     f = getpath(__file__) + '.learnt'
                     history = JsonManager.json_read(f)
@@ -275,7 +307,6 @@ def ai(msg):
                     logging.error("Can't read history file")
 
                 try:
-                    print("tain_[ath")
                     ft = train_path
                     history = JsonManager.json_read(ft)
                     for line in history:
@@ -289,7 +320,7 @@ def ai(msg):
                 reply = assistant.ask_question(msg)
                 t = time.time() - t
                 logger.info(str(t) + ' sec')
-                cprint(t,'red')
+                # cprint(t,'red')
                 ok = True
                 for word in should_not_learn:
                     if word in msg.lower() or word in reply.lower():
@@ -297,7 +328,6 @@ def ai(msg):
                         break
                 if ok:
                     logger.info('reply -> ' + reply)
-                    print(LEARN)
                     if not LEARN:
                         cprint("(Automatically LEARN MODE is disable)Enter y to learn : ", 'red', attrs=['bold'],
                                end='')
@@ -306,6 +336,7 @@ def ai(msg):
                         learn = 'y'
                     if learn.lower() == 'y':
                         try:
+                            history = JsonManager.json_read(f)
                             history.update({msg: reply})
                             JsonManager.json_write(f, history)
                             logger.info('Learnt')

@@ -29,10 +29,9 @@ class JsonManager:
 
 
 if __name__ == "__main__":
-    x = JsonManager.json_read('tools/AI/conversations.json')
+    x = JsonManager.json_read('S:\Projects\myassistant\AI\.learnt')
     print(x)
-    for i in x:
-        print(i)
-        print(x[i])
-        for j in x[i]:
-            print(x[i][j])
+    x.update({"alternate":"test"})
+    JsonManager.json_write('S:\Projects\myassistant\AI\.learnt', x)
+    x = JsonManager.json_read('S:\Projects\myassistant\AI\.learnt')
+    print(x)

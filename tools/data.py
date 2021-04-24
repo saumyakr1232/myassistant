@@ -59,7 +59,7 @@ goto_keys = ['goto', 'go to']
 install_keys = ['pip install', 'install pip', 'install']
 calc_keys = ['calculator', 'calculate', 'calculations', 'calculations', 'calc', 'solve it', 'solve']
 
-should_not_learn = ['date', 'today', 'check browser', 'no data available']
+should_not_learn = ['date', 'today', 'check browser', 'no data available', 'temp', 'temperature','weather']
 version_keys = ['-v', '-version', '--version']
 
 NOTE_STRS = ["make a note", "write this down", "remember this"]

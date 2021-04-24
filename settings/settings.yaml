@@ -28,7 +28,7 @@ interaction_setting:
   text_read: true
   text_reply: true
   voice_read_voice_reply: false
-  voice_reply: true
+  voice_reply: false
 start_time:
   first_time: false
 template_path:
