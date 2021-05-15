@@ -1,4 +1,4 @@
-from settings.logs import logger
+from settings.logs import get_logger
 import logging
 import os
 import random
@@ -16,6 +16,7 @@ import assist.utils.helper as helper
 from models.models import Quiz, Assignment
 from UI.table import quiz_assignment_table
 from assist.alert.NotifyMe import  msg_box
+logger = get_logger()
 logger.setLevel(logging.CRITICAL)
 
 def copy_assignment_doc(file_name):
@@ -615,10 +616,10 @@ def login_to_lms():
 if __name__ == '__main__':
    r = get_incomplete_assignments_and_quizzes('compiler')
    quiz_assignment_table(r)
-   for key in r.keys():
-       print(key)
-       for ass in r[key]['assignments']:
-           print(ass)
-       for quiz in r[key]['quizzes']:
-           print(quiz)
+   # for key in r.keys():
+   #     print(key)
+   #     for ass in r[key]['assignments']:
+   #         print(ass)
+   #     for quiz in r[key]['quizzes']:
+   #         print(quiz)
 

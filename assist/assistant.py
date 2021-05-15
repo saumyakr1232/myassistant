@@ -8,7 +8,8 @@ import webbrowser
 import time
 from threading import Thread
 from assist.utils.decorators import debug
-from settings.logs import logger
+from settings.logs import get_logger
+logger = get_logger()
 
 api_id = "AP8UVR-5E83UJJTRX"
 
@@ -66,11 +67,14 @@ def animate():
 
 
 def ask_wolframalpha(question):
-    wolfram_res = next(wolframalpha_client.query(question).results).text
+    try:
+        wolfram_res = next(wolframalpha_client.query(question).results).text
+    except StopIteration:
+        return None
     return wolfram_res
 
 
 if __name__ == '__main__':
-    print(ask_question("temperature in patna"))
-    print(ask_question("temperature in delhi"))
+    print(ask_question("dsalfk nasldk asldkfj in patna"))
+
 

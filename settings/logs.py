@@ -6,10 +6,12 @@ logging.basicConfig(
     format="%(asctime)s [%(levelname)s] %(message)s",
     handlers=[logging.FileHandler(".log", 'w'),
               logging.StreamHandler()
-              ]
+              ],
+
 )
 
-logger = logging.getLogger()
-
-if DEBUG:
-    logger.setLevel(logging.DEBUG)
+def get_logger():
+    logger = logging.getLogger()
+    if DEBUG:
+        logger.setLevel(10)
+    return logger

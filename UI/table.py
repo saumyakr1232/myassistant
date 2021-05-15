@@ -17,8 +17,12 @@ def quiz_assignment_table(dic: dict):
         items.extend(dic[course]['assignments'])
         sno = 1
         for item in items:
+
             t = "Quiz" if type(item) is Quiz else "Assignment"
-            due_datetime = parse(item.due_date)
+            try:
+                due_datetime = parse(item.due_date)
+            except Exception:
+                pass
             due_str = f"{due_datetime.time().hour}:{due_datetime.time().minute} {due_datetime.date()}"
             s = f"{sno}||{item.title}||{t}||{item.due_date}||{course}"
             cell_text.append(s.split("||"))

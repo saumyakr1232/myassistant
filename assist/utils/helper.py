@@ -15,12 +15,13 @@ from selenium.webdriver.chrome.options import Options as OptionsChrome
 from selenium.webdriver.firefox.options import Options as OptionFirefox
 from pathlib import  Path
 import webbrowser
-from settings.logs import logger
+from settings.logs import get_logger
 from settings.setting import credentials, update_cred, conf_path, directories, update_directories, \
     BROWSER
 from termcolor import cprint
 from tools.configParser import ConfigParser_manager as CM
 
+logger = get_logger()
 CurrentOs = platform.system()
 OsUserName = getpass.getuser()
 

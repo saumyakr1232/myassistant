@@ -52,7 +52,7 @@ wiki = ['search wikipedia', 'find wikipedia', 'wikipedia find', 'wikipedia it', 
         'find wiki', 'wiki find', 'wiki', 'tell me about', 'definition of']
 youtube = ['search youtube', 'youtube search', 'youtube it', 'find youtube', 'youtube find', 'youtube']
 google = ['search google', 'google search', 'find google', 'google find', 'google it', 'google', 'search it', 'search',
-          'find it', 'find', 'how to']
+          'find it', 'find', 'how to','search google', 'google search','find google','google find','google it' , 'google','search it' ,'search','find it', 'find','how to']
 youtube_play = ['play youtube', 'youtube play']
 goto_keys = ['goto', 'go to']
 
@@ -77,3 +77,8 @@ DATE_STRS = ["what's the date", "tell me the date", "what date is it", "what is 
 lms_keys = ['lms', 'gu lms']
 incomp_ass_quiz_keys = ['get incomplete quizzes', 'incomplete assignments', 'get incomplete quiz', 'incomplete quiz']
 login_keys = ['log in', 'login', 'signin', 'sign in']
+
+
+bye = [
+    'bye','tata' , 'exit' , 'quit' ,'stop' ,
+]

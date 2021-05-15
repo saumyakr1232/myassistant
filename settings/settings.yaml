@@ -20,7 +20,7 @@ default:
   age: 21
   name: Gaurav
 developer:
-  debug: false
+  debug: True
   learn: true
 directories:
   assignment_attachment: C:\Users\saumyakr1232\OneDrive\Documents
@@ -30,7 +30,7 @@ interaction_setting:
   text_read: true
   text_reply: true
   voice_read_voice_reply: false
-  voice_reply: true
+  voice_reply: false
 start_time:
   first_time: false
 template_path:

@@ -41,10 +41,12 @@ def authenticate_calendar():
     return service
 
 
-service = authenticate_calendar()
-
-
 def get_events(day):
+    service = None
+    try:
+        service = authenticate_calendar()
+    except FileNotFoundError:
+        return "Credentials.json not found, Please Provide Credentials"
     date = datetime.datetime.combine(day, datetime.datetime.min.time())
     end_date = datetime.datetime.combine(day, datetime.datetime.max.time())
 
@@ -68,16 +70,21 @@ def get_events(day):
         messages.append(f'you have {len(events)} events on this day \n')
         for event in events:
             start = event['start'].get('dateTime', event['start'].get('date'))
-            # print(start, event['summary'])
-            start_time = str(start.split("T")[1].split("+")[0])
+            print(start, event['summary'])
 
-            if int(start_time.split(":")[0]) < 12:
-                start_time = start_time + " am"
-            else:
-                start_time = str(int(start_time.split(":")[0]) - 12) + start_time.split(":")[1]
-                start_time = start_time + " pm"
-            # print(event["summary"] + " at " + start_time)
-            messages.append(event["summary"] + " at " + start_time)
+            try:
+                start_time = str(start.split("T")[1].split("+")[0])
+
+
+                if int(start_time.split(":")[0]) < 12:
+                    start_time = start_time + " am"
+                else:
+                    start_time = str(int(start_time.split(":")[0]) - 12) + start_time.split(":")[1]
+                    start_time = start_time + " pm"
+                # print(event["summary"] + " at " + start_time)
+                messages.append(event["summary"] + " at " + start_time)
+            except IndexError:
+                pass
         return messages
 
 

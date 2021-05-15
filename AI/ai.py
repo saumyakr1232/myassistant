@@ -1,10 +1,10 @@
 from assist import assistant
-from assist.calendar import g_calendar
+import json
 from tools.data import data, youtube, wiki, google, youtube_play, goto_keys, lms_keys, login_keys
 from tools.data import install_keys, calc_keys, should_not_learn, version_keys
 from tools.data import CALENDAR_STRS, NOTE_STRS, DAYS, MONTHS, DAY_EXTENTIONS, TIME_STRS, DATE_STRS
 from tools.data import incomp_ass_quiz_keys
-from settings.logs import *
+from assist.calendar import g_calendar
 from system.install import install, command
 from system.screen_text import command_sep
 from tools.string_processing import is_matched
@@ -34,6 +34,7 @@ import multiprocessing
 
 from settings.logs import *
 
+logger = get_logger()
 app_id = "AP8UVR-5E83UJJTRX"
 
 
@@ -71,7 +72,9 @@ def get_date(text):
                 if found > 0:
                     try:
                         day = int(word[:found])
-                    except:
+                    except ValueError:
+                        pass
+                    except IndexError:
                         pass
     if month < today.month and month != -1:
         year += 1
@@ -80,12 +83,12 @@ def get_date(text):
     if month == -1 and day == -1 and day_of_week != -1:
         current_day_of_week = today.weekday()  # 0-6
         diff = day_of_week - current_day_of_week
-        print(diff)
+        # print(diff)
         if diff < 0:
             diff += 7
             if text.count("next") >= 1:
                 diff += 7
-            print(diff)
+            # print(diff)
         return today + datetime.timedelta(diff)
     if month == -1 or day == -1:
         return None
@@ -170,7 +173,6 @@ def ai(msg):
         elif check(msg, CALENDAR_STRS):
             # print("calendar")
             date = get_date(msg)
-            # print("got date ", date)
             if date:
                 for event in g_calendar.get_events(date):
                     reply = event
@@ -211,11 +213,13 @@ def ai(msg):
 
             reply = f"Sir, today is {date} {MONTHS[month - 1]}"
         elif check(msg, ["where am i", "my location"]):
-            # Ip_info = requests.get('https://api.ipdata.co?api-key=test').json()
-            # loc = Ip_info['region']
-            # reply = f"You must be somewhere in {loc}"
-            reply = "Ip location is not setup yet"
-            pass
+            try:
+                Ip_info = requests.get('https://geolocation-db.com/json/').json()
+                loc = Ip_info['state']
+                reply = f"You must be somewhere in {loc}, {Ip_info['country_name']}"
+            except Exception:
+                reply = "Unable to get your location"
+
         elif check(msg, ["send email", "send an email" "email to ", "mail to"]):
             reply = "Email feature is not setup yet"
             pass
@@ -296,33 +300,33 @@ def ai(msg):
                 reply = 'done sir'
             else:
                 f= None
-                history = None
+
                 try:
                     f = getpath(__file__) + '.learnt'
                     history = JsonManager.json_read(f)
                     for line in history:
                         if is_matched(msg, line, 95):
-                            logging.info('Learnt this before')
+                            logger.info('Learnt this before')
                             return history[line]
 
-                except Exception as e:
-                    logging.error("Can't read history file")
+                except FileNotFoundError:
+                    logger.error("Can't read history file")
 
                 try:
                     ft = train_path
                     history = JsonManager.json_read(ft)
                     for line in history:
                         if is_matched(msg, line, 95):
-                            logging.info('You have trained this before.')
+                            logger.info('You have trained this before.')
                             return history[line]
 
-                except:
+                except FileNotFoundError:
                     logger.info("Can't read trained data")
                 t = time.time()
                 reply = assistant.ask_question(msg)
                 t = time.time() - t
                 logger.info(str(t) + ' sec')
-                # cprint(t,'red')
+
                 ok = True
                 for word in should_not_learn:
                     if word in msg.lower() or word in reply.lower():
@@ -343,10 +347,10 @@ def ai(msg):
                             JsonManager.json_write(f, history)
                             logger.info('Learnt')
                         except Exception as e:
-                            logger.info("Exception while writing learnt : " + e)
+                            logger.info("Exception while writing learnt : " + str(e))
         return reply
     except Exception as e:
         logger.error(f"getting some error in ai {e}")
         logger.info('Getting some error in ai')
-        logger.info(e)
+        logger.info(str(e))
         return reply
